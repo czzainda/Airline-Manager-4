@@ -103,7 +103,37 @@ export class MaintenanceUtils {
         // --- 🚀 PROSES SELEKSI OPSI SECARA HUMAN-LIKE BERAKSI ---
         console.log(`Memilih ambang batas perbaikan ${this.repairWear}% dengan jeda pencarian visual...`);
         const repairPercentSelect = this.page.locator('#repairPct');
-        await this.moveAndSelectOption(repairPercentSelect, this.repairWear);
+        // Kompatibilitas: dropdown game mungkin tidak punya opsi yang sama persis
+        // dengan REPAIR_WEAR (mis. 15 tidak ada, hanya 10/20/30). Baca opsi yang
+        // tersedia lalu pilih yang terbesar namun tidak melebihi ambang batas;
+        // jika ambang batas di bawah semua opsi, pakai opsi terkecil.
+        const targetWear = parseInt(this.repairWear, 10);
+        let valueToSelect: string = this.repairWear;
+        try {
+            const optionValues = await repairPercentSelect.locator('option').evaluateAll(
+                (opts) => opts.map((o) => (o as HTMLOptionElement).value)
+            );
+            console.log(`[Repair] Opsi dropdown tersedia: ${optionValues.join(', ')}`);
+            let best = -1;
+            let bestVal: string | null = null;
+            let smallest: string | null = null;
+            let smallestNum = Number.MAX_SAFE_INTEGER;
+            for (const v of optionValues) {
+                const n = parseInt(v, 10);
+                if (isNaN(n)) continue;
+                if (n < smallestNum) { smallestNum = n; smallest = v; }
+                if (!isNaN(targetWear) && n <= targetWear && n > best) { best = n; bestVal = v; }
+            }
+            if (bestVal !== null) {
+                valueToSelect = bestVal;
+            } else if (smallest !== null) {
+                valueToSelect = smallest;
+            }
+        } catch (e) {
+            console.log(`[Repair] Gagal membaca opsi dropdown, pakai nilai mentah: ${this.repairWear}`);
+        }
+        console.log(`[Repair] Memilih nilai dropdown: ${valueToSelect} (ambang batas: ${this.repairWear}%)`);
+        await this.moveAndSelectOption(repairPercentSelect, valueToSelect);
         await GeneralUtils.randomSleep(1200, 2500);
         
         const noPlaneExists = await this.page.getByText('There are no aircraft worn to').isVisible();
