@@ -1,8 +1,7 @@
 name: Playwright Tests
-# chore: force GitHub to re-register the schedule trigger (no functional change)
 on:
   schedule:
-    - cron: '7 * * * *'  
+    - cron: '7 * * * *'
 
   workflow_dispatch:
     inputs:
@@ -17,18 +16,28 @@ on:
         required: false
         default: false
 
+# GITHUB_TOKEN needs actions:write so the chain job can dispatch the next run.
+permissions:
+  contents: read
+  actions: write
+
+# Never run two bot copies at once (game login conflicts); queue instead.
+concurrency:
+  group: am4-bot
+  cancel-in-progress: false
+
 jobs:
   test:
     timeout-minutes: 29
     runs-on: ubuntu-22.04
-    
+
     # Hak akses wajib agar bot bisa melakukan push commit ke dalam repositori
     permissions:
       contents: write
 
     steps:
     - uses: actions/checkout@v4
-    
+
     - name: Random Delay
       # Langkah ini hanya berjalan jika opsi 'aktifkan_random_delay' bernilai true (tercentang)
       if: github.event.inputs.aktifkan_random_delay == 'true' || github.event.inputs.aktifkan_random_delay == ''
@@ -86,7 +95,7 @@ jobs:
       env:
         PAKSI_VIDEO: ${{ github.event.inputs.paksa_simpan_video }}
       run: xvfb-run --auto-servernum --server-args="-screen 0 1280x1024x24" npx playwright test --headed
-      
+
     - name: Upload Test Results
       uses: actions/upload-artifact@v4
       if: always() # Tetap selalu upload seperti bawaan asli Anda
@@ -102,7 +111,7 @@ jobs:
         # Konfigurasi identitas Git
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
-        
+
         # Cek apakah ada perubahan nyata pada file last-commit.txt
         if [ -f "last-commit.txt" ] && git status --porcelain | grep -q "last-commit.txt"; then
           echo "Terdeteksi perubahan pada last-commit.txt. Menjalankan auto-commit..."
@@ -113,5 +122,33 @@ jobs:
         else
           echo "Tidak ada perubahan pada last-commit.txt (Bukan tanggal 1 atau sudah di-commit pada sesi sebelumnya). Git tetap bersih."
         fi
-# re-saved to re-register schedule trigger
-        
+
+  # Self-perpetuating hourly chain: no external scheduler needed.
+  # After the bot finishes (even if it fails), wait until the next :07 UTC
+  # and dispatch the next run using the built-in GITHUB_TOKEN.
+  chain-next:
+    name: Chain next hourly run
+    needs: test
+    if: always()
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Wait until next :07 UTC
+        run: |
+          now_epoch=$(date -u +%s)
+          cur_min=$(date -u +%M)
+          if [ "$cur_min" -lt 7 ]; then
+            target=$(date -u -d "$(date -u +'%Y-%m-%d %H'):07" +%s)
+          else
+            target=$(date -u -d "$(date -u +'%Y-%m-%d %H'):07 +1 hour" +%s)
+          fi
+          sleep_for=$(( target - now_epoch ))
+          if [ "$sleep_for" -gt 0 ]; then
+            echo "Sleeping ${sleep_for}s until next :07 UTC, then dispatching next run"
+            sleep "$sleep_for"
+          fi
+      - name: Dispatch next run
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api --method POST "/repos/czzainda/Airline-Manager-4/actions/workflows/playwright.yml/dispatches" -f ref=main
+          echo "Next hourly run dispatched"
