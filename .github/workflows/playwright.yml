@@ -124,17 +124,17 @@ jobs:
         fi
 
   # Self-perpetuating hourly chain: no external scheduler needed.
-  # After the bot finishes (even if it fails), wait until the next :07 UTC
+  # After the bot finishes (even if it fails), wait until the next :07 or :37 UTC
   # and dispatch the next run using the built-in GITHUB_TOKEN.
   chain-next:
-    name: Chain next hourly run
+    name: Chain next run (every 30 min)
     needs: test
     if: always()
     runs-on: ubuntu-22.04
     steps:
-      - name: Wait until next :07 UTC
+      - name: Wait until next :07/:37 UTC
         run: |
-          # Sleep until 7 minutes past the next hour (UTC), keeping an hourly
+          # Sleep until 7 or 37 minutes past the hour (UTC), keeping a 30-min
           # cadence without any external scheduler. Pure arithmetic, no
           # `date -d` relative parsing (which misreads "+1 hour" as a tz offset).
           now_min=$(date -u +%M)
@@ -142,10 +142,12 @@ jobs:
           elapsed=$(( 10#$now_min * 60 + 10#$now_sec ))
           if [ "$elapsed" -lt 420 ]; then
             sleep_for=$(( 420 - elapsed ))
+          elif [ "$elapsed" -lt 2220 ]; then
+            sleep_for=$(( 2220 - elapsed ))
           else
             sleep_for=$(( 3600 + 420 - elapsed ))
           fi
-          echo "Sleeping ${sleep_for}s until next :07 UTC, then dispatching next run"
+          echo "Sleeping ${sleep_for}s until next :07/:37 UTC, then dispatching next run"
           sleep "$sleep_for"
       - name: Dispatch next run
         env:
