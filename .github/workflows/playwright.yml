@@ -1,5 +1,8 @@
 name: Playwright Tests
 on:
+  schedule:
+    - cron: '7 * * * *'  
+
   workflow_dispatch:
     inputs:
       aktifkan_random_delay:
