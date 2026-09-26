@@ -254,7 +254,7 @@ export class FuelUtils {
             await this.moveAndClick(purchaseInput);
             await GeneralUtils.randomSleep(500, 1200);
             
-            await purchaseInput.press('Control+a');
+            await purchaseInput.click(); await purchaseInput.press('Control+A'); await purchaseInput.press('Backspace');
             await GeneralUtils.randomSleep(400, 900);
             
             await purchaseInput.pressSequentially(emptyCo2Capacity, { delay: Math.floor(Math.random() * 80) + 40 });
@@ -264,14 +264,14 @@ export class FuelUtils {
             const purchaseButton = this.page.getByRole('button', { name: ' Purchase' });
             await this.moveAndClick(purchaseButton);
 
-            console.log('Bought Co2 Successfully! Amount of co2 bought: ' + emptyCo2Capacity);
+            await GeneralUtils.randomSleep(5000, 6000); const holdingAfterText = (await this.page.locator('#holding').innerText()).replaceAll(',', ''); const holdingAfter = parseInt(holdingAfterText); const actualBought = holdingAfter - curHolding; console.log('Actual CO2 bought (verified holding delta): ' + actualBought); if (actualBought <= 0) { console.log('WARNING: CO2 purchase may have failed — holding did not increase.'); } console.log('Bought Co2 Successfully! Verified amount bought: ' + actualBought);
         }
         // Kondisi darurat jika emisi kritis
         else if(curHolding < 1000000 && curCo2Price < 180) {
             await this.moveAndClick(purchaseInput);
             await GeneralUtils.randomSleep(500, 1200);
             
-            await purchaseInput.press('Control+a');
+            await purchaseInput.click(); await purchaseInput.press('Control+A'); await purchaseInput.press('Backspace');
             await GeneralUtils.randomSleep(400, 900);
             
             await purchaseInput.pressSequentially('1000000', { delay: Math.floor(Math.random() * 80) + 40 });
