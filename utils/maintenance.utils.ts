@@ -94,7 +94,14 @@ export class MaintenanceUtils {
     public async repairPlanes() {
         await this.openPlanPanel();
         await GeneralUtils.randomSleep(1000, 2000);
-        
+
+        // Terima otomatis dialog konfirmasi JS (mis. "Repair 31 aircraft for $X?").
+        // Bot tidak bisa klik manual, accept adalah perilaku yang benar.
+        this.page.on('dialog', async (dialog) => {
+            console.log(`[Repair] Dialog JS terdeteksi: "${dialog.message()}". Menerima otomatis.`);
+            await dialog.accept();
+        });
+
         // Upgrade tombol bulk repair menggunakan moveAndClick terpusat
         const bulkRepairButton = this.page.getByRole('button', { name: ' Bulk repair' });
         await GeneralUtils.moveAndClick(this.page, bulkRepairButton);
@@ -164,7 +171,29 @@ export class MaintenanceUtils {
         // Upgrade tombol final perbaikan massal menggunakan moveAndClick terpusat
         await GeneralUtils.moveAndClick(this.page, planBulkRepairButton);
         console.log('[Repair] Tombol Plan bulk repair diklik.');
-        await GeneralUtils.randomSleep(2500, 4000);
+        await GeneralUtils.randomSleep(3000, 4000);
+
+        // Tangani modal konfirmasi jika muncul (mis. "Repair 31 aircraft for $2.5M?")
+        try {
+            const modal = this.page.locator('.modal.show, [role="dialog"], .swal-modal');
+            if (await modal.first().isVisible({ timeout: 4000 })) {
+                console.log('[Repair] Modal konfirmasi terdeteksi, mencari tombol konfirmasi...');
+                const confirmBtn = modal.getByRole('button', { name: /confirm|yes|ok|repair|lanjut/i }).first();
+                if (await confirmBtn.isVisible({ timeout: 3000 })) {
+                    await GeneralUtils.moveAndClick(this.page, confirmBtn);
+                    console.log('[Repair] Tombol konfirmasi di modal diklik.');
+                    await GeneralUtils.randomSleep(2500, 3500);
+                } else {
+                    console.log('[Repair] Modal ada tapi tombol konfirmasi tidak ditemukan.');
+                }
+            } else {
+                console.log('[Repair] Tidak ada modal konfirmasi.');
+            }
+        } catch (e) {
+            console.log('[Repair] Tidak ada modal konfirmasi (timeout).');
+        }
+
+        console.log('[Repair] Modul perbaikan selesai.');
     }
 
     public async checkPlanes() {
