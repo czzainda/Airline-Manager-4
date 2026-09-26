@@ -151,5 +151,5 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh api --method POST "/repos/czzainda/Airline-Manager-4/actions/workflows/playwright.yml/dispatches" -f ref=main
+          gh api --method POST "/repos/czzainda/Airline-Manager-4/actions/workflows/playwright.yml/dispatches" -f ref=main -f inputs[aktifkan_random_delay]=false
           echo "Next hourly run dispatched"
