@@ -1,0 +1,13 @@
+name: Schedule Probe
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probe tick
+        run: echo "schedule probe tick at $(date -u)"
