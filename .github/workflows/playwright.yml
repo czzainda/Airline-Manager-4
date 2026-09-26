@@ -134,18 +134,19 @@ jobs:
     steps:
       - name: Wait until next :07 UTC
         run: |
-          now_epoch=$(date -u +%s)
-          cur_min=$(date -u +%M)
-          if [ "$cur_min" -lt 7 ]; then
-            target=$(date -u -d "$(date -u +'%Y-%m-%d %H'):07" +%s)
+          # Sleep until 7 minutes past the next hour (UTC), keeping an hourly
+          # cadence without any external scheduler. Pure arithmetic, no
+          # `date -d` relative parsing (which misreads "+1 hour" as a tz offset).
+          now_min=$(date -u +%M)
+          now_sec=$(date -u +%S)
+          elapsed=$(( 10#$now_min * 60 + 10#$now_sec ))
+          if [ "$elapsed" -lt 420 ]; then
+            sleep_for=$(( 420 - elapsed ))
           else
-            target=$(date -u -d "$(date -u +'%Y-%m-%d %H'):07 +1 hour" +%s)
+            sleep_for=$(( 3600 + 420 - elapsed ))
           fi
-          sleep_for=$(( target - now_epoch ))
-          if [ "$sleep_for" -gt 0 ]; then
-            echo "Sleeping ${sleep_for}s until next :07 UTC, then dispatching next run"
-            sleep "$sleep_for"
-          fi
+          echo "Sleeping ${sleep_for}s until next :07 UTC, then dispatching next run"
+          sleep "$sleep_for"
       - name: Dispatch next run
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
