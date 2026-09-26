@@ -133,15 +133,38 @@ export class MaintenanceUtils {
             console.log(`[Repair] Gagal membaca opsi dropdown, pakai nilai mentah: ${this.repairWear}`);
         }
         console.log(`[Repair] Memilih nilai dropdown: ${valueToSelect} (ambang batas: ${this.repairWear}%)`);
-        await this.moveAndSelectOption(repairPercentSelect, valueToSelect);
-        await GeneralUtils.randomSleep(1200, 2500);
-        
-        const noPlaneExists = await this.page.getByText('There are no aircraft worn to').isVisible();
-        if (!noPlaneExists) {
-            // Upgrade tombol final perbaikan massal menggunakan moveAndClick terpusat
-            const planBulkRepairButton = this.page.getByRole('button', { name: 'Plan bulk repair' });
-            await GeneralUtils.moveAndClick(this.page, planBulkRepairButton);
+        // Langsung selectOption TANPA klik-membuka dropdown terlebih dahulu:
+        // klik-membuka native <select> lalu set via JS dapat menggagalkan
+        // pemicu event change game sehingga daftar pesawat tidak ter-render.
+        await repairPercentSelect.selectOption(valueToSelect);
+        await GeneralUtils.randomSleep(1000, 1800);
+
+        // Tunggu tombol "Plan bulk repair" benar-benar ter-render (bukan sleep buta).
+        // Jika tidak ada pesawat yang memenuhi ambang batas, tombol tidak akan muncul.
+        const planBulkRepairButton = this.page.getByRole('button', { name: 'Plan bulk repair' });
+        let buttonReady = false;
+        try {
+            await planBulkRepairButton.waitFor({ state: 'visible', timeout: 12000 });
+            buttonReady = true;
+            console.log('[Repair] Daftar pesawat termuat, tombol Plan bulk repair terlihat.');
+        } catch (e) {
+            console.log('[Repair] Tombol Plan bulk repair tidak muncul dalam 12 detik; kemungkinan tidak ada pesawat yang memenuhi ambang batas. Melewati perbaikan.');
         }
+
+        if (!buttonReady) {
+            return;
+        }
+
+        const noPlaneExists = await this.page.getByText('There are no aircraft worn to').isVisible();
+        if (noPlaneExists) {
+            console.log('[Repair] Tidak ada pesawat yang memenuhi ambang batas. Melewati.');
+            return;
+        }
+
+        // Upgrade tombol final perbaikan massal menggunakan moveAndClick terpusat
+        await GeneralUtils.moveAndClick(this.page, planBulkRepairButton);
+        console.log('[Repair] Tombol Plan bulk repair diklik.');
+        await GeneralUtils.randomSleep(2500, 4000);
     }
 
     public async checkPlanes() {
