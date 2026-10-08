@@ -218,7 +218,7 @@ export class FuelUtils {
 
         const purchaseInput = this.page.getByPlaceholder('Amount to purchase');
 
-        const getCurrentCo2Price = async () => {
+        const getTotalPrice = async () => {
             let co2Text = await this.page.getByText('Total price$').locator('b > span').innerText();
             co2Text = co2Text.replaceAll(',', '');
             return parseInt(co2Text);
@@ -235,52 +235,97 @@ export class FuelUtils {
             return parseInt(emptyText);
         }
 
+        const clearInput = async () => {
+            await this.moveAndClick(purchaseInput);
+            await GeneralUtils.randomSleep(500, 1200);
+
+            await purchaseInput.click();
+            await purchaseInput.press('Control+a');
+            await purchaseInput.press('Backspace');
+            await GeneralUtils.randomSleep(400, 900);
+        }
+
+        const readInputAmount = async () => {
+            const raw = await purchaseInput.inputValue().catch(() => '');
+            const parsed = parseInt(raw.replace(/[^0-9]/g, ''), 10);
+            return Number.isNaN(parsed) ? 0 : parsed;
+        }
+
+        // Ukur harga satuan asli dengan cara yang sama seperti buyFuel: ketik 1000 dulu,
+        // lalu baca total harganya. Angka yang terbaca = harga per 1000 unit,
+        // konsisten dengan MAX_CO2_PRICE (sebelumnya bot membaca total harga dari
+        // jumlah default di input, yang bukan harga satuan).
+        const probeUnitPricePer1000 = async () => {
+            await clearInput();
+            await purchaseInput.pressSequentially('1000', { delay: Math.floor(Math.random() * 80) + 40 });
+            await GeneralUtils.randomSleep(800, 1400);
+            return await getTotalPrice();
+        }
+
+        // Ketik jumlah target, lalu BACA BALIK isi input. Halaman bisa me-reset isi
+        // input di tengah jalan (kejadian nyata: bot hanya terbeli 100 / 1000 unit).
+        // Jika tidak cocok, coba sekali lagi dengan fill langsung.
+        const setAmountVerified = async (amount: number) => {
+            await clearInput();
+            await purchaseInput.pressSequentially(amount.toString(), { delay: Math.floor(Math.random() * 80) + 40 });
+            await GeneralUtils.randomSleep(1000, 2000);
+
+            let readBack = await readInputAmount();
+            if (readBack !== amount) {
+                console.log(`CO2 amount read-back mismatch after typing: intended ${amount}, field shows ${readBack}. Retrying with direct fill...`);
+                await purchaseInput.fill(amount.toString());
+                await GeneralUtils.randomSleep(800, 1400);
+                readBack = await readInputAmount();
+            }
+            return readBack;
+        }
+
         const emptyCo2 = await getEmptyCO2();
         if(emptyCo2 === 0) {
             console.log('CO2 tank is already full.');
             return;
         }
 
-        const curCo2Price = await getCurrentCo2Price();
         const curHolding = await getCurrentHolding();
 
-        console.log('Current Co2 Price: ' + curCo2Price);
+        const buyAmount = async (amount: number, label: string) => {
+            // Jangan pernah klik Purchase jika jumlah di input tidak terverifikasi:
+            // lebih baik tidak membeli sama sekali daripada membeli 100 unit lalu lapor sukses.
+            const verifiedAmount = await setAmountVerified(amount);
+            if (verifiedAmount !== amount) {
+                console.log(`WARNING: CO2 purchase aborted - could not set amount reliably (intended ${amount}, field shows ${verifiedAmount}). Not clicking Purchase.`);
+                return;
+            }
 
-        // Beli CO2 jika harga di bawah target harian maksimum
-        if(curCo2Price < this.maxCo2Price) {
-            const emptyCo2Capacity = (await this.page.locator('#remCapacity').innerText()).replaceAll(',', '');
-
-            // Gerakkan kursor secara halus dan acak ke input box
-            await this.moveAndClick(purchaseInput);
-            await GeneralUtils.randomSleep(500, 1200);
-            
-            await purchaseInput.click(); await purchaseInput.press('Control+A'); await purchaseInput.press('Backspace');
-            await GeneralUtils.randomSleep(400, 900);
-            
-            await purchaseInput.pressSequentially(emptyCo2Capacity, { delay: Math.floor(Math.random() * 80) + 40 });
-            await GeneralUtils.randomSleep(1000, 2000);
-            
-            // Gerakkan kursor secara halus dan acak menuju tombol Purchase CO2
             const purchaseButton = this.page.getByRole('button', { name: ' Purchase' });
             await this.moveAndClick(purchaseButton);
 
-            await GeneralUtils.randomSleep(5000, 6000); const holdingAfterText = (await this.page.locator('#holding').innerText()).replaceAll(',', ''); const holdingAfter = parseInt(holdingAfterText); const actualBought = holdingAfter - curHolding; console.log('Actual CO2 bought (verified holding delta): ' + actualBought); if (actualBought <= 0) { console.log('WARNING: CO2 purchase may have failed — holding did not increase.'); } console.log('Bought Co2 Successfully! Verified amount bought: ' + actualBought);
+            await GeneralUtils.randomSleep(5000, 6000);
+            const holdingAfter = await getCurrentHolding();
+            const actualBought = holdingAfter - curHolding;
+            console.log('Actual CO2 bought (verified holding delta): ' + actualBought);
+            if (actualBought < amount * 0.9) {
+                console.log(`WARNING: CO2 purchase underfilled - intended ${amount}, actually bought ${actualBought}. A later run will top up the rest.`);
+            } else {
+                console.log(`Bought Co2 Successfully! Verified amount bought: ${actualBought}${label}`);
+            }
         }
-        // Kondisi darurat jika emisi kritis
-        else if(curHolding < 1000000 && curCo2Price < 180) {
-            await this.moveAndClick(purchaseInput);
-            await GeneralUtils.randomSleep(500, 1200);
-            
-            await purchaseInput.click(); await purchaseInput.press('Control+A'); await purchaseInput.press('Backspace');
-            await GeneralUtils.randomSleep(400, 900);
-            
-            await purchaseInput.pressSequentially('1000000', { delay: Math.floor(Math.random() * 80) + 40 });
-            await GeneralUtils.randomSleep(1000, 2000);
-            
-            const purchaseButton = this.page.getByRole('button', { name: ' Purchase' });
-            await this.moveAndClick(purchaseButton);
 
-            console.log('Bought Co2 Successfully! Amount of co2 bought: 1000000 (Emergency Buy)');
+        const unitPricePer1000 = await probeUnitPricePer1000();
+
+        console.log('Current Co2 Price (per 1000): ' + unitPricePer1000);
+        console.log('Current CO2 holding: ' + curHolding + ', remaining capacity: ' + emptyCo2);
+
+        // Beli CO2 jika harga satuan di bawah target maksimum
+        if(unitPricePer1000 > 0 && unitPricePer1000 < this.maxCo2Price) {
+            await buyAmount(emptyCo2, '');
+        }
+        // Kondisi darurat jika stok kritis dan harga masih di bawah plafon darurat
+        else if(curHolding < 1000000 && unitPricePer1000 > 0 && unitPricePer1000 < 180) {
+            await buyAmount(Math.min(1000000, emptyCo2), ' (Emergency Buy)');
+        }
+        else {
+            console.log('CO2 purchase skipped: unit price per 1000 is ' + unitPricePer1000 + ' (max ' + this.maxCo2Price + ').');
         }
     }
 }
