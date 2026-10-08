@@ -316,8 +316,15 @@ export class FuelUtils {
         console.log('Current Co2 Price (per 1000): ' + unitPricePer1000);
         console.log('Current CO2 holding: ' + curHolding + ', remaining capacity: ' + emptyCo2);
 
+        // GARIS PENYELAMAT (keputusan user 2026-10-07): stok di bawah 300rb berarti
+        // beli penuh tanpa peduli harga. Mencegah stok habis total yang memaksa
+        // pembelian manual di harga puncak.
+        if(curHolding < 300000) {
+            console.log('CO2 SURVIVAL BUY: holding ' + curHolding + ' is below 300000 - buying full remaining capacity regardless of price (current: ' + unitPricePer1000 + ' per 1000).');
+            await buyAmount(emptyCo2, ' (Survival Buy)');
+        }
         // Beli CO2 jika harga satuan di bawah target maksimum
-        if(unitPricePer1000 > 0 && unitPricePer1000 < this.maxCo2Price) {
+        else if(unitPricePer1000 > 0 && unitPricePer1000 < this.maxCo2Price) {
             await buyAmount(emptyCo2, '');
         }
         // Kondisi darurat jika stok kritis dan harga masih di bawah plafon darurat
@@ -325,7 +332,7 @@ export class FuelUtils {
             await buyAmount(Math.min(1000000, emptyCo2), ' (Emergency Buy)');
         }
         else {
-            console.log('CO2 purchase skipped: unit price per 1000 is ' + unitPricePer1000 + ' (max ' + this.maxCo2Price + ').');
+            console.log('CO2 purchase skipped: unit price per 1000 is ' + unitPricePer1000 + ' (max ' + this.maxCo2Price + '), holding ' + curHolding + '.');
         }
     }
 }
