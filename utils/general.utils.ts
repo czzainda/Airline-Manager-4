@@ -91,9 +91,31 @@ export class GeneralUtils {
         await GeneralUtils.moveAndClick(page, playFreeButton, 30000); 
         await GeneralUtils.randomSleep(1000, 2000);
 
-        // Kasih timeout sedikit lebih panjang juga untuk pemuatan modal login
+        // Kasih timeout lebih panjang untuk pemuatan modal login.
+        // FIX 2026-10-10: langkah ini berjalan SEBELUM kredensial diisi, jadi
+        // kegagalan di sini murni soal kecepatan muat halaman, bukan konflik sesi.
+        // Timeout lama 15 detik terlalu pendek untuk transisi berat setelah
+        // PLAY FREE NOW: naikkan ke 45 detik; jika tetap gagal, reload halaman
+        // dan coba sekali lagi.
         const loginMenuButton = page.getByRole('button', { name: 'Log in' });
-        await GeneralUtils.moveAndClick(page, loginMenuButton, 15000);
+        try {
+            await GeneralUtils.moveAndClick(page, loginMenuButton, 45000);
+        } catch (error) {
+            console.log('Log in button not visible within 45s - reloading page and retrying once...');
+            await page.reload({ waitUntil: 'load' }).catch(() => {});
+            await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => console.log("Network belum sepenuhnya idle setelah reload, lanjut saja..."));
+
+            // Jika setelah reload kita kembali ke landing page, klik PLAY FREE NOW lagi.
+            const playFreeAgain = page.getByRole('button', { name: 'PLAY FREE NOW' });
+            const backAtLanding = await playFreeAgain.waitFor({ state: 'visible', timeout: 8000 }).then(() => true).catch(() => false);
+            if (backAtLanding) {
+                await GeneralUtils.moveAndClick(page, playFreeAgain, 30000);
+                await GeneralUtils.randomSleep(1000, 2000);
+            }
+
+            await GeneralUtils.moveAndClick(page, loginMenuButton, 45000);
+            console.log('Log in button appeared after reload retry.');
+        }
         await GeneralUtils.randomSleep(1000, 2000);
 
         // --- Proses Pengisian Email ---
