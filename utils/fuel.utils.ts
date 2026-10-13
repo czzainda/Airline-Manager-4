@@ -179,38 +179,90 @@ export class FuelUtils {
             return Math.max(0, Math.min(capacity, affordableLiters));
         }
 
-        const fillFuel = async (amountToBuy: number, label: string) => {
-            if (amountToBuy <= 0) {
-                console.log('Skipped fuel purchase because computed amount is zero or insufficient balance.');
-                return;
-            }
-
-            // Gerakkan kursor acak menuju kotak input
+        // Verifikasi jumlah: ketik jumlahnya, lalu baca kembali isi kotak
+        // input. Jika tidak cocok, coba sekali lagi dengan fill(). Jika tetap
+        // tidak cocok, JANGAN klik Purchase (kembalikan false).
+        const setAmountVerified = async (amount: number): Promise<boolean> => {
             await this.moveAndClick(fuelInput);
             await GeneralUtils.randomSleep(500, 1200);
 
             await fuelInput.press('Control+a');
             await GeneralUtils.randomSleep(400, 900);
 
-            await fuelInput.pressSequentially(amountToBuy.toString(), { delay: Math.floor(Math.random() * 80) + 40 });
+            await fuelInput.pressSequentially(amount.toString(), { delay: Math.floor(Math.random() * 80) + 40 });
             await GeneralUtils.randomSleep(1000, 2000);
+
+            const readBack = async () => {
+                const raw = await fuelInput.inputValue();
+                return parseInt(raw.replace(/[^0-9]/g, ''), 10) || 0;
+            };
+
+            if (await readBack() === amount) {
+                return true;
+            }
+
+            console.log(`WARNING: fuel amount field does not match target ${amount} after typing - retrying with fill().`);
+            await fuelInput.fill(amount.toString());
+            await GeneralUtils.randomSleep(500, 1000);
+
+            return (await readBack()) === amount;
+        }
+
+        const fillFuel = async (amountToBuy: number, label: string): Promise<boolean> => {
+            if (amountToBuy <= 0) {
+                console.log('Skipped fuel purchase because computed amount is zero or insufficient balance.');
+                return false;
+            }
+
+            const amountOk = await setAmountVerified(amountToBuy);
+            if (!amountOk) {
+                console.log(`WARNING: Could not verify fuel amount ${amountToBuy} in the input field - purchase NOT clicked to avoid buying a wrong amount.`);
+                return false;
+            }
 
             // Gerakkan kursor acak menuju ke tombol Purchase
             const purchaseButton = this.page.getByRole('button', { name: ' Purchase' });
             await this.moveAndClick(purchaseButton);
-            
-            console.log(`Bought Fuel Successfully! Amount of fuel bought: ${amountToBuy} Litres${label}`);
+            await GeneralUtils.randomSleep(1000, 2000);
+            return true;
         }
 
-        if(unitPrice > 0 && unitPrice < this.maxFuelPrice) {
-            const purchaseAmount = calculatePurchaseAmount(emptyFuel, currentBalance, unitPrice);
-            await fillFuel(purchaseAmount, '');
+        console.log('Current Fuel holding: ' + curHolding + ', remaining capacity: ' + emptyFuel);
+
+        // FIX 2026-10-12: logika lama punya zona mati - harga di atas 1250
+        // berarti tidak ada pembelian sama sekali berapa pun stoknya, dan
+        // jalur darurat hanya membeli tetap 2.000.000 liter. Pada 2026-10-12
+        // harga bertahan 1280-2010 selama berjam-jam (nol pembelian) lalu
+        // jalur darurat hanya membeli 2.000.000 liter di harga 480. Sekarang:
+        // 1) Stok < 2.000.000 -> SURVIVAL: isi penuh berapa pun harganya
+        //    (tetap dibatasi anggaran oleh calculatePurchaseAmount).
+        // 2) Harga < maxFuelPrice -> isi penuh seperti sebelumnya.
+        // Setelah membeli, verifikasi kenaikan stok yang sebenarnya.
+        let purchaseTarget = 0;
+        let purchaseLabel = '';
+        if (curHolding < 2000000 && unitPrice > 0) {
+            purchaseTarget = calculatePurchaseAmount(emptyFuel, currentBalance, unitPrice);
+            purchaseLabel = ' (FUEL SURVIVAL BUY)';
+            console.log(`FUEL SURVIVAL BUY: holding ${curHolding} below 2000000 - filling ${purchaseTarget} litres at unit price ${unitPrice} regardless of price.`);
+        } else if (unitPrice > 0 && unitPrice < this.maxFuelPrice) {
+            purchaseTarget = calculatePurchaseAmount(emptyFuel, currentBalance, unitPrice);
         }
-        else if(curHolding < 2000000 && unitPrice > 0 && unitPrice < 1250) {
-            const suggestedAmount = 2000000;
-            const purchaseAmount = calculatePurchaseAmount(suggestedAmount, currentBalance, unitPrice);
-            await fillFuel(purchaseAmount, ' (Emergency Buy)');
-        } 
+
+        if (purchaseTarget > 0) {
+            const clicked = await fillFuel(purchaseTarget, purchaseLabel);
+            if (clicked) {
+                const holdingAfter = await getCurrentHolding();
+                const actualBought = holdingAfter - curHolding;
+                console.log(`Actual fuel bought (verified holding delta): ${actualBought}`);
+                if (actualBought >= Math.floor(purchaseTarget * 0.9)) {
+                    console.log(`Bought Fuel Successfully! Verified amount bought: ${actualBought} Litres${purchaseLabel}`);
+                } else {
+                    console.log(`WARNING: Fuel purchase underfilled - target ${purchaseTarget} litres, actual holding increase ${actualBought} litres. Remaining capacity will be retried on the next run.`);
+                }
+            }
+        } else if (unitPrice >= this.maxFuelPrice) {
+            console.log(`Fuel purchase skipped: unit price per 1000 is ${unitPrice} (max ${this.maxFuelPrice}), holding ${curHolding}.`);
+        }
     }
 
     public async buyCo2() {
