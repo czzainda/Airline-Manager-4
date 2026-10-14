@@ -368,20 +368,25 @@ export class FuelUtils {
         console.log('Current Co2 Price (per 1000): ' + unitPricePer1000);
         console.log('Current CO2 holding: ' + curHolding + ', remaining capacity: ' + emptyCo2);
 
-        // GARIS PENYELAMAT (keputusan user 2026-10-07): stok di bawah 300rb berarti
-        // beli penuh tanpa peduli harga. Mencegah stok habis total yang memaksa
-        // pembelian manual di harga puncak.
-        if(curHolding < 300000) {
-            console.log('CO2 SURVIVAL BUY: holding ' + curHolding + ' is below 300000 - buying full remaining capacity regardless of price (current: ' + unitPricePer1000 + ' per 1000).');
+        // GARIS PENYELAMAT (keputusan user 2026-10-07, diskalakan ulang
+        // 2026-10-14): stok di bawah 8 juta berarti beli penuh tanpa peduli
+        // harga. Konsumsi armada sekarang sekitar 6,5-7 juta per jam, jadi
+        // garis lama 300rb hanya cukup ~3 menit dan saldo menembus nol pada
+        // 2026-10-14 (harga 120-171 seharian, semua jalur lama tidak terpicu).
+        // 8 juta cukup ~1,2 jam - aman walau satu run terlewat.
+        if(curHolding < 8000000) {
+            console.log('CO2 SURVIVAL BUY: holding ' + curHolding + ' is below 8000000 - buying full remaining capacity regardless of price (current: ' + unitPricePer1000 + ' per 1000).');
             await buyAmount(emptyCo2, ' (Survival Buy)');
         }
         // Beli CO2 jika harga satuan di bawah target maksimum
         else if(unitPricePer1000 > 0 && unitPricePer1000 < this.maxCo2Price) {
             await buyAmount(emptyCo2, '');
         }
-        // Kondisi darurat jika stok kritis dan harga masih di bawah plafon darurat
-        else if(curHolding < 1000000 && unitPricePer1000 > 0 && unitPricePer1000 < 180) {
-            await buyAmount(Math.min(1000000, emptyCo2), ' (Emergency Buy)');
+        // Kondisi darurat (diskalakan ulang 2026-10-14): stok di bawah 15 juta
+        // dan harga masih di bawah plafon darurat -> isi PENUH. Dulu hanya
+        // membeli tetap 1 juta yang hanya cukup beberapa menit saja.
+        else if(curHolding < 15000000 && unitPricePer1000 > 0 && unitPricePer1000 < 180) {
+            await buyAmount(emptyCo2, ' (Emergency Buy)');
         }
         else {
             console.log('CO2 purchase skipped: unit price per 1000 is ' + unitPricePer1000 + ' (max ' + this.maxCo2Price + '), holding ' + curHolding + '.');
