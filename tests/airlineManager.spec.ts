@@ -4,6 +4,7 @@ import { FuelUtils } from '../utils/fuel.utils';
 import { CampaignUtils } from '../utils/campaign.utils';
 import { FleetUtils } from '../utils/fleet.utils';
 import { MaintenanceUtils } from '../utils/maintenance.utils';
+import { PricingUtils } from '../utils/pricing.utils';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -51,6 +52,7 @@ test('All Operations', async ({ page }) => {
   const campaignUtils = new CampaignUtils(page);
   const fleetUtils = new FleetUtils(page);
   const maintenanceUtils = new MaintenanceUtils(page);
+  const pricingUtils = new PricingUtils(page);
   // End //
 
   /**
@@ -201,6 +203,26 @@ test('All Operations', async ({ page }) => {
     console.log('[Task] Modul Kampanye Pemasaran Selesai.');
   };
 
+  const runPricing = async () => {
+    if (process.env.ENABLE_PRICING !== 'true') {
+      console.log('[Task] Modul Penyesuaian Harga dilewati (ENABLE_PRICING bukan true).');
+      return;
+    }
+    console.log('[Task] Memulai Modul Penyesuaian Harga Tiket (Sebelum Depart)...');
+    try {
+      // Buka panel rute yang sama dengan ubin Depart
+      await GeneralUtils.moveAndClick(page, menuTiles.depart);
+      await GeneralUtils.randomSleep(4000, 6000);
+      await pricingUtils.updatePrices();
+      await GeneralUtils.randomSleep(1500, 3000);
+    } catch (error) {
+      // Kegagalan modul harga tidak boleh menggagalkan sisa siklus
+      console.log('[Task] Modul Penyesuaian Harga gagal, lanjut ke modul berikutnya: ' + error);
+    }
+    await clickBlankSpaceTop();
+    console.log('[Task] Modul Penyesuaian Harga Selesai.');
+  };
+
   const runDepart = async () => {
     console.log('[Task] Memulai Modul Pelepasan Armada (Depart All)...');
     
@@ -245,6 +267,10 @@ test('All Operations', async ({ page }) => {
   // 2. Kunci: Selalu jalankan Marketing tepat sebelum armada terbang
   await runCampaign();
   await GeneralUtils.randomSleep(5000, 8000);
+
+  // 2b. Penyesuaian harga tiket (hanya berjalan jika ENABLE_PRICING=true), tepat sebelum Depart
+  await runPricing();
+  await GeneralUtils.randomSleep(3000, 5000);
 
   // 3. Kunci: Terbangkan semua pesawat di bagian paling akhir
   await runDepart();
