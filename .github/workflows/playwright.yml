@@ -90,7 +90,7 @@ jobs:
         # --- PERBAIKAN BARU: Memasukkan variabel maintenance dinamis ---
         echo "REPAIR_WEAR=${{ vars.REPAIR_WEAR }}" >> .env
         echo "HOURS_CHECK=${{ vars.HOURS_CHECK }}" >> .env
-        echo "ENABLE_PRICING=${{ vars.ENABLE_PRICING }}" >> .env
+        echo "ENABLE_PRICING=false" >> .env
         echo "PRICING_MAX_UPDATES=${{ vars.PRICING_MAX_UPDATES }}" >> .env
 
     - name: Run Playwright tests (Headed Mode via Xvfb)
