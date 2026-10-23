@@ -7,7 +7,7 @@ export class FleetUtils {
 
     constructor(page : Page) {
         this.page = page;
-        this.maxTry = 8;
+        this.maxTry = 20;
     }
 
     /**
