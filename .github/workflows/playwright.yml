@@ -61,17 +61,46 @@ jobs:
       id: playwright-cache
       with:
         path: ~/.cache/ms-playwright
-        key: ${{ runner.os }}-playwright-${{ steps.pw-version.outputs.version }}
+        key: ${{ runner.os }}-playwright-${{ steps.pw-version.outputs.version }}-${{ env.ImageVersion }}
 
     - name: Disable Man-DB Auto-Update
       run: |
         sudo debconf-set-selections <<< "man-db man-db/auto-update boolean false"
         sudo dpkg-reconfigure man-db
 
-    - name: Install Playwright Browsers & System Dependencies
+    # Cache hit: browsers already restored from cache, so only verify the
+    # browser binaries (no apt). Skips the slow/flaky --with-deps step that
+    # failed/hung in two runs on 2026-10-22.
+    - name: Install Playwright Browsers (cache hit)
+      if: steps.playwright-cache.outputs.cache-hit == 'true'
+      timeout-minutes: 5
       env:
         NODE_OPTIONS: "--max-old-space-size=4096"
-      run: npx playwright install --with-deps chromium
+      run: |
+        ok=0
+        for attempt in 1 2; do
+          if npx playwright install chromium; then ok=1; break; fi
+          echo "Playwright install attempt $attempt failed, retrying..."
+          sleep 10
+        done
+        [ "$ok" = "1" ]
+
+    # Cache miss: full install with system dependencies, one retry, and a
+    # hard 8-minute step timeout so a stall fails fast instead of eating
+    # the next run's slot.
+    - name: Install Playwright Browsers & System Dependencies
+      if: steps.playwright-cache.outputs.cache-hit != 'true'
+      timeout-minutes: 8
+      env:
+        NODE_OPTIONS: "--max-old-space-size=4096"
+      run: |
+        ok=0
+        for attempt in 1 2; do
+          if npx playwright install --with-deps chromium; then ok=1; break; fi
+          echo "Playwright install (with deps) attempt $attempt failed, retrying..."
+          sleep 10
+        done
+        [ "$ok" = "1" ]
 
     - name: Install Xvfb (Virtual Display Layer)
       # Menambahkan alat Xvfb agar server Linux memiliki layar monitor virtual
