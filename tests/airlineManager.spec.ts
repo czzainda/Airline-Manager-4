@@ -237,7 +237,12 @@ test('All Operations', async ({ page }) => {
       await fleetUtils.departPlanes();
       await GeneralUtils.randomSleep(2000, 4000);
     } catch (error) {
-      console.log('[Task] Eksekusi di dalam menu depart mendeteksi kondisi normal/selesai.');
+      // 2026-10-25: depart is the last module. Its errors used to be
+      // swallowed here as "normal", which let silent no-depart runs pass
+      // green. Rethrow so a stuck depart fails the run loudly; the chain
+      // job still dispatches the next run (if: always()).
+      console.log('[Task] Modul depart gagal dan akan menggagalkan run ini: ' + error);
+      throw error;
     }
 
     // Keluar dari panel rute menuju peta utama
