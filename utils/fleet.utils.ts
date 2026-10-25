@@ -54,35 +54,82 @@ export class FleetUtils {
     }
 
     public async departPlanes() {
-        let departAllVisible = await this.page.locator('#departAll').isVisible();
-        console.log('Looking if there are any planes to be departed...')
+        console.log('Looking if there are any planes to be departed...');
 
-        let count = 0; 
-        while(departAllVisible && count < this.maxTry) {
-            console.log('Departing 20 or less...');
+        // 2026-10-25 fix: the old version sampled #departAll with a single
+        // instant isVisible(). If the fleet list was still rendering, it saw
+        // "no button" and finished with 0 departures in a green run
+        // (run 40171570235: check and finish logged in the same millisecond,
+        // 0 Departing lines). Now the button is waited for, absence must
+        // persist across a window, a confirmation pass re-checks, and a
+        // genuinely stuck depart throws so the run fails loudly.
+        const departAll = this.page.locator('#departAll');
+        const buttonAppears = async (timeoutMs: number): Promise<boolean> => {
+            return await departAll.waitFor({ state: 'visible', timeout: timeoutMs })
+                .then(() => true)
+                .catch(() => false);
+        };
 
-            let departAll = this.page.locator('#departAll');
-            
-            // Tunggu respons API rute penerbangan asli selesai diproses jaringan,
-            // dikombinasikan dengan fungsi moveAndClick yang meluncur halus secara acak.
-            await Promise.all([
-                this.page.waitForResponse(response => 
-                    response.url().includes('route') && response.status() === 200, 
-                    { timeout: 10000 }
-                ).catch(() => console.log('Timeout waiting for API, doing fallback sleep')),
-                this.moveAndClick(departAll)
-            ]);
+        let totalClicks = 0;
+        let buttonEverAppeared = false;
+        let toastSeen = false;
+        let cleanPass = false;
 
-            // Tambahkan jeda santai manusia pasca-klik (proses berpikir/animasi)
-            await GeneralUtils.randomSleep(1500, 3000);
-            
-            const cantDepartPlane = await this.page.getByText('×Unable to departSome A/C was').isVisible();
-            if(cantDepartPlane)
-                break;
+        for (let pass = 1; pass <= 3 && !cleanPass; pass++) {
+            let present = await buttonAppears(pass === 1 ? 30000 : 15000);
+            if (present)
+                buttonEverAppeared = true;
 
-            departAllVisible = await this.page.locator('#departAll').isVisible();
-            count++;
+            let passClicks = 0;
+            while (present && passClicks < this.maxTry) {
+                console.log('Departing 20 or less...');
+
+                // Tunggu respons API rute penerbangan asli selesai diproses jaringan,
+                // dikombinasikan dengan fungsi moveAndClick yang meluncur halus secara acak.
+                await Promise.all([
+                    this.page.waitForResponse(response =>
+                        response.url().includes('route') && response.status() === 200,
+                        { timeout: 10000 }
+                    ).catch(() => console.log('Timeout waiting for API, doing fallback sleep')),
+                    this.moveAndClick(departAll)
+                ]);
+
+                totalClicks++;
+                passClicks++;
+
+                // Tambahkan jeda santai manusia pasca-klik (proses berpikir/animasi)
+                await GeneralUtils.randomSleep(1500, 3000);
+
+                const cantDepartPlane = await this.page.getByText('\u00d7Unable to departSome A/C was').isVisible();
+                if (cantDepartPlane) {
+                    toastSeen = true;
+                    console.log('[Depart] Game showed the "Unable to depart" toast; ending this pass.');
+                    break;
+                }
+
+                // Absence must persist for a full 10s window before it counts;
+                // a momentary flicker while the list refreshes is not "done".
+                present = await buttonAppears(10000);
+                if (present)
+                    buttonEverAppeared = true;
+            }
+            console.log(`[Depart] Pass ${pass}: ${passClicks} batch(es) departed.`);
+
+            if (!present && (passClicks === 0 || pass >= 2))
+                cleanPass = true;
+
+            if (!cleanPass && pass < 3)
+                await GeneralUtils.randomSleep(3000, 5000);
         }
+
+        const endVisible = await buttonAppears(3000);
+        console.log(`[Depart] Summary: ${totalClicks} batch(es) departed in total; departAll visible at end: ${endVisible}; unable-to-depart toast seen: ${toastSeen}.`);
         console.log('Departed operations finished.');
+
+        if (!buttonEverAppeared && totalClicks === 0)
+            console.log('[Depart] WARNING: departAll never appeared in any pass (depart panel may not have opened, or no planes were ready).');
+
+        if (endVisible && !toastSeen && !cleanPass)
+            throw new Error('[Depart] departAll still visible after all passes; planes were likely left behind.');
     }
 }
