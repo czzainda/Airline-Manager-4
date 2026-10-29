@@ -227,14 +227,21 @@ test('All Operations', async ({ page }) => {
     console.log('[Task] Memulai Modul Pelepasan Armada (Depart All)...');
     
     // FIX KOREKSI 7: Klik ubin menu Depart dengan gerakan mouse melengkung
-    await GeneralUtils.moveAndClick(page, menuTiles.depart);
-    
-    // Jeda stabilisasi menunggu animasi panel rute terbuka sempurna
-    await GeneralUtils.randomSleep(4000, 6000);
+    // 2026-10-28: the open steps are factored into a closure and handed to
+    // departPlanes, so it can ask for the panel to be closed and re-opened
+    // when the departAll button never appears (panel may not have opened).
+    const openDepartPanel = async () => {
+      await clickBlankSpaceTop();
+      await GeneralUtils.moveAndClick(page, menuTiles.depart);
+
+      // Jeda stabilisasi menunggu animasi panel rute terbuka sempurna
+      await GeneralUtils.randomSleep(4000, 6000);
+    };
+    await openDepartPanel();
 
     try {
       // Jalankan fungsi depart bawaan fleetUtils (yang di dalamnya sudah di-upgrade)
-      await fleetUtils.departPlanes();
+      await fleetUtils.departPlanes(openDepartPanel);
       await GeneralUtils.randomSleep(2000, 4000);
     } catch (error) {
       // 2026-10-25: depart is the last module. Its errors used to be
