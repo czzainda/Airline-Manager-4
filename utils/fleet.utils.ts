@@ -53,7 +53,7 @@ export class FleetUtils {
         await GeneralUtils.humanClick(this.page, locator);
     }
 
-    public async departPlanes() {
+    public async departPlanes(reopenPanel?: () => Promise<void>) {
         console.log('Looking if there are any planes to be departed...');
 
         // 2026-10-25 fix: the old version sampled #departAll with a single
@@ -63,6 +63,10 @@ export class FleetUtils {
         // 0 Departing lines). Now the button is waited for, absence must
         // persist across a window, a confirmation pass re-checks, and a
         // genuinely stuck depart throws so the run fails loudly.
+        // 2026-10-28: if the button never appears at all, the panel is
+        // closed and re-opened once via the caller's reopenPanel callback;
+        // if it still never appears, the module throws (red run) instead
+        // of passing green with 0 departures (run 40804442150).
         const departAll = this.page.locator('#departAll');
         const buttonAppears = async (timeoutMs: number): Promise<boolean> => {
             return await departAll.waitFor({ state: 'visible', timeout: timeoutMs })
@@ -74,6 +78,7 @@ export class FleetUtils {
         let buttonEverAppeared = false;
         let toastSeen = false;
         let cleanPass = false;
+        let reopened = false;
 
         for (let pass = 1; pass <= 3 && !cleanPass; pass++) {
             let present = await buttonAppears(pass === 1 ? 30000 : 15000);
@@ -115,6 +120,22 @@ export class FleetUtils {
             }
             console.log(`[Depart] Pass ${pass}: ${passClicks} batch(es) departed.`);
 
+            if (toastSeen)
+                break;
+
+            if (!present && passClicks === 0 && totalClicks === 0 && !buttonEverAppeared) {
+                // The button never showed up at all: the depart panel may
+                // never have opened. Re-open it once and sweep again before
+                // concluding anything.
+                if (reopenPanel && !reopened) {
+                    reopened = true;
+                    console.log('[Depart] departAll never appeared; re-opening the depart panel and trying again...');
+                    await reopenPanel().catch(() => null);
+                    continue;
+                }
+                break;
+            }
+
             if (!present && (passClicks === 0 || pass >= 2))
                 cleanPass = true;
 
@@ -128,6 +149,9 @@ export class FleetUtils {
 
         if (!buttonEverAppeared && totalClicks === 0)
             console.log('[Depart] WARNING: departAll never appeared in any pass (depart panel may not have opened, or no planes were ready).');
+
+        if (!buttonEverAppeared && totalClicks === 0)
+            throw new Error('[Depart] departAll never appeared, even after re-opening the panel; failing loudly instead of passing with 0 departures.');
 
         if (endVisible && !toastSeen && !cleanPass)
             throw new Error('[Depart] departAll still visible after all passes; planes were likely left behind.');
