@@ -46,6 +46,11 @@ export class CampaignUtils {
      * lalu melakukan klik. Menghindari deteksi klik di titik tengah konstan.
      */
     private async moveAndClick(locator: any) {
+        // 2026-10-30: bound the wait. boundingBox() alone waited until the
+        // 300s test timeout when a button (e.g. New campaign) never
+        // rendered, killing the whole run before depart. Now it throws
+        // after 15s so the caller can skip this round's campaign.
+        await locator.waitFor({ state: 'visible', timeout: 15000 });
         const box = await locator.boundingBox();
         if (box) {
             const paddingX = box.width * 0.15;
