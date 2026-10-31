@@ -192,11 +192,22 @@ test('All Operations', async ({ page }) => {
         await runCampaign(attempt + 1);
         return;
       } else {
-        throw new Error('Modul Kampanye tetap gagal dimuat setelah pemancingan menu.');
+        // 2026-10-30: campaigns persist for hours, so a frozen marketing
+        // panel must not kill the whole run before depart. Skip this
+        // round's campaign loudly in the log instead of throwing.
+        console.log('[Task] Modul Kampanye dilewati ronde ini (panel tetap freeze); lanjut ke modul berikutnya.');
+        return;
       }
     }
     
-    await campaignUtils.createCampaign();
+    try {
+      await campaignUtils.createCampaign();
+    } catch (error) {
+      // 2026-10-30: an in-campaign failure (e.g. the New campaign button
+      // never rendering, now bounded at 15s in CampaignUtils) skips this
+      // round's campaign instead of failing the run before depart.
+      console.log('[Task] Modul Kampanye dilewati ronde ini (error di dalam pembuatan kampanye): ' + error);
+    }
     await GeneralUtils.randomSleep(1500, 3000);
 
     await clickBlankSpaceTop();
