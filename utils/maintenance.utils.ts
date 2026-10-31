@@ -103,8 +103,10 @@ export class MaintenanceUtils {
         });
 
         // Upgrade tombol bulk repair menggunakan moveAndClick terpusat
+        // 2026-10-30: wait widened 10s -> 45s. This button often renders
+        // later than 10s in the maintenance panel (7 timeouts pre-fix).
         const bulkRepairButton = this.page.getByRole('button', { name: ' Bulk repair' });
-        await GeneralUtils.moveAndClick(this.page, bulkRepairButton);
+        await GeneralUtils.moveAndClick(this.page, bulkRepairButton, 45000);
         await GeneralUtils.randomSleep(1200, 2200);
         
         // --- 🚀 PROSES SELEKSI OPSI SECARA HUMAN-LIKE BERAKSI ---
@@ -201,8 +203,9 @@ export class MaintenanceUtils {
         await GeneralUtils.randomSleep(1000, 2000);
         
         // Upgrade tombol bulk check menggunakan moveAndClick terpusat
+        // 2026-10-30: same 10s -> 45s widening as Bulk repair above.
         const bulkCheckButton = this.page.getByRole('button', { name: ' Bulk check' });
-        await GeneralUtils.moveAndClick(this.page, bulkCheckButton);
+        await GeneralUtils.moveAndClick(this.page, bulkCheckButton, 45000);
         
         await GeneralUtils.randomSleep(3000, 4500);
         
