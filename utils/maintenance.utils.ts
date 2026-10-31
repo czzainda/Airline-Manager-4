@@ -28,6 +28,28 @@ export class MaintenanceUtils {
     }
 
     /**
+     * 2026-10-31: click a bulk button (Bulk repair / Bulk check) with one
+     * reload-and-retry after a 45s timeout. Both call sites click BEFORE
+     * any selection is made inside their module (repair picks its wear
+     * dropdown afterwards, check picks aircraft cards afterwards), and
+     * the other module's finished work is already submitted in-game, so
+     * reloading the page at this point loses nothing. If the retry also
+     * times out, the error propagates and the run fails as before.
+     */
+    private async clickBulkButtonWithReloadRetry(button: any) {
+        try {
+            await GeneralUtils.moveAndClick(this.page, button, 45000);
+        } catch (error) {
+            console.log('[Maintenance] Tombol bulk tidak muncul dalam 45 detik; memuat ulang halaman dan mencoba sekali lagi...');
+            await this.page.reload({ waitUntil: 'domcontentloaded' });
+            await GeneralUtils.randomSleep(2000, 3000);
+            await this.openPlanPanel();
+            await GeneralUtils.randomSleep(1000, 2000);
+            await GeneralUtils.moveAndClick(this.page, button, 45000);
+        }
+    }
+
+    /**
      * 🛠️ FITUR BARU: SELEKSI DROP-DOWN MANUSIAWI (ANTI-TELEPORTASI)
      * Menyimulasi tindakan manusia memilih opsi: Bergerak ke kotak drop-down, mengkliknya,
      * menunggu panel opsi muncul di layar (jeda mata membaca), lalu memilih opsi target.
@@ -106,7 +128,7 @@ export class MaintenanceUtils {
         // 2026-10-30: wait widened 10s -> 45s. This button often renders
         // later than 10s in the maintenance panel (7 timeouts pre-fix).
         const bulkRepairButton = this.page.getByRole('button', { name: ' Bulk repair' });
-        await GeneralUtils.moveAndClick(this.page, bulkRepairButton, 45000);
+        await this.clickBulkButtonWithReloadRetry(bulkRepairButton);
         await GeneralUtils.randomSleep(1200, 2200);
         
         // --- 🚀 PROSES SELEKSI OPSI SECARA HUMAN-LIKE BERAKSI ---
@@ -205,7 +227,7 @@ export class MaintenanceUtils {
         // Upgrade tombol bulk check menggunakan moveAndClick terpusat
         // 2026-10-30: same 10s -> 45s widening as Bulk repair above.
         const bulkCheckButton = this.page.getByRole('button', { name: ' Bulk check' });
-        await GeneralUtils.moveAndClick(this.page, bulkCheckButton, 45000);
+        await this.clickBulkButtonWithReloadRetry(bulkCheckButton);
         
         await GeneralUtils.randomSleep(3000, 4500);
         
