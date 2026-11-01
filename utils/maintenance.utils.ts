@@ -19,9 +19,9 @@ export class MaintenanceUtils {
      * Helper privat untuk membuka panel perencanaan.
      * Menggunakan moveAndClick global untuk menjamin lintasan melengkung dan pendaratan acak.
      */
-    private async openPlanPanel() {
+    private async openPlanPanel(planButtonTimeoutMs: number = 15000) {
         const planButton = this.page.getByRole('button', { name: ' Plan' });
-        await planButton.waitFor({ state: 'visible', timeout: 15000 });
+        await planButton.waitFor({ state: 'visible', timeout: planButtonTimeoutMs });
         
         // Panggil utilitas terpusat untuk simulasi gerak dan klik manusiawi
         await GeneralUtils.moveAndClick(this.page, planButton);
@@ -35,6 +35,8 @@ export class MaintenanceUtils {
      * the other module's finished work is already submitted in-game, so
      * reloading the page at this point loses nothing. If the retry also
      * times out, the error propagates and the run fails as before.
+     * The re-opened panel also gets a 45s wait: run 41248991528 showed
+     * the default 15s panel wait becoming the bottleneck after a reload.
      */
     private async clickBulkButtonWithReloadRetry(button: any) {
         try {
@@ -43,7 +45,7 @@ export class MaintenanceUtils {
             console.log('[Maintenance] Tombol bulk tidak muncul dalam 45 detik; memuat ulang halaman dan mencoba sekali lagi...');
             await this.page.reload({ waitUntil: 'domcontentloaded' });
             await GeneralUtils.randomSleep(2000, 3000);
-            await this.openPlanPanel();
+            await this.openPlanPanel(45000);
             await GeneralUtils.randomSleep(1000, 2000);
             await GeneralUtils.moveAndClick(this.page, button, 45000);
         }
