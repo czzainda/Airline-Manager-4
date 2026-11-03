@@ -45,6 +45,15 @@ export class MaintenanceUtils {
             console.log('[Maintenance] Tombol bulk tidak muncul dalam 45 detik; memuat ulang halaman dan mencoba sekali lagi...');
             await this.page.reload({ waitUntil: 'domcontentloaded' });
             await GeneralUtils.randomSleep(2000, 3000);
+            // 2026-11-02: a reload drops the game back to the map view and
+            // closes the maintenance panel (verified in-game), so the Plan
+            // button does not exist until the panel is re-opened via the
+            // maintenance tile (same locator as the spec's
+            // menuTiles.maintenance). Without this step the retry waited
+            // for a button that was never going to appear (4 failures).
+            const maintenanceTile = this.page.locator('div:nth-child(4) > #mapMaint > img');
+            await GeneralUtils.moveAndClick(this.page, maintenanceTile, 45000);
+            await GeneralUtils.randomSleep(1000, 2000);
             await this.openPlanPanel(45000);
             await GeneralUtils.randomSleep(1000, 2000);
             await GeneralUtils.moveAndClick(this.page, button, 45000);
@@ -197,27 +206,39 @@ export class MaintenanceUtils {
         // Upgrade tombol final perbaikan massal menggunakan moveAndClick terpusat
         await GeneralUtils.moveAndClick(this.page, planBulkRepairButton);
         console.log('[Repair] Tombol Plan bulk repair diklik.');
-        await GeneralUtils.randomSleep(3000, 4000);
 
-        // Tangani modal konfirmasi jika muncul (mis. "Repair 31 aircraft for $2.5M?")
+        // 2026-11-02: verified in-game (manual session) that bulk repair has
+        // NO confirmation modal: clicking "Plan bulk repair" executes at
+        // once, charges the listed total, and shows a "Success / Bulk repair
+        // started" toast. The old modal block matched the maintenance panel
+        // itself and hunted for a confirm button that does not exist, so it
+        // logged "not found" every round and verified nothing. Success is
+        // now verified by the toast; if it never appears, click once more.
+        const successToast = this.page.getByText('Bulk repair started');
+        let repairStarted = false;
         try {
-            const modal = this.page.locator('.modal.show, [role="dialog"], .swal-modal');
-            if (await modal.first().isVisible({ timeout: 4000 })) {
-                console.log('[Repair] Modal konfirmasi terdeteksi, mencari tombol konfirmasi...');
-                const confirmBtn = modal.getByRole('button', { name: /confirm|yes|ok|lanjut/i }).first();
-                if (await confirmBtn.isVisible({ timeout: 3000 })) {
-                    await GeneralUtils.moveAndClick(this.page, confirmBtn);
-                    console.log('[Repair] Tombol konfirmasi di modal diklik.');
-                    await GeneralUtils.randomSleep(2500, 3500);
-                } else {
-                    console.log('[Repair] Modal ada tapi tombol konfirmasi tidak ditemukan.');
-                }
-            } else {
-                console.log('[Repair] Tidak ada modal konfirmasi.');
-            }
+            await successToast.waitFor({ state: 'visible', timeout: 15000 });
+            repairStarted = true;
         } catch (e) {
-            console.log('[Repair] Tidak ada modal konfirmasi (timeout).');
+            // Toast belum muncul dalam 15 detik pertama.
         }
+        if (!repairStarted) {
+            console.log('[Repair] Toast sukses belum muncul dalam 15 detik; mengklik Plan bulk repair sekali lagi...');
+            await GeneralUtils.moveAndClick(this.page, planBulkRepairButton);
+            console.log('[Repair] Tombol Plan bulk repair diklik (percobaan 2).');
+            try {
+                await successToast.waitFor({ state: 'visible', timeout: 15000 });
+                repairStarted = true;
+            } catch (e) {
+                // Toast tetap tidak muncul setelah klik kedua.
+            }
+        }
+        if (repairStarted) {
+            console.log('[Repair] Bulk repair dimulai (toast "Bulk repair started" terkonfirmasi).');
+        } else {
+            console.log('[Repair] WARNING: toast "Bulk repair started" tidak muncul setelah 2x klik; perbaikan ronde ini TIDAK terkonfirmasi.');
+        }
+        await GeneralUtils.randomSleep(2500, 3500);
 
         console.log('[Repair] Modul perbaikan selesai.');
     }
