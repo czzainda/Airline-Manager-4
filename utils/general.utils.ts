@@ -98,23 +98,35 @@ export class GeneralUtils {
         // PLAY FREE NOW: naikkan ke 45 detik; jika tetap gagal, reload halaman
         // dan coba sekali lagi.
         const loginMenuButton = page.getByRole('button', { name: 'Log in' });
-        try {
-            await GeneralUtils.moveAndClick(page, loginMenuButton, 45000);
-        } catch (error) {
-            console.log('Log in button not visible within 45s - reloading page and retrying once...');
-            await page.reload({ waitUntil: 'load' }).catch(() => {});
-            await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => console.log("Network belum sepenuhnya idle setelah reload, lanjut saja..."));
+        // FIX 2026-11-11: "login lambat" berulang (tombol Log in tidak muncul
+        // dalam 45 detik di kedua percobaan, mis. run 42970171236 2026-11-10).
+        // Naikkan jumlah percobaan dari 2 menjadi 3 (reload di antara
+        // percobaan); timeout total test dinaikkan bersamaan 300->420 detik
+        // di spec agar percobaan ekstra ini tidak memakan jatah modul lain.
+        let loginMenuClicked = false;
+        for (let attempt = 1; attempt <= 3 && !loginMenuClicked; attempt++) {
+            try {
+                await GeneralUtils.moveAndClick(page, loginMenuButton, 45000);
+                loginMenuClicked = true;
+                if (attempt > 1) {
+                    console.log('Log in button appeared after reload retry.');
+                }
+            } catch (error) {
+                if (attempt === 3) {
+                    throw error;
+                }
+                console.log('Log in button not visible within 45s - reloading page and retrying (attempt ' + (attempt + 1) + ' of 3)...');
+                await page.reload({ waitUntil: 'load' }).catch(() => {});
+                await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => console.log("Network belum sepenuhnya idle setelah reload, lanjut saja..."));
 
-            // Jika setelah reload kita kembali ke landing page, klik PLAY FREE NOW lagi.
-            const playFreeAgain = page.getByRole('button', { name: 'PLAY FREE NOW' });
-            const backAtLanding = await playFreeAgain.waitFor({ state: 'visible', timeout: 8000 }).then(() => true).catch(() => false);
-            if (backAtLanding) {
-                await GeneralUtils.moveAndClick(page, playFreeAgain, 30000);
-                await GeneralUtils.randomSleep(1000, 2000);
+                // Jika setelah reload kita kembali ke landing page, klik PLAY FREE NOW lagi.
+                const playFreeAgain = page.getByRole('button', { name: 'PLAY FREE NOW' });
+                const backAtLanding = await playFreeAgain.waitFor({ state: 'visible', timeout: 8000 }).then(() => true).catch(() => false);
+                if (backAtLanding) {
+                    await GeneralUtils.moveAndClick(page, playFreeAgain, 30000);
+                    await GeneralUtils.randomSleep(1000, 2000);
+                }
             }
-
-            await GeneralUtils.moveAndClick(page, loginMenuButton, 45000);
-            console.log('Log in button appeared after reload retry.');
         }
         await GeneralUtils.randomSleep(1000, 2000);
 
