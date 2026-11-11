@@ -11,8 +11,10 @@ import * as path from 'path';
 require('dotenv').config();
 
 test('All Operations', async ({ page }) => {
-  // Timeout 5 menit karena simulasi gerakan kursor dan delay manusia butuh waktu lebih lama
-  test.setTimeout(300000);
+  // Timeout 7 menit karena simulasi gerakan kursor dan delay manusia butuh waktu lebih lama
+  // 2026-11-11: dinaikkan dari 300 detik agar percobaan login ke-3 (lihat
+  // GeneralUtils.login) tidak memakan jatah waktu modul-modul berikutnya.
+  test.setTimeout(420000);
 
   // ==============================================================
   // ⏱️ LOGIKA AUTOMATIC KEEPALIVE LOG (.TXT) - HANYA 1X DI TANGGAL 1
