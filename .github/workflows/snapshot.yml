@@ -1,0 +1,124 @@
+name: Fleet Snapshot
+
+# Read-only fleet/routes snapshot collector (2026-11-18). Runs at :22,
+# between the main bot's :07/:37 rounds, so the two never fight over
+# the game session. Fully independent from the Playwright Tests
+# workflow: own concurrency group, own Playwright config, additive
+# files only. It never touches the game state; it only reads the
+# ROUTES panel and commits snapshots/*.json back to the repo.
+
+on:
+  schedule:
+    - cron: '22 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: am4-snapshot
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    timeout-minutes: 20
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Get Playwright version
+      id: pw-version
+      run: echo "version=$(npx playwright --version | awk '{print $2}')" >> $GITHUB_OUTPUT
+
+    - uses: actions/cache@v4
+      id: playwright-cache
+      with:
+        path: ~/.cache/ms-playwright
+        key: ${{ runner.os }}-playwright-${{ steps.pw-version.outputs.version }}-${{ env.ImageVersion }}
+
+    - name: Disable Man-DB Auto-Update
+      run: |
+        sudo debconf-set-selections <<< "man-db man-db/auto-update boolean false"
+        sudo dpkg-reconfigure man-db
+
+    - name: Install Playwright Browsers (cache hit)
+      if: steps.playwright-cache.outputs.cache-hit == 'true'
+      timeout-minutes: 5
+      env:
+        NODE_OPTIONS: "--max-old-space-size=4096"
+      run: |
+        ok=0
+        for attempt in 1 2; do
+          if npx playwright install chromium; then ok=1; break; fi
+          echo "Playwright install attempt $attempt failed, retrying..."
+          sleep 10
+        done
+        [ "$ok" = "1" ]
+
+    - name: Install Playwright Browsers & System Dependencies
+      if: steps.playwright-cache.outputs.cache-hit != 'true'
+      timeout-minutes: 8
+      env:
+        NODE_OPTIONS: "--max-old-space-size=4096"
+      run: |
+        ok=0
+        for attempt in 1 2; do
+          if npx playwright install --with-deps chromium; then ok=1; break; fi
+          echo "Playwright install (with deps) attempt $attempt failed, retrying..."
+          sleep 10
+        done
+        [ "$ok" = "1" ]
+
+    - name: Install Xvfb (Virtual Display Layer)
+      run: sudo apt-get update && sudo apt-get install -y xvfb
+
+    - name: Create .env file
+      run: |
+        touch .env
+        echo "EMAIL=${{ secrets.EMAIL }}" >> .env
+        echo "PASSWORD=${{ secrets.PASSWORD }}" >> .env
+        echo "MAX_FUEL_PRICE=${{ vars.MAX_FUEL_PRICE }}" >> .env
+        echo "MAX_CO2_PRICE=${{ vars.MAX_CO2_PRICE }}" >> .env
+        echo "INCREASE_AIRLINE_REPUTATION=${{ vars.INCREASE_AIRLINE_REPUTATION }}" >> .env
+        echo "CAMPAIGN_TYPE=${{ vars.CAMPAIGN_TYPE }}" >> .env
+        echo "CAMPAIGN_DURATION=${{ vars.CAMPAIGN_DURATION }}" >> .env
+        echo "REPAIR_WEAR=${{ vars.REPAIR_WEAR }}" >> .env
+        echo "HOURS_CHECK=${{ vars.HOURS_CHECK }}" >> .env
+        echo "ENABLE_PRICING=false" >> .env
+        echo "PRICING_MAX_UPDATES=${{ vars.PRICING_MAX_UPDATES }}" >> .env
+
+    - name: Run fleet snapshot (Headed Mode via Xvfb)
+      run: xvfb-run --auto-servernum --server-args="-screen 0 1280x1024x24" npx playwright test -c playwright.snapshot.config.ts --headed
+
+    - name: Upload raw panel text & test results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: snapshot-raw
+        path: |
+          snapshot-raw/
+          test-results/
+        retention-days: 30
+
+    - name: Commit snapshots
+      if: always()
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        if [ -d snapshots ] && [ -n "$(git status --porcelain -- snapshots)" ]; then
+          git add snapshots
+          git commit -m "chore: fleet snapshot [skip ci]"
+          git push
+        else
+          echo "No snapshot changes to commit."
+        fi
