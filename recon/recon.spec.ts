@@ -13,7 +13,7 @@ import { GeneralUtils } from '../utils/general.utils';
 // every observation is logged with a [Recon] prefix and written to
 // recon-out/, which the recon workflow commits back to the repo.
 
-test.setTimeout(600000);
+test.setTimeout(900000);
 
 const OUT = 'recon-out';
 
@@ -124,8 +124,92 @@ test('Fleet recon (read-only mapping)', async ({ page }) => {
     try {
         const generalUtils = new GeneralUtils(page);
         await generalUtils.login(page);
-        log('Logged in. Waiting 10s for the map to settle...');
-        await page.waitForTimeout(10000);
+        log('Login reported success. Verifying arrival at the game map...');
+
+        // Arrival verification (added after recon #1, run 44431575246:
+        // login reported success but the page held no game elements at
+        // all - the only "FLEET" text was a hidden marketing paragraph).
+        // Poll for up to 180s for a real map signal; log the URL and
+        // page head at every poll so a slow load is measured, not
+        // guessed. If a PLAY FREE NOW button shows up mid-poll (the
+        // known landing-page detour the main bot's login also handles),
+        // click it once - that completes login, it is not a game action.
+        const arrivedAt = async (): Promise<boolean> => {
+            return await page.evaluate(() => {
+                if (document.querySelector('#mapRoutes')) return true;
+                const ids = Array.from(document.querySelectorAll('[id]')).some(
+                    (e) => /map|fleet|route/i.test(e.id)
+                );
+                if (ids) return true;
+                const fleetVisible = Array.from(
+                    document.querySelectorAll('*')
+                ).some((e) => {
+                    const r = e.getBoundingClientRect();
+                    return (
+                        (e.textContent || '').trim() === 'FLEET' &&
+                        r.width > 0 &&
+                        r.height > 0
+                    );
+                });
+                return fleetVisible;
+            });
+        };
+
+        let arrived = false;
+        let arrivalSeconds = -1;
+        let playClicked = false;
+        for (let s = 0; s <= 180; s += 10) {
+            if (await arrivedAt()) {
+                arrived = true;
+                arrivalSeconds = s;
+                break;
+            }
+            const head = await page
+                .evaluate(() =>
+                    (document.body.innerText || '')
+                        .replace(/\s+/g, ' ')
+                        .slice(0, 200)
+                )
+                .catch(() => '');
+            log(`Arrival poll t=${s}s url=${page.url()} head: ${head}`);
+            if (!playClicked && s >= 60) {
+                const play = page.getByText('PLAY FREE NOW').first();
+                const vis = await play.isVisible().catch(() => false);
+                if (vis) {
+                    log('PLAY FREE NOW is visible; clicking it to complete login...');
+                    await play.click({ timeout: 10000 }).catch(() => {});
+                    playClicked = true;
+                }
+            }
+            if (s < 180) await page.waitForTimeout(10000);
+        }
+        summary.arrived = arrived;
+        summary.arrivalSeconds = arrivalSeconds;
+        summary.finalUrl = page.url();
+        log(`Arrival: ${arrived} after ${arrivalSeconds}s, url=${page.url()}`);
+
+        if (!arrived) {
+            const dump = await page.evaluate(() => {
+                const ids = Array.from(document.querySelectorAll('[id]'))
+                    .map((e) => e.id)
+                    .slice(0, 150);
+                return (
+                    'URL: ' +
+                    location.href +
+                    '\n\nIDS: ' +
+                    ids.join(', ') +
+                    '\n\nTEXT:\n' +
+                    (document.body.innerText || '').slice(0, 8000)
+                );
+            });
+            writeFile('arrival.txt', dump);
+            await page
+                .screenshot({ path: path.join(OUT, 'arrival.png'), fullPage: true })
+                .catch(() => {});
+            log('Never arrived at the map; arrival.txt/png written. Ending recon.');
+            writeFile('summary.json', JSON.stringify(summary, null, 2));
+            return;
+        }
 
         // 1) Candidate inventory.
         await describeLocator(page.locator('#mapRoutes'), '#mapRoutes');
