@@ -34,6 +34,20 @@
 // last. A page is only accepted once its "#CL-" row count is stable
 // across 3 consecutive polls (length alone plateaus mid-render).
 //
+// Self-healing (added 2026-11-18 20:05 at the user's direction -
+// "recognise the problem during collection and fix it on the spot"):
+// every tab is verified the moment it is captured (parsed count vs
+// its own fresh header, unparsed blocks == 0); a mismatch re-captures
+// THAT tab on the spot, max 3 attempts. Pagination that revisits an
+// already-seen page signature is treated as a loop and stops at
+// once. After all four tabs, the header is read once more and any
+// tab whose count moved during the run is re-captured (drift sweep,
+// max 2 attempts). Every correction is recorded in a healing log
+// that ships with the snapshot (or the invalid record). Healing may
+// ONLY re-collect data: it never edits a number and never relaxes
+// the final self-check - a tab that will not heal fails the run
+// exactly as before.
+//
 // Outputs (committed back by the workflow):
 //   snapshots/latest.json          last VALID snapshot
 //   snapshots/history/<ts>.json    every valid snapshot
@@ -87,7 +101,7 @@ function log(msg: string) {
 }
 
 test('Fleet snapshot (read-only)', async ({ page }) => {
-    test.setTimeout(420000);
+    test.setTimeout(600000);
 
     const state: SnapState =
         readJson<SnapState>(path.join(SNAP_DIR, 'state.json')) ?? {
@@ -122,6 +136,10 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
         writeJson(path.join(SNAP_DIR, 'state.json'), state);
         throw new Error('[Snapshot] INVALID: ' + reasons.join('; '));
     };
+
+    // In-run correction log; shipped with the snapshot / invalid
+    // record so every act of self-healing leaves evidence.
+    const heal: Record<string, unknown>[] = [];
 
     const generalUtils = new GeneralUtils(page);
     await generalUtils.login(page);
@@ -251,9 +269,20 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
         }
         const pages: string[] = [];
         const seenRoutes = new Set<string>();
+        const visitedSigs = new Set<string>();
         let currentStart = 0;
         for (let p = 0; p < 30; p++) {
             const text = await waitSettled();
+            const sig = rowShape(text);
+            if (pages.length > 0 && visitedSigs.has(sig)) {
+                // A page signature we already collected: pagination
+                // is looping. Stop at once and let the caller's
+                // verify-and-recapture layer deal with it.
+                log(`Tab ${tab}: pagination loop detected (page signature ${sig} seen again); stopping.`);
+                heal.push({ tab, kind: 'pagination-loop', signature: sig, atPage: p + 1 });
+                break;
+            }
+            visitedSigs.add(sig);
             pages.push(text);
             for (const m of text.match(/#(CL-\S+)/g) || [])
                 seenRoutes.add(m);
@@ -304,31 +333,89 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
         return pages;
     };
 
-    // Fast, drift-prone tabs first; the slow Routes capture last, each
-    // with a header read taken immediately before it.
-    const pendingHeader = (await readHeader()) ?? firstHeader!;
-    const pendingPages = await collectTab('Pending', pendingHeader.pending);
-    const parkedHeader = (await readHeader()) ?? firstHeader!;
-    const parkedPages = await collectTab('Parked', parkedHeader.parked);
-    const fleetHeader = (await readHeader()) ?? firstHeader!;
-    const fleetPages = await collectTab('Fleet', fleetHeader.fleet);
-    const routesHeader = (await readHeader()) ?? firstHeader!;
-    const routesPages = await collectTab('Routes', routesHeader.routes);
-
-    // The self-check header assembles each tab's own freshest count;
-    // the fleet total comes from the last read (Routes time).
-    const header: HeaderCounts = {
-        routes: routesHeader.routes,
-        pending: pendingHeader.pending,
-        parked: parkedHeader.parked,
-        fleet: routesHeader.fleet,
+    // --- Self-healing capture: verify each tab the moment it is
+    // captured; re-capture on the spot when its parsed count disagrees
+    // with its own fresh header or a block fails to parse. ----------
+    const tabCount = (tab: string, text: string): { count: number; unparsed: number } => {
+        if (tab === 'Routes')
+            return { count: parseRoutes(text).length, unparsed: countUnparsedRouteLines(text) };
+        if (tab === 'Pending')
+            return { count: parsePending(text).length, unparsed: countUnparsedPendingLines(text) };
+        if (tab === 'Fleet')
+            return {
+                count: Object.values(parseFleetByType(text)).reduce((a, b) => a + b, 0),
+                unparsed: 0,
+            };
+        const m = text
+            .replace(/\s+/g, ' ')
+            .match(/([A-Za-z0-9][A-Za-z0-9\-]*)\s*,\s*([A-Z]-[0-9][0-9A-Za-z-]*)/g);
+        return { count: m ? m.length : 0, unparsed: 0 };
     };
-    log(`Header for check: routes=${header.routes} fleet=${header.fleet} parked=${header.parked} pending=${header.pending}`);
 
-    const routesText = routesPages.join('\n=== PAGE BREAK ===\n');
-    const pendingText = pendingPages.join('\n=== PAGE BREAK ===\n');
-    const fleetText = fleetPages.join('\n=== PAGE BREAK ===\n');
-    const parkedText = parkedPages.join('\n=== PAGE BREAK ===\n');
+    const tabExpected = (tab: string, h: HeaderCounts): number =>
+        tab === 'Routes' ? h.routes : tab === 'Pending' ? h.pending : tab === 'Parked' ? h.parked : h.fleet;
+
+    interface TabResult {
+        pages: string[];
+        text: string;
+        header: HeaderCounts;
+        count: number;
+        unparsed: number;
+        ok: boolean;
+    }
+
+    const captureVerified = async (tab: string, maxAttempts: number): Promise<TabResult> => {
+        let result: TabResult | null = null;
+        for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+            const hdr = (await readHeader()) ?? firstHeader!;
+            const expected = tabExpected(tab, hdr);
+            const pages = await collectTab(tab, expected);
+            const text = pages.join('\n=== PAGE BREAK ===\n');
+            const { count, unparsed } = tabCount(tab, text);
+            const ok = count === expected && unparsed === 0;
+            result = { pages, text, header: hdr, count, unparsed, ok };
+            log(`Tab ${tab} attempt ${attempt}: parsed ${count}/${expected}, unparsed ${unparsed} -> ${ok ? 'OK' : 'MISMATCH, re-capturing'}`);
+            if (ok)
+                return result;
+            heal.push({ tab, kind: 'recapture', attempt, expected, count, unparsed });
+        }
+        return result!;
+    };
+
+    // Fast, drift-prone tabs first; the slow Routes capture last.
+    const results: Record<string, TabResult> = {};
+    for (const tab of ['Pending', 'Parked', 'Fleet', 'Routes'])
+        results[tab] = await captureVerified(tab, 3);
+
+    // Drift sweep: one more header read; any tab whose count moved
+    // since its verified capture is re-captured once more.
+    const sweepHeader = await readHeader();
+    if (sweepHeader) {
+        for (const tab of ['Pending', 'Parked', 'Fleet', 'Routes']) {
+            const now = tabExpected(tab, sweepHeader);
+            const was = tabExpected(tab, results[tab].header);
+            if (now !== was) {
+                log(`Drift sweep: ${tab} header moved ${was} -> ${now} during the run; re-capturing.`);
+                heal.push({ tab, kind: 'drift-sweep', was, now });
+                results[tab] = await captureVerified(tab, 2);
+            }
+        }
+    }
+
+    // The self-check header assembles each tab's own verified count;
+    // the fleet total comes from the last (Routes-time) header.
+    const header: HeaderCounts = {
+        routes: results['Routes'].header.routes,
+        pending: results['Pending'].header.pending,
+        parked: results['Parked'].header.parked,
+        fleet: results['Routes'].header.fleet,
+    };
+    log(`Header for check: routes=${header.routes} fleet=${header.fleet} parked=${header.parked} pending=${header.pending}; healing events: ${heal.length}`);
+
+    const routesText = results['Routes'].text;
+    const pendingText = results['Pending'].text;
+    const fleetText = results['Fleet'].text;
+    const parkedText = results['Parked'].text;
 
     fs.mkdirSync(rawDir, { recursive: true });
     fs.writeFileSync(path.join(rawDir, 'routes.txt'), routesText);
@@ -369,6 +456,7 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
     if (!check.valid) {
         failInvalid(check.reasons, {
             header,
+            healing: heal,
             parsedCounts: {
                 routes: snap.routes.length,
                 pending: snap.pending.length,
@@ -377,8 +465,8 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
         });
     }
 
-    writeJson(path.join(SNAP_DIR, 'history', stamp + '.json'), snap);
-    writeJson(path.join(SNAP_DIR, 'latest.json'), snap);
+    writeJson(path.join(SNAP_DIR, 'history', stamp + '.json'), { ...snap, healing: heal });
+    writeJson(path.join(SNAP_DIR, 'latest.json'), { ...snap, healing: heal });
     state.consecutiveInvalid = 0;
     state.lastValidAt = takenAt;
     writeJson(path.join(SNAP_DIR, 'state.json'), state);
