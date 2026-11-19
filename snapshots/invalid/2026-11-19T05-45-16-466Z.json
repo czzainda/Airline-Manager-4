@@ -1,0 +1,72 @@
+{
+  "takenAt": "2026-11-19T05:45:16.466Z",
+  "reasons": [
+    "closure: parsed 187 route rows, header says 217",
+    "closure: routes+pending+parked != fleet total 234"
+  ],
+  "header": {
+    "routes": 217,
+    "pending": 17,
+    "parked": 0,
+    "fleet": 234
+  },
+  "healing": [
+    {
+      "tab": "Routes",
+      "kind": "recapture",
+      "attempt": 1,
+      "expected": 216,
+      "count": 186,
+      "unparsed": 0
+    },
+    {
+      "tab": "Routes",
+      "kind": "recapture",
+      "attempt": 2,
+      "expected": 216,
+      "count": 186,
+      "unparsed": 0
+    },
+    {
+      "tab": "Routes",
+      "kind": "recapture",
+      "attempt": 3,
+      "expected": 216,
+      "count": 186,
+      "unparsed": 0
+    },
+    {
+      "tab": "Pending",
+      "kind": "drift-sweep",
+      "was": 18,
+      "now": 17
+    },
+    {
+      "tab": "Routes",
+      "kind": "drift-sweep",
+      "was": 216,
+      "now": 217
+    },
+    {
+      "tab": "Routes",
+      "kind": "recapture",
+      "attempt": 1,
+      "expected": 217,
+      "count": 187,
+      "unparsed": 0
+    },
+    {
+      "tab": "Routes",
+      "kind": "recapture",
+      "attempt": 2,
+      "expected": 217,
+      "count": 187,
+      "unparsed": 0
+    }
+  ],
+  "parsedCounts": {
+    "routes": 187,
+    "pending": 17,
+    "parked": 0
+  }
+}
