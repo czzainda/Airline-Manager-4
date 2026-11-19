@@ -95,33 +95,76 @@ async function describeLocator(loc: Locator, label: string) {
     }
 }
 
-// Smallest container holding both "Routes" and "Pending" text.
-async function popupText(page: Page): Promise<string> {
-    return await page
-        .evaluate(() => {
-            const all = Array.from(document.querySelectorAll('*'));
-            const c = all
-                .filter((e) => {
-                    const t = e.textContent || '';
-                    return (
-                        t.includes('Routes') &&
-                        t.includes('Pending') &&
-                        t.length > 200
-                    );
-                })
-                .sort(
-                    (x, y) =>
-                        (x.textContent || '').length -
-                        (y.textContent || '').length
-                )[0];
-            return c ? (c as HTMLElement).innerText : '';
-        })
-        .catch(() => '');
+// Find the Ajax list container inside the popup and mark it with
+// data-recon-target so the spec can read/scroll it afterwards.
+// Recon v3 proved the list is NOT inside the header container: the
+// rows are Ajax-loaded into #routesContainer (tab buttons call
+// Ajax('routes.php', ...) / Ajax('fleet.php','routesContainer', ...)
+// and scripts operate on $('.fleetConcatList')). Fallbacks: smallest
+// element whose rendered text contains "Demand:", else the largest
+// scrollable element.
+async function markListContainer(page: Page): Promise<any> {
+    return await page.evaluate(() => {
+        document
+            .querySelectorAll('[data-recon-target]')
+            .forEach((e) => e.removeAttribute('data-recon-target'));
+        let target: Element | null = null;
+        let how = '';
+        const byId = document.querySelector('#routesContainer');
+        if (byId && (byId as HTMLElement).innerText.trim().length > 0) {
+            target = byId;
+            how = '#routesContainer';
+        }
+        if (!target) {
+            const cands = Array.from(document.querySelectorAll('*')).filter(
+                (e) => ((e as HTMLElement).innerText || '').includes('Demand:')
+            );
+            cands.sort(
+                (a, b) =>
+                    ((a as HTMLElement).innerText || '').length -
+                    ((b as HTMLElement).innerText || '').length
+            );
+            if (cands.length) {
+                target = cands[0];
+                how = 'smallest Demand: container';
+            }
+        }
+        if (!target) {
+            const sc = Array.from(document.querySelectorAll('*')).filter(
+                (e) => e.scrollHeight > e.clientHeight + 50 && e.clientHeight > 50
+            );
+            sc.sort(
+                (a, b) =>
+                    ((b as HTMLElement).innerText || '').length -
+                    ((a as HTMLElement).innerText || '').length
+            );
+            if (sc.length) {
+                target = sc[0];
+                how = 'largest scrollable';
+            }
+        }
+        if (!target) return null;
+        target.setAttribute('data-recon-target', '1');
+        const el = target as HTMLElement;
+        return {
+            how,
+            tag: el.tagName,
+            id: el.id || '',
+            cls: String(el.className || '').slice(0, 80),
+            len: el.innerText.length,
+            scrollHeight: el.scrollHeight,
+            clientHeight: el.clientHeight,
+        };
+    });
 }
 
 test('Fleet recon (read-only mapping)', async ({ page }) => {
     const summary: Record<string, unknown> = {};
     try {
+        // Clear last run's outputs so stale files can never pose as
+        // this run's products (v2's arrival.txt did exactly that).
+        fs.rmSync(OUT, { recursive: true, force: true });
+        summary.runStartedAt = new Date().toISOString();
         const generalUtils = new GeneralUtils(page);
         await generalUtils.login(page);
         log('Login reported success. Verifying arrival at the game map...');
@@ -329,57 +372,129 @@ test('Fleet recon (read-only mapping)', async ({ page }) => {
         log('Opened by: ' + (openedBy || 'NONE'));
 
         if (openedBy) {
-            // 3) Popup structure + full text of every tab.
+            // 3) Header counts read straight off the tab buttons
+            // (v3: Routes button textContent is "Routes(216)" with the
+            // count split by a <br>; Pending/Parked counts live in
+            // #hPending / #hParked spans).
+            const header = await page.evaluate(() => {
+                const btns = Array.from(
+                    document.querySelectorAll('.listBtns')
+                ).map((e) => ({
+                    tag: e.tagName,
+                    id: e.id || '',
+                    cls: String(e.className || '').slice(0, 60),
+                    text: (e.textContent || '')
+                        .replace(/\s+/g, ' ')
+                        .trim(),
+                }));
+                const spans: Record<string, string> = {};
+                for (const id of ['hPending', 'hParked', 'hFleet', 'hRoutes']) {
+                    const el = document.getElementById(id);
+                    if (el) spans[id] = (el.textContent || '').trim();
+                }
+                return { btns, spans };
+            });
+            log('Header buttons/spans: ' + JSON.stringify(header));
+            summary.header = header;
+
+            const depHtml = await page.evaluate(() => {
+                const el = document.querySelector('#departAll');
+                return el ? (el.outerHTML || '').slice(0, 2000) : '';
+            });
+            writeFile('depart-all.html', depHtml);
+            log('#departAll outerHTML written (' + depHtml.length + ' chars).');
+
+            // Full popup structure, uncapped (v3's 4000-char slice cut
+            // off before the list area). Root = ancestor of the list
+            // container that also holds the tab buttons.
             const popupHtml = await page.evaluate(() => {
-                const all = Array.from(document.querySelectorAll('*'));
-                const c = all
-                    .filter((e) => {
-                        const t = e.textContent || '';
-                        return (
-                            t.includes('Routes') &&
-                            t.includes('Pending') &&
-                            t.length > 200
-                        );
-                    })
-                    .sort(
-                        (x, y) =>
-                            (x.textContent || '').length -
-                            (y.textContent || '').length
-                    )[0];
-                return c ? (c.outerHTML || '').slice(0, 4000) : '';
+                let root: Element | null =
+                    document.querySelector('#routesContainer');
+                while (
+                    root &&
+                    !(root.querySelector && root.querySelector('.listBtns'))
+                ) {
+                    root = root.parentElement;
+                }
+                if (!root) {
+                    const btn = document.querySelector('.listBtns');
+                    root = btn ? btn.parentElement : null;
+                }
+                return root ? (root.outerHTML || '').slice(0, 120000) : '';
             });
             writeFile('popup-structure.html', popupHtml);
             log('Popup structure written (' + popupHtml.length + ' chars).');
 
+            // 4) Per tab: click the real .listBtns button, wait for the
+            // Ajax list to settle, dump the LIST container (text +
+            // HTML), then scroll it and dump again (virtualisation
+            // check).
             for (const tab of ['Routes', 'Pending', 'Fleet', 'Parked']) {
-                const anchored = page
-                    .getByText(
-                        new RegExp('^\\s*' + tab + '(\\s*\\(\\d+\\))?\\s*$')
-                    )
+                const btn = page
+                    .locator('.listBtns', { hasText: tab })
                     .first();
-                const clicked = await anchored
+                const btnText = await btn
+                    .textContent()
+                    .catch(() => '');
+                await btn
                     .click({ timeout: 10000 })
-                    .then(() => true)
-                    .catch(() => false);
-                if (!clicked) {
-                    await page
-                        .getByText(tab)
-                        .first()
-                        .click({ timeout: 10000 })
-                        .catch((e) =>
-                            log(
-                                `Tab ${tab} click failed both ways: ${String(e).slice(0, 120)}`
-                            )
-                        );
+                    .catch((e) =>
+                        log(`Tab ${tab} button click failed: ${String(e).slice(0, 120)}`)
+                    );
+                log(`Tab ${tab}: clicked button "${(btnText || '').replace(/\s+/g, ' ').trim()}"`);
+
+                let desc: any = null;
+                let lastLen = -1;
+                for (let s = 0; s < 15; s++) {
+                    await page.waitForTimeout(1000);
+                    desc = await markListContainer(page).catch(() => null);
+                    const len = desc ? desc.len : -1;
+                    if (len > 200 && len === lastLen) break;
+                    lastLen = len;
                 }
-                await page.waitForTimeout(3000);
-                const text = await popupText(page);
-                writeFile(`tab-${tab.toLowerCase()}.txt`, text);
+                log(`Tab ${tab}: list container = ${JSON.stringify(desc)}`);
+                if (!desc) {
+                    summary['tab_' + tab] = { error: 'no list container found' };
+                    continue;
+                }
+                const dump = await page.evaluate(() => {
+                    const el = document.querySelector(
+                        '[data-recon-target]'
+                    ) as HTMLElement | null;
+                    if (!el) return { text: '', html: '' };
+                    return {
+                        text: el.innerText,
+                        html: (el.outerHTML || '').slice(0, 60000),
+                    };
+                });
+                writeFile(`tab-${tab.toLowerCase()}-list.txt`, dump.text);
+                writeFile(`tab-${tab.toLowerCase()}-list.html`, dump.html);
+                const demandCount = (dump.text.match(/Demand:/g) || []).length;
+                const regCount = (dump.text.match(/B-\d+/g) || []).length;
+
+                const scrolled = await page.evaluate(async () => {
+                    const el = document.querySelector(
+                        '[data-recon-target]'
+                    ) as HTMLElement | null;
+                    if (!el) return '';
+                    for (let i = 1; i <= 4; i++) {
+                        el.scrollTop = (el.scrollHeight / 4) * i;
+                        await new Promise((r) => setTimeout(r, 700));
+                    }
+                    return el.innerText;
+                });
+                writeFile(`tab-${tab.toLowerCase()}-list2.txt`, scrolled);
                 log(
-                    `Tab ${tab}: ${text.length} chars written. Head: ` +
-                        text.replace(/\s+/g, ' ').slice(0, 200)
+                    `Tab ${tab}: list ${dump.text.length} chars (Demand: x${demandCount}, B-regs x${regCount}), after scroll ${scrolled.length} chars. Head: ` +
+                        dump.text.replace(/\s+/g, ' ').slice(0, 200)
                 );
-                summary['tab_' + tab] = text.length;
+                summary['tab_' + tab] = {
+                    container: desc,
+                    listLen: dump.text.length,
+                    list2Len: scrolled.length,
+                    demandCount,
+                    regCount,
+                };
             }
         }
     } catch (e) {
