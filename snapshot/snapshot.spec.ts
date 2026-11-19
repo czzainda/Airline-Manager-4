@@ -1,11 +1,12 @@
 // Fleet snapshot collector (2026-11-18; capture layer rewritten the
-// same evening on the Fleet Recon v1-v4 map). READ-ONLY in game: it
+// same evening on the Fleet Recon v1-v4 map; pagination + drift fixes
+// added after the first live run, 44453619523). READ-ONLY in game: it
 // logs in with the bot's own login, opens the ROUTES panel, reads the
 // Routes / Pending / Fleet / Parked sub-tabs, validates the parse with
 // the built-in self-check (utils/snapshot.utils.ts) and only then
 // updates snapshots/latest.json. It never clicks Depart / Buy / Sell /
 // Repair / Check / Deliver; the only clicks are the panel tile, the
-// panel's own view tabs and the Routes list's own Next pagination.
+// panel's own view tabs and the Routes list's own pagination links.
 //
 // What the recon map established (all effect-verified live):
 //   - login() prints "Logged in successfully!" unconditionally, so
@@ -19,10 +20,19 @@
 //   - Every tab's list is Ajax-loaded into #routesContainer; the old
 //     "smallest container holding Routes+Pending" was the header bar
 //     and never contained a single row.
-//   - The Routes list PAGINATES: page 1 held 13 rows while its Next
-//     control points at routes.php?start=20. Page size is not assumed;
-//     Next is followed until it disappears and the merged, routeNo-
-//     deduped row count must equal the header count (self-check).
+//   - The Routes list PAGINATES at 20 rows/page via links whose
+//     onclick is Ajax('routes.php?start=N', ...). Page >= 2 also
+//     carries a start=0 link back to page 1, so "the first start=
+//     link" bounces 1 <-> 2 forever (first live run did exactly that
+//     for 40 pages). Pagination must follow the smallest start
+//     GREATER than the current page's start.
+//
+// Drift discipline (first live run, second lesson): aircraft finish
+// maintenance and move between tabs while a capture runs, so each
+// tab's header count is re-read immediately before that tab is
+// captured, the fast tabs go first, and the slow Routes capture goes
+// last. A page is only accepted once its "#CL-" row count is stable
+// across 3 consecutive polls (length alone plateaus mid-render).
 //
 // Outputs (committed back by the workflow):
 //   snapshots/latest.json          last VALID snapshot
@@ -169,23 +179,27 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
     }
 
     // --- Header counts from the tab buttons themselves. -------------
-    const headerText = await page.evaluate(() => {
-        const btns = Array.from(document.querySelectorAll('.listBtns')).map(
-            (e) => (e.textContent || '').replace(/\s+/g, ' ').trim()
-        );
-        const spans: string[] = [];
-        for (const id of ['hPending', 'hParked']) {
-            const el = document.getElementById(id);
-            if (el)
-                spans.push(id.replace('h', '') + ' (' + (el.textContent || '').trim() + ')');
-        }
-        return btns.join(' ') + ' ' + spans.join(' ');
-    });
-    const header: HeaderCounts | null = parseHeaderCounts(headerText);
-    if (!header) {
-        failInvalid(['header: counts not readable from tab buttons', 'headerText: ' + headerText]);
+    const readHeader = async (): Promise<HeaderCounts | null> => {
+        const headerText = await page.evaluate(() => {
+            const btns = Array.from(document.querySelectorAll('.listBtns')).map(
+                (e) => (e.textContent || '').replace(/\s+/g, ' ').trim()
+            );
+            const spans: string[] = [];
+            for (const id of ['hPending', 'hParked']) {
+                const el = document.getElementById(id);
+                if (el)
+                    spans.push(id.replace('h', '') + ' (' + (el.textContent || '').trim() + ')');
+            }
+            return btns.join(' ') + ' ' + spans.join(' ');
+        });
+        return parseHeaderCounts(headerText);
+    };
+
+    const firstHeader = await readHeader();
+    if (!firstHeader) {
+        failInvalid(['header: counts not readable from tab buttons']);
     }
-    log(`Header: routes=${header!.routes} fleet=${header!.fleet} parked=${header!.parked} pending=${header!.pending}`);
+    log(`Header at open: routes=${firstHeader!.routes} fleet=${firstHeader!.fleet} parked=${firstHeader!.parked} pending=${firstHeader!.pending}`);
 
     // --- Per-tab capture of #routesContainer, following pagination. --
     const containerText = async (): Promise<string> =>
@@ -196,71 +210,120 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
             })
             .catch(() => '');
 
-    const firstRouteNo = (text: string): string => {
-        const m = /#(CL-\S+)/.exec(text);
-        return m ? m[1] : '';
+    const rowShape = (text: string): string => {
+        // Change/settle signature that ignores ticking countdowns:
+        // first route number + number of route blocks on the page.
+        const first = /#(CL-\S+)/.exec(text);
+        const count = (text.match(/#CL-/g) || []).length;
+        return (first ? first[1] : '') + '|' + count;
     };
 
-    const collectTab = async (tab: string): Promise<string[]> => {
-        const before = await containerText();
+    const waitSettled = async (): Promise<string> => {
+        // Accept the page only once its row shape is stable across 3
+        // consecutive 1s polls (text length plateaus mid-render).
+        let lastShape = '';
+        let stable = 0;
+        let text = '';
+        for (let s = 0; s < 20 && stable < 3; s++) {
+            await page.waitForTimeout(1000);
+            text = await containerText();
+            const shape = rowShape(text);
+            if (shape === lastShape)
+                stable++;
+            else
+                stable = 0;
+            lastShape = shape;
+        }
+        return text;
+    };
+
+    const collectTab = async (tab: string, expected: number): Promise<string[]> => {
+        const shapeBefore = rowShape(await containerText());
         const btn = page.locator('.listBtns', { hasText: tab }).first();
         await btn.click({ timeout: 10000 }).catch((e) =>
             log(`Tab ${tab} button click failed: ${String(e).slice(0, 120)}`)
         );
-        // Wait for the Ajax swap: content changes, then length settles.
-        for (let s = 0; s < 8; s++) {
+        // Wait for the Ajax swap to show a different row shape.
+        for (let s = 0; s < 10; s++) {
             await page.waitForTimeout(1000);
-            if ((await containerText()) !== before)
+            if (rowShape(await containerText()) !== shapeBefore)
                 break;
         }
         const pages: string[] = [];
-        for (let p = 0; p < 40; p++) {
-            let len = -1;
-            let lastLen = -2;
-            for (let s = 0; s < 15 && len !== lastLen; s++) {
-                lastLen = len;
-                await page.waitForTimeout(1000);
-                len = (await containerText()).length;
-            }
-            const text = await containerText();
+        const seenRoutes = new Set<string>();
+        let currentStart = 0;
+        for (let p = 0; p < 30; p++) {
+            const text = await waitSettled();
             pages.push(text);
-            const prevFirst = firstRouteNo(text);
-            const clickedNext = await page.evaluate(() => {
+            for (const m of text.match(/#(CL-\S+)/g) || [])
+                seenRoutes.add(m);
+            if (expected > 0 && seenRoutes.size >= expected)
+                break;
+            // Follow the smallest start GREATER than the current
+            // page's start; page >= 2 also links back to start=0,
+            // which is what trapped the first live run in a 1<->2 loop.
+            const nextStart = await page.evaluate((cur: number) => {
                 const root = document.querySelector('#routesContainer');
                 if (!root)
-                    return false;
-                const els = Array.from(root.querySelectorAll('[onclick]'));
-                const el = els.find((e) =>
-                    (e.getAttribute('onclick') || '').includes('routes.php?start=')
+                    return -1;
+                const starts: number[] = [];
+                for (const e of Array.from(root.querySelectorAll('[onclick]'))) {
+                    const m = /routes\.php\?start=(\d+)/.exec(e.getAttribute('onclick') || '');
+                    if (m)
+                        starts.push(parseInt(m[1], 10));
+                }
+                const next = starts.filter((s) => s > cur).sort((a, b) => a - b)[0];
+                if (next === undefined)
+                    return -1;
+                const el = Array.from(root.querySelectorAll('[onclick]')).find((e) =>
+                    (e.getAttribute('onclick') || '').includes('routes.php?start=' + next)
                 );
                 if (!el)
-                    return false;
+                    return -1;
                 (el as HTMLElement).click();
-                return true;
-            });
-            if (!clickedNext)
+                return next;
+            }, currentStart);
+            if (nextStart < 0)
                 break;
+            const prevShape = rowShape(text);
             let changed = false;
             for (let s = 0; s < 10; s++) {
                 await page.waitForTimeout(1000);
-                if (firstRouteNo(await containerText()) !== prevFirst) {
+                if (rowShape(await containerText()) !== prevShape) {
                     changed = true;
                     break;
                 }
             }
             if (!changed) {
-                log(`Tab ${tab}: Next clicked but page content did not change; stopping pagination.`);
+                log(`Tab ${tab}: pagination to start=${nextStart} did not change the page; stopping.`);
                 break;
             }
+            currentStart = nextStart;
         }
-        log(`Tab ${tab}: ${pages.length} page(s) collected.`);
+        log(`Tab ${tab}: ${pages.length} page(s) collected, ${seenRoutes.size} unique route(s) seen.`);
         return pages;
     };
 
-    const routesPages = await collectTab('Routes');
-    const pendingPages = await collectTab('Pending');
-    const fleetPages = await collectTab('Fleet');
-    const parkedPages = await collectTab('Parked');
+    // Fast, drift-prone tabs first; the slow Routes capture last, each
+    // with a header read taken immediately before it.
+    const pendingHeader = (await readHeader()) ?? firstHeader!;
+    const pendingPages = await collectTab('Pending', pendingHeader.pending);
+    const parkedHeader = (await readHeader()) ?? firstHeader!;
+    const parkedPages = await collectTab('Parked', parkedHeader.parked);
+    const fleetHeader = (await readHeader()) ?? firstHeader!;
+    const fleetPages = await collectTab('Fleet', fleetHeader.fleet);
+    const routesHeader = (await readHeader()) ?? firstHeader!;
+    const routesPages = await collectTab('Routes', routesHeader.routes);
+
+    // The self-check header assembles each tab's own freshest count;
+    // the fleet total comes from the last read (Routes time).
+    const header: HeaderCounts = {
+        routes: routesHeader.routes,
+        pending: pendingHeader.pending,
+        parked: parkedHeader.parked,
+        fleet: routesHeader.fleet,
+    };
+    log(`Header for check: routes=${header.routes} fleet=${header.fleet} parked=${header.parked} pending=${header.pending}`);
 
     const routesText = routesPages.join('\n=== PAGE BREAK ===\n');
     const pendingText = pendingPages.join('\n=== PAGE BREAK ===\n');
@@ -278,7 +341,7 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
     // count does not close, the self-check rejects the snapshot and we
     // learn the real format from the committed raw text.
     const parked: { reg: string; type: string }[] = [];
-    if (header!.parked > 0) {
+    if (header.parked > 0) {
         const re = /([A-Za-z0-9][A-Za-z0-9\-]*)\s*,\s*([A-Z]-[0-9][0-9A-Za-z-]*)/g;
         const t = parkedText.replace(/\s+/g, ' ');
         let m: RegExpExecArray | null;
@@ -288,7 +351,7 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
 
     const snap: SnapshotData = {
         takenAt,
-        header: header!,
+        header,
         routes: parseRoutes(routesText),
         pending: parsePending(pendingText),
         parked,
@@ -320,6 +383,6 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
     state.lastValidAt = takenAt;
     writeJson(path.join(SNAP_DIR, 'state.json'), state);
     log(
-        `VALID: fleet ${header!.fleet} = routes ${snap.routes.length} + pending ${snap.pending.length} + parked ${snap.parked.length}; self-check passed.`
+        `VALID: fleet ${header.fleet} = routes ${snap.routes.length} + pending ${snap.pending.length} + parked ${snap.parked.length}; self-check passed.`
     );
 });
