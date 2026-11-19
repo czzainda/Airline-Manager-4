@@ -1,0 +1,68 @@
+{
+  "takenAt": "2026-11-19T06:47:30.275Z",
+  "reasons": [
+    "closure: parsed 184 route rows, header says 213",
+    "closure: routes+pending+parked != fleet total 234"
+  ],
+  "header": {
+    "routes": 213,
+    "pending": 21,
+    "parked": 0,
+    "fleet": 234
+  },
+  "healing": [
+    {
+      "tab": "Routes",
+      "kind": "batch-fetch",
+      "expected": 213,
+      "count": 0,
+      "unparsed": 0,
+      "ok": false
+    },
+    {
+      "tab": "Routes",
+      "kind": "union-pass",
+      "attempt": 1,
+      "expected": 213,
+      "count": 184,
+      "unparsed": 0
+    },
+    {
+      "tab": "Routes",
+      "kind": "union-pass",
+      "attempt": 2,
+      "expected": 213,
+      "count": 184,
+      "unparsed": 0
+    },
+    {
+      "tab": "Routes",
+      "kind": "union-pass",
+      "attempt": 3,
+      "expected": 213,
+      "count": 184,
+      "unparsed": 0
+    },
+    {
+      "tab": "Routes",
+      "kind": "union-pass",
+      "attempt": 4,
+      "expected": 213,
+      "count": 184,
+      "unparsed": 0
+    },
+    {
+      "tab": "Routes",
+      "kind": "union-pass",
+      "attempt": 5,
+      "expected": 213,
+      "count": 184,
+      "unparsed": 0
+    }
+  ],
+  "parsedCounts": {
+    "routes": 184,
+    "pending": 21,
+    "parked": 0
+  }
+}
