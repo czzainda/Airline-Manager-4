@@ -1,4 +1,5 @@
 {
-  "idScan": [],
-  "openedBy": ""
+  "arrived": false,
+  "arrivalSeconds": -1,
+  "finalUrl": "https://www.airlinemanager.com/"
 }
