@@ -84,7 +84,7 @@ jobs:
       run: |
         touch .env
         echo "EMAIL=${{ secrets.EMAIL }}" >> .env
-        echo "PASSWORD=<redacted>" >> .env
+        echo "PASSWORD=${{ secrets.PASSWORD }}" >> .env
         echo "MAX_FUEL_PRICE=${{ vars.MAX_FUEL_PRICE }}" >> .env
         echo "MAX_CO2_PRICE=${{ vars.MAX_CO2_PRICE }}" >> .env
         echo "INCREASE_AIRLINE_REPUTATION=${{ vars.INCREASE_AIRLINE_REPUTATION }}" >> .env
