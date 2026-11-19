@@ -1,22 +1,40 @@
-// Fleet snapshot collector (2026-11-18). READ-ONLY in game: it logs in
-// with the bot's own login, opens the ROUTES panel, reads the Routes /
-// Pending / Fleet / Parked sub-tabs, validates the parse with the
-// built-in self-check (utils/snapshot.utils.ts) and only then updates
-// snapshots/latest.json. It never clicks Depart / Buy / Sell / Repair /
-// Check / Deliver or any other state-changing control; the only clicks
-// are the panel tile and the panel's own view tabs.
+// Fleet snapshot collector (2026-11-18; capture layer rewritten the
+// same evening on the Fleet Recon v1-v4 map). READ-ONLY in game: it
+// logs in with the bot's own login, opens the ROUTES panel, reads the
+// Routes / Pending / Fleet / Parked sub-tabs, validates the parse with
+// the built-in self-check (utils/snapshot.utils.ts) and only then
+// updates snapshots/latest.json. It never clicks Depart / Buy / Sell /
+// Repair / Check / Deliver; the only clicks are the panel tile, the
+// panel's own view tabs and the Routes list's own Next pagination.
+//
+// What the recon map established (all effect-verified live):
+//   - login() prints "Logged in successfully!" unconditionally, so
+//     arrival at the game map is verified separately: poll for
+//     #mapRoutes (recon arrived in 10s; 180s budget here).
+//   - The panel opens with ONE moveAndClick on the #mapRoutes tile's
+//     img once the page has settled; "open" is proven by #departAll
+//     existing and visible inside the popup, never by the click.
+//   - Header counts live on the .listBtns tab buttons themselves
+//     ("Routes(217)" etc.) plus #hPending / #hParked spans.
+//   - Every tab's list is Ajax-loaded into #routesContainer; the old
+//     "smallest container holding Routes+Pending" was the header bar
+//     and never contained a single row.
+//   - The Routes list PAGINATES: page 1 held 13 rows while its Next
+//     control points at routes.php?start=20. Page size is not assumed;
+//     Next is followed until it disappears and the merged, routeNo-
+//     deduped row count must equal the header count (self-check).
 //
 // Outputs (committed back by the workflow):
 //   snapshots/latest.json          last VALID snapshot
 //   snapshots/history/<ts>.json    every valid snapshot
 //   snapshots/invalid/<ts>.json    rejected snapshots + reasons
+//   snapshots/raw/<ts>/*.txt       raw list text of every attempt
 //   snapshots/state.json           consecutiveInvalid counter / halt flag
-// Raw panel text goes to snapshot-raw/ (workflow artifact, not committed).
 //
 // Halt rule: 2 consecutive invalid snapshots set state.halted; later
 // runs then no-op until a human clears the flag.
 
-import { test } from '@playwright/test';
+import { test, Page } from '@playwright/test';
 import * as fs from 'fs';
 import * as path from 'path';
 import { GeneralUtils } from '../utils/general.utils';
@@ -29,10 +47,10 @@ import {
     countUnparsedPendingLines,
     selfCheck,
     SnapshotData,
+    HeaderCounts,
 } from '../utils/snapshot.utils';
 
 const SNAP_DIR = path.join(process.cwd(), 'snapshots');
-const RAW_DIR = path.join(process.cwd(), 'snapshot-raw');
 
 interface SnapState {
     consecutiveInvalid: number;
@@ -54,6 +72,10 @@ function writeJson(file: string, data: unknown) {
     fs.writeFileSync(file, JSON.stringify(data, null, 2) + '\n');
 }
 
+function log(msg: string) {
+    console.log('[Snapshot] ' + msg);
+}
+
 test('Fleet snapshot (read-only)', async ({ page }) => {
     test.setTimeout(420000);
 
@@ -66,173 +88,197 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
         };
 
     if (state.halted) {
-        console.log('[Snapshot] HALTED after consecutive invalid snapshots; skipping collection until the flag is cleared by a human.');
+        log('HALTED after consecutive invalid snapshots; skipping collection until the flag is cleared by a human.');
         return;
     }
 
-    const generalUtils = new GeneralUtils(page);
-    await generalUtils.login(page);
-    console.log('[Snapshot] Logged in; opening ROUTES panel...');
-
-    // Opening the ROUTES popup - history of what actually happened:
-    // Run 44423513135 (v1) waited for a "Routes (222)" header and died;
-    // run 44427030018 (v2) waited for #departAll and died too, and its
-    // page-text dump proved the popup had never opened at all (the page
-    // still showed the plain map). A live read-only probe on 2026-11-18
-    // then established: the header format really is "Routes (218)" etc.;
-    // the popup's bulk button is the red "Depart N" button (id
-    // #departAll); and the entrance that demonstrably opens the popup is
-    // the right-hand FLEET menu item. The tile click RESOLVES even when
-    // the popup never opens, so "try FLEET" must be gated on the panel
-    // not opening, not on the click throwing (v2's structural flaw).
-    await page.mouse.click(400, 20).catch(() => {});
-    const routesTile = page.locator('#mapRoutes').getByRole('img');
-    await GeneralUtils.moveAndClick(page, routesTile, 30000).catch(() => {});
-
-    const panelOpened = async (timeoutMs: number): Promise<boolean> => {
-        const a = page
-            .locator('#departAll')
-            .waitFor({ state: 'visible', timeout: timeoutMs })
-            .then(() => true)
-            .catch(() => false);
-        const b = page
-            .getByText(/Routes \(\d+\)/)
-            .first()
-            .waitFor({ state: 'visible', timeout: timeoutMs })
-            .then(() => true)
-            .catch(() => false);
-        return await Promise.race([a, b]);
-    };
-
-    let open = await panelOpened(15000);
-    if (!open) {
-        console.log(
-            '[Snapshot] Tile click did not open the panel; trying the FLEET menu...'
-        );
-        await GeneralUtils.moveAndClick(
-            page,
-            page.getByText('FLEET').first(),
-            15000
-        ).catch(() => {});
-        await page.waitForTimeout(3000);
-        open = await panelOpened(15000);
-    }
-    if (!open) {
-        await page.mouse.click(400, 20).catch(() => {});
-        await GeneralUtils.moveAndClick(
-            page,
-            page.getByText('FLEET').first(),
-            15000
-        ).catch(() => {});
-        await page.waitForTimeout(3000);
-        open = await panelOpened(15000);
-    }
-    if (!open) {
-        const seen = await page
-            .evaluate(() => (document.body.innerText || '').slice(0, 800))
-            .catch(() => '');
-        console.log(
-            '[Snapshot] Panel did not open; page text head: ' +
-                seen.replace(/\s+/g, ' ')
-        );
-        throw new Error(
-            '[Snapshot] ROUTES panel did not open (tile and FLEET menu both tried)'
-        );
-    }
-    await page.waitForTimeout(2000);
-
-    // Smallest container that holds both Routes (...) and Pending (...).
-    const panelText = async (): Promise<string> => {
-        return await page.evaluate(() => {
-            const els = Array.from(document.querySelectorAll('div'));
-            const cand = els.filter((e) => {
-                const t = e.textContent || '';
-                return t.includes('Routes') && t.includes('Pending');
-            });
-            cand.sort((a, b) => (a.textContent || '').length - (b.textContent || '').length);
-            const el: any = cand.length ? cand[0] : document.body;
-            return (el.innerText || el.textContent || '') as string;
-        });
-    };
-
-    // Tab labels carry a count whose exact rendering is unverified
-    // ("Routes (222)" vs "Routes 222" vs a badge), so match the tab leaf
-    // element with an anchored pattern that tolerates the count, and fall
-    // back to the bare name.
-    const clickTab = async (name: string) => {
-        const anchored = new RegExp('^\\s*' + name + '(\\s*\\(\\d+\\))?\\s*$');
-        await GeneralUtils.moveAndClick(page, page.getByText(anchored).first(), 15000).catch(
-            async () => {
-                await GeneralUtils.moveAndClick(
-                    page,
-                    page.getByText(new RegExp(name)).first(),
-                    15000
-                );
-            }
-        );
-        await page.waitForTimeout(1500);
-    };
-
-    // Scroll-collect: the routes list may render inside a scrollable box,
-    // so sweep it and union the parsed rows until the count is stable.
-    const collectTabText = async (tabName: string): Promise<string> => {
-        await clickTab(tabName);
-        let combined = '';
-        let lastLen = -1;
-        let stableRounds = 0;
-        for (let i = 0; i < 30 && stableRounds < 2; i++) {
-            const t = await panelText();
-            combined += '\n' + t;
-            const box = await page.locator('#departAll').boundingBox().catch(() => null);
-            if (box) {
-                await page.mouse.move(box.x + box.width / 2, box.y + 300);
-                await page.mouse.wheel(0, 900);
-            }
-            await page.waitForTimeout(450);
-            if (combined.length === lastLen)
-                stableRounds++;
-            else
-                stableRounds = 0;
-            lastLen = combined.length;
-        }
-        return combined;
-    };
-
-    const routesText = await collectTabText('Routes');
-    const pendingText = await collectTabText('Pending');
-    const fleetText = await collectTabText('Fleet');
-    let parkedText = '';
-    const header = parseHeaderCounts(routesText) ?? parseHeaderCounts(await panelText());
-    if (header && header.parked > 0) {
-        parkedText = await collectTabText('Parked');
-    }
-
-    fs.mkdirSync(RAW_DIR, { recursive: true });
-    fs.writeFileSync(path.join(RAW_DIR, 'routes.txt'), routesText);
-    fs.writeFileSync(path.join(RAW_DIR, 'pending.txt'), pendingText);
-    fs.writeFileSync(path.join(RAW_DIR, 'fleet.txt'), fleetText);
-    if (parkedText)
-        fs.writeFileSync(path.join(RAW_DIR, 'parked.txt'), parkedText);
-
     const takenAt = new Date().toISOString();
+    const stamp = takenAt.replace(/[:.]/g, '-');
+    const rawDir = path.join(SNAP_DIR, 'raw', stamp);
 
-    if (!header) {
-        const reasons = ['header counts (Routes/Fleet/Parked/Pending) not found in panel text'];
-        writeJson(path.join(SNAP_DIR, 'invalid', takenAt.replace(/[:.]/g, '-') + '.json'), { takenAt, reasons });
+    // Every failure path funnels here: record the invalid attempt,
+    // advance the halt counter, and fail the run (red is the signal;
+    // latest.json is never touched by an invalid attempt).
+    const failInvalid = (reasons: string[], extra?: Record<string, unknown>): never => {
+        writeJson(path.join(SNAP_DIR, 'invalid', stamp + '.json'), {
+            takenAt,
+            reasons,
+            ...(extra || {}),
+        });
         state.consecutiveInvalid += 1;
         state.lastInvalidAt = takenAt;
         if (state.consecutiveInvalid >= 2)
             state.halted = true;
         writeJson(path.join(SNAP_DIR, 'state.json'), state);
         throw new Error('[Snapshot] INVALID: ' + reasons.join('; '));
+    };
+
+    const generalUtils = new GeneralUtils(page);
+    await generalUtils.login(page);
+
+    // --- Arrival: verify the game map actually loaded. --------------
+    let arrived = false;
+    for (let s = 0; s < 180; s += 5) {
+        const n = await page.locator('#mapRoutes').count().catch(() => 0);
+        if (n > 0) {
+            arrived = true;
+            log(`Arrived at game map after ~${s}s.`);
+            break;
+        }
+        await page.waitForTimeout(5000);
+    }
+    if (!arrived) {
+        const head = await page
+            .evaluate(() => (document.body.innerText || '').slice(0, 500))
+            .catch(() => '');
+        failInvalid(['arrival: #mapRoutes never appeared after login (login() does not verify success)'], {
+            pageHead: head.replace(/\s+/g, ' '),
+            finalUrl: page.url(),
+        });
+    }
+    // Let the map finish settling; recon v3/v4 showed the tile click
+    // only lands reliably once the page is quiet.
+    await page.waitForTimeout(3000);
+
+    // --- Open the ROUTES panel (A method, effect-verified). ----------
+    const panelOpen = async (timeoutMs: number): Promise<boolean> =>
+        await page
+            .locator('#departAll')
+            .waitFor({ state: 'visible', timeout: timeoutMs })
+            .then(() => true)
+            .catch(() => false);
+
+    let open = false;
+    for (let attempt = 1; attempt <= 2 && !open; attempt++) {
+        await page.mouse.click(400, 20).catch(() => {});
+        await GeneralUtils.moveAndClick(
+            page,
+            page.locator('#mapRoutes').locator('img'),
+            30000
+        ).catch(() => {});
+        open = await panelOpen(15000);
+        log(`Open attempt ${attempt}: ${open ? 'panel open (#departAll visible)' : 'not open'}`);
+    }
+    if (!open) {
+        const head = await page
+            .evaluate(() => (document.body.innerText || '').slice(0, 500))
+            .catch(() => '');
+        failInvalid(['open: ROUTES panel did not open after 2 tile clicks'], {
+            pageHead: head.replace(/\s+/g, ' '),
+        });
     }
 
-    // Parked rows: no verified text format yet (count was 0 at probe
-    // time). Try the pending-style "Type, REG" shape; if the count does
-    // not close, the self-check rejects the snapshot and we learn the
-    // real format from the raw artifact instead of guessing silently.
+    // --- Header counts from the tab buttons themselves. -------------
+    const headerText = await page.evaluate(() => {
+        const btns = Array.from(document.querySelectorAll('.listBtns')).map(
+            (e) => (e.textContent || '').replace(/\s+/g, ' ').trim()
+        );
+        const spans: string[] = [];
+        for (const id of ['hPending', 'hParked']) {
+            const el = document.getElementById(id);
+            if (el)
+                spans.push(id.replace('h', '') + ' (' + (el.textContent || '').trim() + ')');
+        }
+        return btns.join(' ') + ' ' + spans.join(' ');
+    });
+    const header: HeaderCounts | null = parseHeaderCounts(headerText);
+    if (!header) {
+        failInvalid(['header: counts not readable from tab buttons', 'headerText: ' + headerText]);
+    }
+    log(`Header: routes=${header!.routes} fleet=${header!.fleet} parked=${header!.parked} pending=${header!.pending}`);
+
+    // --- Per-tab capture of #routesContainer, following pagination. --
+    const containerText = async (): Promise<string> =>
+        await page
+            .evaluate(() => {
+                const el = document.querySelector('#routesContainer');
+                return el ? (el as HTMLElement).innerText : '';
+            })
+            .catch(() => '');
+
+    const firstRouteNo = (text: string): string => {
+        const m = /#(CL-\S+)/.exec(text);
+        return m ? m[1] : '';
+    };
+
+    const collectTab = async (tab: string): Promise<string[]> => {
+        const before = await containerText();
+        const btn = page.locator('.listBtns', { hasText: tab }).first();
+        await btn.click({ timeout: 10000 }).catch((e) =>
+            log(`Tab ${tab} button click failed: ${String(e).slice(0, 120)}`)
+        );
+        // Wait for the Ajax swap: content changes, then length settles.
+        for (let s = 0; s < 8; s++) {
+            await page.waitForTimeout(1000);
+            if ((await containerText()) !== before)
+                break;
+        }
+        const pages: string[] = [];
+        for (let p = 0; p < 40; p++) {
+            let len = -1;
+            let lastLen = -2;
+            for (let s = 0; s < 15 && len !== lastLen; s++) {
+                lastLen = len;
+                await page.waitForTimeout(1000);
+                len = (await containerText()).length;
+            }
+            const text = await containerText();
+            pages.push(text);
+            const prevFirst = firstRouteNo(text);
+            const clickedNext = await page.evaluate(() => {
+                const root = document.querySelector('#routesContainer');
+                if (!root)
+                    return false;
+                const els = Array.from(root.querySelectorAll('[onclick]'));
+                const el = els.find((e) =>
+                    (e.getAttribute('onclick') || '').includes('routes.php?start=')
+                );
+                if (!el)
+                    return false;
+                (el as HTMLElement).click();
+                return true;
+            });
+            if (!clickedNext)
+                break;
+            let changed = false;
+            for (let s = 0; s < 10; s++) {
+                await page.waitForTimeout(1000);
+                if (firstRouteNo(await containerText()) !== prevFirst) {
+                    changed = true;
+                    break;
+                }
+            }
+            if (!changed) {
+                log(`Tab ${tab}: Next clicked but page content did not change; stopping pagination.`);
+                break;
+            }
+        }
+        log(`Tab ${tab}: ${pages.length} page(s) collected.`);
+        return pages;
+    };
+
+    const routesPages = await collectTab('Routes');
+    const pendingPages = await collectTab('Pending');
+    const fleetPages = await collectTab('Fleet');
+    const parkedPages = await collectTab('Parked');
+
+    const routesText = routesPages.join('\n=== PAGE BREAK ===\n');
+    const pendingText = pendingPages.join('\n=== PAGE BREAK ===\n');
+    const fleetText = fleetPages.join('\n=== PAGE BREAK ===\n');
+    const parkedText = parkedPages.join('\n=== PAGE BREAK ===\n');
+
+    fs.mkdirSync(rawDir, { recursive: true });
+    fs.writeFileSync(path.join(rawDir, 'routes.txt'), routesText);
+    fs.writeFileSync(path.join(rawDir, 'pending.txt'), pendingText);
+    fs.writeFileSync(path.join(rawDir, 'fleet.txt'), fleetText);
+    fs.writeFileSync(path.join(rawDir, 'parked.txt'), parkedText);
+
+    // Parked rows: no verified text format yet (count was 0 in every
+    // capture so far). Try the pending-style "Type, REG" shape; if the
+    // count does not close, the self-check rejects the snapshot and we
+    // learn the real format from the committed raw text.
     const parked: { reg: string; type: string }[] = [];
-    if (header.parked > 0) {
+    if (header!.parked > 0) {
         const re = /([A-Za-z0-9][A-Za-z0-9\-]*)\s*,\s*([A-Z]-[0-9][0-9A-Za-z-]*)/g;
         const t = parkedText.replace(/\s+/g, ' ');
         let m: RegExpExecArray | null;
@@ -242,7 +288,7 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
 
     const snap: SnapshotData = {
         takenAt,
-        header,
+        header: header!,
         routes: parseRoutes(routesText),
         pending: parsePending(pendingText),
         parked,
@@ -257,11 +303,8 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
         previous ? previous.header.fleet : null
     );
 
-    const stamp = takenAt.replace(/[:.]/g, '-');
     if (!check.valid) {
-        writeJson(path.join(SNAP_DIR, 'invalid', stamp + '.json'), {
-            takenAt,
-            reasons: check.reasons,
+        failInvalid(check.reasons, {
             header,
             parsedCounts: {
                 routes: snap.routes.length,
@@ -269,13 +312,6 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
                 parked: snap.parked.length,
             },
         });
-        state.consecutiveInvalid += 1;
-        state.lastInvalidAt = takenAt;
-        if (state.consecutiveInvalid >= 2)
-            state.halted = true;
-        writeJson(path.join(SNAP_DIR, 'state.json'), state);
-        console.log('[Snapshot] INVALID: ' + check.reasons.join('; '));
-        throw new Error('[Snapshot] INVALID: ' + check.reasons.join('; '));
     }
 
     writeJson(path.join(SNAP_DIR, 'history', stamp + '.json'), snap);
@@ -283,7 +319,7 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
     state.consecutiveInvalid = 0;
     state.lastValidAt = takenAt;
     writeJson(path.join(SNAP_DIR, 'state.json'), state);
-    console.log(
-        `[Snapshot] VALID: fleet ${header.fleet} = routes ${snap.routes.length} + pending ${snap.pending.length} + parked ${snap.parked.length}; self-check passed.`
+    log(
+        `VALID: fleet ${header!.fleet} = routes ${snap.routes.length} + pending ${snap.pending.length} + parked ${snap.parked.length}; self-check passed.`
     );
 });
