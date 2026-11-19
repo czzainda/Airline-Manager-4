@@ -74,26 +74,60 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
     await generalUtils.login(page);
     console.log('[Snapshot] Logged in; opening ROUTES panel...');
 
-    // Open the panel the way the main bot's depart module does (proven
-    // daily): blank-space click on the top strip, click the routes tile,
-    // 4-6s stabilisation, then the panel's own #departAll button as the
-    // "panel is open" signal. The first version instead waited for a
-    // "Routes (222)" header text whose exact format was assumed from the
-    // probe notes and never verified; run 44423513135 logged in fine and
-    // then died on that wait (TimeoutError at the old line 85).
+    // Opening the ROUTES popup - history of what actually happened:
+    // Run 44423513135 (v1) waited for a "Routes (222)" header and died;
+    // run 44427030018 (v2) waited for #departAll and died too, and its
+    // page-text dump proved the popup had never opened at all (the page
+    // still showed the plain map). A live read-only probe on 2026-11-18
+    // then established: the header format really is "Routes (218)" etc.;
+    // the popup's bulk button is the red "Depart N" button (id
+    // #departAll); and the entrance that demonstrably opens the popup is
+    // the right-hand FLEET menu item. The tile click RESOLVES even when
+    // the popup never opens, so "try FLEET" must be gated on the panel
+    // not opening, not on the click throwing (v2's structural flaw).
     await page.mouse.click(400, 20).catch(() => {});
     const routesTile = page.locator('#mapRoutes').getByRole('img');
-    await GeneralUtils.moveAndClick(page, routesTile, 30000).catch(async () => {
-        await GeneralUtils.moveAndClick(page, page.getByText('FLEET').first(), 15000);
-    });
-    await page.waitForTimeout(5000);
+    await GeneralUtils.moveAndClick(page, routesTile, 30000).catch(() => {});
 
-    const panelOpen = await page
-        .locator('#departAll')
-        .waitFor({ state: 'visible', timeout: 30000 })
-        .then(() => true)
-        .catch(() => false);
-    if (!panelOpen) {
+    const panelOpened = async (timeoutMs: number): Promise<boolean> => {
+        const a = page
+            .locator('#departAll')
+            .waitFor({ state: 'visible', timeout: timeoutMs })
+            .then(() => true)
+            .catch(() => false);
+        const b = page
+            .getByText(/Routes \(\d+\)/)
+            .first()
+            .waitFor({ state: 'visible', timeout: timeoutMs })
+            .then(() => true)
+            .catch(() => false);
+        return await Promise.race([a, b]);
+    };
+
+    let open = await panelOpened(15000);
+    if (!open) {
+        console.log(
+            '[Snapshot] Tile click did not open the panel; trying the FLEET menu...'
+        );
+        await GeneralUtils.moveAndClick(
+            page,
+            page.getByText('FLEET').first(),
+            15000
+        ).catch(() => {});
+        await page.waitForTimeout(3000);
+        open = await panelOpened(15000);
+    }
+    if (!open) {
+        await page.mouse.click(400, 20).catch(() => {});
+        await GeneralUtils.moveAndClick(
+            page,
+            page.getByText('FLEET').first(),
+            15000
+        ).catch(() => {});
+        await page.waitForTimeout(3000);
+        open = await panelOpened(15000);
+    }
+    if (!open) {
         const seen = await page
             .evaluate(() => (document.body.innerText || '').slice(0, 800))
             .catch(() => '');
@@ -102,7 +136,7 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
                 seen.replace(/\s+/g, ' ')
         );
         throw new Error(
-            '[Snapshot] ROUTES panel did not open (#departAll never visible)'
+            '[Snapshot] ROUTES panel did not open (tile and FLEET menu both tried)'
         );
     }
     await page.waitForTimeout(2000);
