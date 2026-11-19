@@ -74,15 +74,37 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
     await generalUtils.login(page);
     console.log('[Snapshot] Logged in; opening ROUTES panel...');
 
-    // The routes/fleet panel tile (same tile the main bot's depart module
-    // uses). Fallback: a tile labelled FLEET.
+    // Open the panel the way the main bot's depart module does (proven
+    // daily): blank-space click on the top strip, click the routes tile,
+    // 4-6s stabilisation, then the panel's own #departAll button as the
+    // "panel is open" signal. The first version instead waited for a
+    // "Routes (222)" header text whose exact format was assumed from the
+    // probe notes and never verified; run 44423513135 logged in fine and
+    // then died on that wait (TimeoutError at the old line 85).
+    await page.mouse.click(400, 20).catch(() => {});
     const routesTile = page.locator('#mapRoutes').getByRole('img');
     await GeneralUtils.moveAndClick(page, routesTile, 30000).catch(async () => {
         await GeneralUtils.moveAndClick(page, page.getByText('FLEET').first(), 15000);
     });
+    await page.waitForTimeout(5000);
 
-    const headerLocator = page.getByText(/Routes \(\d+\)/).first();
-    await headerLocator.waitFor({ state: 'visible', timeout: 30000 });
+    const panelOpen = await page
+        .locator('#departAll')
+        .waitFor({ state: 'visible', timeout: 30000 })
+        .then(() => true)
+        .catch(() => false);
+    if (!panelOpen) {
+        const seen = await page
+            .evaluate(() => (document.body.innerText || '').slice(0, 800))
+            .catch(() => '');
+        console.log(
+            '[Snapshot] Panel did not open; page text head: ' +
+                seen.replace(/\s+/g, ' ')
+        );
+        throw new Error(
+            '[Snapshot] ROUTES panel did not open (#departAll never visible)'
+        );
+    }
     await page.waitForTimeout(2000);
 
     // Smallest container that holds both Routes (...) and Pending (...).
@@ -91,7 +113,7 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
             const els = Array.from(document.querySelectorAll('div'));
             const cand = els.filter((e) => {
                 const t = e.textContent || '';
-                return t.includes('Routes (') && t.includes('Pending (');
+                return t.includes('Routes') && t.includes('Pending');
             });
             cand.sort((a, b) => (a.textContent || '').length - (b.textContent || '').length);
             const el: any = cand.length ? cand[0] : document.body;
@@ -99,22 +121,35 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
         });
     };
 
-    const clickTab = async (re: RegExp) => {
-        await GeneralUtils.moveAndClick(page, page.getByText(re).first(), 15000);
+    // Tab labels carry a count whose exact rendering is unverified
+    // ("Routes (222)" vs "Routes 222" vs a badge), so match the tab leaf
+    // element with an anchored pattern that tolerates the count, and fall
+    // back to the bare name.
+    const clickTab = async (name: string) => {
+        const anchored = new RegExp('^\\s*' + name + '(\\s*\\(\\d+\\))?\\s*$');
+        await GeneralUtils.moveAndClick(page, page.getByText(anchored).first(), 15000).catch(
+            async () => {
+                await GeneralUtils.moveAndClick(
+                    page,
+                    page.getByText(new RegExp(name)).first(),
+                    15000
+                );
+            }
+        );
         await page.waitForTimeout(1500);
     };
 
     // Scroll-collect: the routes list may render inside a scrollable box,
     // so sweep it and union the parsed rows until the count is stable.
-    const collectTabText = async (tabRe: RegExp): Promise<string> => {
-        await clickTab(tabRe);
+    const collectTabText = async (tabName: string): Promise<string> => {
+        await clickTab(tabName);
         let combined = '';
         let lastLen = -1;
         let stableRounds = 0;
         for (let i = 0; i < 30 && stableRounds < 2; i++) {
             const t = await panelText();
             combined += '\n' + t;
-            const box = await page.getByText(/Routes \(\d+\)/).first().boundingBox().catch(() => null);
+            const box = await page.locator('#departAll').boundingBox().catch(() => null);
             if (box) {
                 await page.mouse.move(box.x + box.width / 2, box.y + 300);
                 await page.mouse.wheel(0, 900);
@@ -129,13 +164,13 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
         return combined;
     };
 
-    const routesText = await collectTabText(/Routes \(\d+\)/);
-    const pendingText = await collectTabText(/Pending \(\d+\)/);
-    const fleetText = await collectTabText(/Fleet \(\d+\)/);
+    const routesText = await collectTabText('Routes');
+    const pendingText = await collectTabText('Pending');
+    const fleetText = await collectTabText('Fleet');
     let parkedText = '';
     const header = parseHeaderCounts(routesText) ?? parseHeaderCounts(await panelText());
     if (header && header.parked > 0) {
-        parkedText = await collectTabText(/Parked \(\d+\)/);
+        parkedText = await collectTabText('Parked');
     }
 
     fs.mkdirSync(RAW_DIR, { recursive: true });
