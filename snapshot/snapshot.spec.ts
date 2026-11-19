@@ -48,30 +48,20 @@
 // the final self-check - a tab that will not heal fails the run
 // exactly as before.
 //
-// Batch fetch + union (added 2026-11-18 night, after live run
-// 44461007086 - the self-healing run - failed closure at 187/217):
-// that run's committed raw text held 217 route-row instances but
-// only 187 distinct route numbers: 30 rows were captured twice and
-// 30 routes were never on any captured page. The list moves while
-// it is being paged (rows re-sort / change state between page
-// reads), so a minutes-long click-through can never be coherent,
-// and re-capturing the same slow way reproduced the same hole
-// three times in a row (186, 186, 186). The parser was innocent
-// throughout (unparsed == 0; local replay of the raw text parses
-// perfectly). Consequences, both implemented below:
-//   - Routes is captured FIRST-HAND inside the page: one evaluate
-//     fetches every routes.php?start=N page concurrently (the whole
-//     list in ~seconds, before it can move), each response is
-//     rendered in a hidden element and read as innerText, exactly
-//     like the live container. A sample of the raw response ships
-//     with the run's raw dump, so a format surprise is diagnosable
-//     from that same run.
-//   - If the batch does not close against the header, the fallback
-//     is the UI click-through, but UNIONED across passes: passes
-//     are fast now (300ms polls), each pass slides differently, and
-//     parseRoutes dedupes by routeNo, so the union of passes
-//     converges on the full list. The closure self-check remains
-//     the only judge - it is not relaxed by any of this.
+// ROOT CAUSE of the 2026-11-18 collector failures (found that
+// night from run 44461007086's committed raw text, confirmed on
+// the next run's): the captures were COMPLETE all along - 217
+// rows against a header of 217, five full passes of 213 against
+// 213. What discarded ~30 routes per run was the PARSER: it
+// deduped by the #CL- route number, but that number is not
+// unique - #CL-0076 alone labels ten different routes.
+// Registrations are the unique key (217 rows = 217 distinct
+// regs). parseRoutes now dedupes by reg (see snapshot.utils.ts),
+// and the pagination stop condition below counts distinct regs.
+// An earlier "the list moves while paging" theory - and the
+// batch-fetch / union machinery briefly built on it - was wrong
+// and has been removed; the identical shortfall on every
+// re-capture was the dedupe eating the same rows, not drift.
 //
 // Outputs (committed back by the workflow):
 //   snapshots/latest.json          last VALID snapshot
@@ -295,7 +285,10 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
                 break;
         }
         const pages: string[] = [];
-        const seenRoutes = new Set<string>();
+        // Progress is counted in distinct REGISTRATIONS: the #CL-
+        // route number repeats across routes and undercounts (see
+        // the root-cause note at the top of this file).
+        const seenRegs = new Set<string>();
         const visitedSigs = new Set<string>();
         let currentStart = 0;
         for (let p = 0; p < 30; p++) {
@@ -311,9 +304,9 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
             }
             visitedSigs.add(sig);
             pages.push(text);
-            for (const m of text.match(/#(CL-\S+)/g) || [])
-                seenRoutes.add(m);
-            if (expected > 0 && seenRoutes.size >= expected)
+            for (const m of text.match(/^B-[0-9][0-9A-Za-z-]* - /gm) || [])
+                seenRegs.add(m.replace(/ - $/, ''));
+            if (expected > 0 && seenRegs.size >= expected)
                 break;
             // Follow the smallest start GREATER than the current
             // page's start; page >= 2 also links back to start=0,
@@ -356,7 +349,7 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
             }
             currentStart = nextStart;
         }
-        log(`Tab ${tab}: ${pages.length} page(s) collected, ${seenRoutes.size} unique route(s) seen.`);
+        log(`Tab ${tab}: ${pages.length} page(s) collected, ${seenRegs.size} unique aircraft seen.`);
         return pages;
     };
 
@@ -409,106 +402,12 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
         return result!;
     };
 
-    // --- Routes batch fetch (primary path). One evaluate pulls
-    // every routes.php page concurrently (the same URL the list's
-    // own pagination links call); each response is rendered in a
-    // hidden element and read back as innerText - the same text the
-    // live container would give, but the whole list lands within
-    // seconds, before it can move. A sample of the raw response is
-    // kept for the raw dump so a format surprise is diagnosable
-    // from this same run.
-    let fetchSample = '';
-    let fetchText: string | null = null;
-    const fetchRoutesBatch = async (expected: number): Promise<string | null> => {
-        const starts: number[] = [];
-        for (let s = 0; s < expected; s += 20)
-            starts.push(s);
-        try {
-            const out = await page.evaluate(async (startsArg: number[]) => {
-                const holder = document.createElement('div');
-                holder.style.cssText =
-                    'position:absolute;left:-99999px;top:0;visibility:hidden;';
-                document.body.appendChild(holder);
-                const htmls = await Promise.all(
-                    startsArg.map(async (st) => {
-                        const r = await fetch('routes.php?start=' + st + '&sort=', {
-                            credentials: 'same-origin',
-                            headers: { 'X-Requested-With': 'XMLHttpRequest' },
-                        });
-                        return await r.text();
-                    })
-                );
-                const texts: string[] = [];
-                let sample = '';
-                for (const html of htmls) {
-                    if (!sample)
-                        sample = html.slice(0, 2000);
-                    holder.innerHTML = html;
-                    texts.push(holder.innerText);
-                }
-                holder.remove();
-                return { texts, sample };
-            }, starts);
-            fetchSample = out.sample || fetchSample;
-            const joined = out.texts.join('\n=== PAGE BREAK ===\n');
-            log(`Routes batch fetch: ${out.texts.length} page(s), ${joined.length} chars of text.`);
-            return joined;
-        } catch (e) {
-            log(`Routes batch fetch failed: ${String(e).slice(0, 160)}`);
-            return null;
-        }
-    };
-
-    const captureRoutesVerified = async (maxUiPasses: number): Promise<TabResult> => {
-        const hdr = (await readHeader()) ?? firstHeader!;
-        const expected = hdr.routes;
-        // Primary: batch fetch.
-        const fetched = await fetchRoutesBatch(expected);
-        let unionText = '';
-        if (fetched !== null) {
-            fetchText = fetched;
-            const { count, unparsed } = tabCount('Routes', fetched);
-            const ok = count === expected && unparsed === 0;
-            log(`Routes batch: parsed ${count}/${expected}, unparsed ${unparsed} -> ${ok ? 'OK' : 'MISMATCH, falling back to UI passes'}`);
-            heal.push({ tab: 'Routes', kind: 'batch-fetch', expected, count, unparsed, ok });
-            if (ok)
-                return { pages: [fetched], text: fetched, header: hdr, count, unparsed, ok };
-            // A clean-parsing but short batch still seeds the union;
-            // a batch with unparsed lines is discarded for union
-            // purposes (it is still dumped raw for diagnosis).
-            if (unparsed === 0)
-                unionText = fetched;
-        }
-        // Fallback: fast UI passes, unioned. parseRoutes dedupes by
-        // routeNo, so counting the concatenated text counts the
-        // union; each pass slides differently over the moving list.
-        // Local simulation (300 trials, each pass missing a random
-        // 30 of 217 like run 44461007086): 3 passes complete the
-        // union in only ~54% of trials, 5 passes in ~99% - hence 5.
-        let last: TabResult | null = null;
-        for (let pass = 1; pass <= maxUiPasses; pass++) {
-            const pages = await collectTab('Routes', expected);
-            const passText = pages.join('\n=== PAGE BREAK ===\n');
-            unionText = unionText
-                ? unionText + '\n=== PAGE BREAK ===\n' + passText
-                : passText;
-            const { count, unparsed } = tabCount('Routes', unionText);
-            const ok = count === expected && unparsed === 0;
-            last = { pages: [unionText], text: unionText, header: hdr, count, unparsed, ok };
-            log(`Routes UI union pass ${pass}: union parsed ${count}/${expected}, unparsed ${unparsed} -> ${ok ? 'OK' : 'INCOMPLETE'}`);
-            heal.push({ tab: 'Routes', kind: 'union-pass', attempt: pass, expected, count, unparsed });
-            if (ok)
-                return last;
-        }
-        return last!;
-    };
-
-    // Fast, drift-prone tabs first; Routes last (batch fetch, with
-    // unioned UI passes as fallback).
+    // Fast, drift-prone tabs first; the Routes capture last. Every
+    // tab goes through the same verify-and-recapture path; with the
+    // parser keyed by registration, a single complete pass closes.
     const results: Record<string, TabResult> = {};
-    for (const tab of ['Pending', 'Parked', 'Fleet'])
+    for (const tab of ['Pending', 'Parked', 'Fleet', 'Routes'])
         results[tab] = await captureVerified(tab, 3);
-    results['Routes'] = await captureRoutesVerified(5);
 
     // Drift sweep: one more header read; any tab whose count moved
     // since its verified capture is re-captured once more.
@@ -520,10 +419,7 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
             if (now !== was) {
                 log(`Drift sweep: ${tab} header moved ${was} -> ${now} during the run; re-capturing.`);
                 heal.push({ tab, kind: 'drift-sweep', was, now });
-                results[tab] =
-                    tab === 'Routes'
-                        ? await captureRoutesVerified(2)
-                        : await captureVerified(tab, 2);
+                results[tab] = await captureVerified(tab, 2);
             }
         }
     }
@@ -548,10 +444,6 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
     fs.writeFileSync(path.join(rawDir, 'pending.txt'), pendingText);
     fs.writeFileSync(path.join(rawDir, 'fleet.txt'), fleetText);
     fs.writeFileSync(path.join(rawDir, 'parked.txt'), parkedText);
-    if (fetchText !== null)
-        fs.writeFileSync(path.join(rawDir, 'routes-fetch.txt'), fetchText);
-    if (fetchSample)
-        fs.writeFileSync(path.join(rawDir, 'routes-fetch-sample.txt'), fetchSample);
 
     // Parked rows: no verified text format yet (count was 0 in every
     // capture so far). Try the pending-style "Type, REG" shape; if the
