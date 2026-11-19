@@ -1,0 +1,4132 @@
+217 ROUTES
+Cost index
+Depart 11
+1
+Next
+
+1,945KM
+#CL-119
+UDYZ - OMDB
+B-124 - MC-21-400
+Demand: 726 / 692 / 117
+Depart
+
+4,414KM
+#CL-0026
+ZBAA - WMKK
+B-020-5 - MC-21-400
+Demand: 1045 / 596 / 58
+Depart
+
+2,794KM
+#CL-139
+UBBB - VIDP
+B-144 - MC-21-400
+Demand: 687 / 736 / 120
+Depart
+
+2,799KM
+#CL-105
+RKSI - ZUBD
+B-110 - MC-21-400
+Demand: 709 / 221 / 202
+Depart
+
+3,368KM
+#CL-0090
+VETZ - RKSI
+B-085 - MC-21-400
+Demand: 361 / 328 / 166
+Depart
+
+2,278KM
+#CL-133
+OMAA - VIDP
+B-138 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,278KM
+#CL-138
+VIDP - OMAA
+B-143 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,825KM
+#CL-168
+URMO - EDDF
+B-179 - MC-21-400
+Demand: 422 / 379 / 207
+Depart
+
+2,830KM
+#CL-148
+OKBK - VIDP
+B-158 - MC-21-400
+Demand: 1361 / 258 / 171
+Depart
+
+2,838KM
+#CL-151
+EDDF - OLBA
+B-164 - MC-21-400
+Demand: 706 / 424 / 267
+Depart
+
+2,846KM
+#CL-143
+VLVT - VIDP
+B-153 - MC-21-400
+Demand: 702 / 337 / 164
+Depart
+#CL-160
+EDDF - LTCK
+B-171 - MC-21-400
+Onboard: 75 / 49 / 15
+00:01:33
+#CL-162
+LTCR - EDDF
+B-173 - MC-21-400
+Onboard: 119 / 45 / 7
+00:03:26
+#CL-156
+HECA - EDDF
+B-167 - MC-21-400
+Onboard: 78 / 47 / 15
+00:03:45
+=== PAGE BREAK ===
+217 ROUTES
+Previous
+2
+Next
+#CL-0061
+ZBAA - VVPC
+B-061 - MC-21-400
+Onboard: 84 / 32 / 25
+00:07:49
+#CL-0059
+ZBAA - VEBD
+B-059 - MC-21-400
+Onboard: 89 / 35 / 21
+00:07:52
+#CL-166
+OJAI - EDDF
+B-177 - MC-21-400
+Onboard: 1 / 68 / 29
+00:10:26
+#CL-129
+OMDB - LWSK
+B-134 - MC-21-400
+Onboard: 0 / 64 / 34
+00:10:31
+#CL-130
+VIDP - OOMS
+B-135 - MC-21-400
+Onboard: 62 / 30 / 32
+00:10:35
+#CL-155
+EDDF - HLLT
+B-169 - MC-21-400
+Onboard: 97 / 45 / 9
+00:11:15
+#CL-0094
+RKSI - ZGGG
+B-089 - MC-21-400
+Onboard: 88 / 34 / 22
+00:13:16
+#CL-108
+RKSI - VEAT
+B-113 - MC-21-400
+Onboard: 63 / 47 / 20
+00:13:59
+#CL-153
+GMML - EDDF
+B-166 - MC-21-400
+Onboard: 0 / 47 / 43
+00:16:01
+#CL-167
+OJAQ - EDDF
+B-178 - MC-21-400
+Onboard: 66 / 31 / 27
+00:17:20
+#CL-121
+LATI - OMDB
+B-126 - MC-21-400
+Onboard: 1 / 35 / 53
+00:17:43
+#CL-127
+OMDB - VETZ
+B-132 - MC-21-400
+Onboard: 42 / 25 / 43
+00:17:43
+#CL-0076
+VLVT - RKSI
+B-070 - MC-21-400
+Onboard: 1 / 79 / 21
+00:17:46
+#CL-0046
+RJTT - ZBAA
+B-045 - MC-21-400
+Onboard: 101 / 22 / 27
+00:18:05
+#CL-0049
+ZPPP - ZBAA
+B-042 - MC-21-400
+Onboard: 43 / 68 / 13
+00:18:08
+#CL-101
+RKSI - VTBU
+B-106 - MC-21-400
+Onboard: 57 / 68 / 8
+00:18:09
+#CL-0076
+RKSI - VMMC
+B-062 - MC-21-400
+Onboard: 27 / 72 / 18
+00:18:38
+#CL-137
+VIDP - UGTB
+B-147 - MC-21-400
+Onboard: 0 / 96 / 11
+00:21:15
+#CL-0089
+RKSI - VTSP
+B-084 - MC-21-400
+Onboard: 84 / 27 / 29
+00:21:16
+#CL-0076
+VTBS - ZBAA
+B-072 - MC-21-400
+Onboard: 1 / 55 / 38
+00:25:19
+=== PAGE BREAK ===
+217 ROUTES
+Cost index
+Depart 11
+1
+Next
+
+1,945KM
+#CL-119
+UDYZ - OMDB
+B-124 - MC-21-400
+Demand: 726 / 692 / 117
+Depart
+
+4,414KM
+#CL-0026
+ZBAA - WMKK
+B-020-5 - MC-21-400
+Demand: 1045 / 596 / 58
+Depart
+
+2,794KM
+#CL-139
+UBBB - VIDP
+B-144 - MC-21-400
+Demand: 687 / 736 / 120
+Depart
+
+2,799KM
+#CL-105
+RKSI - ZUBD
+B-110 - MC-21-400
+Demand: 709 / 221 / 202
+Depart
+
+3,368KM
+#CL-0090
+VETZ - RKSI
+B-085 - MC-21-400
+Demand: 361 / 328 / 166
+Depart
+
+2,278KM
+#CL-133
+OMAA - VIDP
+B-138 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,278KM
+#CL-138
+VIDP - OMAA
+B-143 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,825KM
+#CL-168
+URMO - EDDF
+B-179 - MC-21-400
+Demand: 422 / 379 / 207
+Depart
+
+2,830KM
+#CL-148
+OKBK - VIDP
+B-158 - MC-21-400
+Demand: 1361 / 258 / 171
+Depart
+
+2,838KM
+#CL-151
+EDDF - OLBA
+B-164 - MC-21-400
+Demand: 706 / 424 / 267
+Depart
+
+2,846KM
+#CL-143
+VLVT - VIDP
+B-153 - MC-21-400
+Demand: 702 / 337 / 164
+Depart
+#CL-160
+EDDF - LTCK
+B-171 - MC-21-400
+Onboard: 75 / 49 / 15
+00:01:26
+#CL-162
+LTCR - EDDF
+B-173 - MC-21-400
+Onboard: 119 / 45 / 7
+00:03:19
+#CL-156
+HECA - EDDF
+B-167 - MC-21-400
+Onboard: 78 / 47 / 15
+00:03:38
+=== PAGE BREAK ===
+217 ROUTES
+Previous
+2
+Next
+#CL-0061
+ZBAA - VVPC
+B-061 - MC-21-400
+Onboard: 84 / 32 / 25
+00:07:42
+#CL-0059
+ZBAA - VEBD
+B-059 - MC-21-400
+Onboard: 89 / 35 / 21
+00:07:45
+#CL-166
+OJAI - EDDF
+B-177 - MC-21-400
+Onboard: 1 / 68 / 29
+00:10:19
+#CL-129
+OMDB - LWSK
+B-134 - MC-21-400
+Onboard: 0 / 64 / 34
+00:10:24
+#CL-130
+VIDP - OOMS
+B-135 - MC-21-400
+Onboard: 62 / 30 / 32
+00:10:28
+#CL-155
+EDDF - HLLT
+B-169 - MC-21-400
+Onboard: 97 / 45 / 9
+00:11:08
+#CL-0094
+RKSI - ZGGG
+B-089 - MC-21-400
+Onboard: 88 / 34 / 22
+00:13:09
+#CL-108
+RKSI - VEAT
+B-113 - MC-21-400
+Onboard: 63 / 47 / 20
+00:13:52
+#CL-153
+GMML - EDDF
+B-166 - MC-21-400
+Onboard: 0 / 47 / 43
+00:15:54
+#CL-167
+OJAQ - EDDF
+B-178 - MC-21-400
+Onboard: 66 / 31 / 27
+00:17:13
+#CL-121
+LATI - OMDB
+B-126 - MC-21-400
+Onboard: 1 / 35 / 53
+00:17:36
+#CL-127
+OMDB - VETZ
+B-132 - MC-21-400
+Onboard: 42 / 25 / 43
+00:17:36
+#CL-0076
+VLVT - RKSI
+B-070 - MC-21-400
+Onboard: 1 / 79 / 21
+00:17:39
+#CL-0046
+RJTT - ZBAA
+B-045 - MC-21-400
+Onboard: 101 / 22 / 27
+00:17:58
+#CL-0049
+ZPPP - ZBAA
+B-042 - MC-21-400
+Onboard: 43 / 68 / 13
+00:18:01
+#CL-101
+RKSI - VTBU
+B-106 - MC-21-400
+Onboard: 57 / 68 / 8
+00:18:02
+#CL-0076
+RKSI - VMMC
+B-062 - MC-21-400
+Onboard: 27 / 72 / 18
+00:18:31
+#CL-137
+VIDP - UGTB
+B-147 - MC-21-400
+Onboard: 0 / 96 / 11
+00:21:08
+#CL-0089
+RKSI - VTSP
+B-084 - MC-21-400
+Onboard: 84 / 27 / 29
+00:21:09
+#CL-0076
+VTBS - ZBAA
+B-072 - MC-21-400
+Onboard: 1 / 55 / 38
+00:25:12
+=== PAGE BREAK ===
+217 ROUTES
+Cost index
+Depart 11
+1
+Next
+
+1,945KM
+#CL-119
+UDYZ - OMDB
+B-124 - MC-21-400
+Demand: 726 / 692 / 117
+Depart
+
+4,414KM
+#CL-0026
+ZBAA - WMKK
+B-020-5 - MC-21-400
+Demand: 1045 / 596 / 58
+Depart
+
+2,794KM
+#CL-139
+UBBB - VIDP
+B-144 - MC-21-400
+Demand: 687 / 736 / 120
+Depart
+
+2,799KM
+#CL-105
+RKSI - ZUBD
+B-110 - MC-21-400
+Demand: 709 / 221 / 202
+Depart
+
+3,368KM
+#CL-0090
+VETZ - RKSI
+B-085 - MC-21-400
+Demand: 361 / 328 / 166
+Depart
+
+2,278KM
+#CL-133
+OMAA - VIDP
+B-138 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,278KM
+#CL-138
+VIDP - OMAA
+B-143 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,825KM
+#CL-168
+URMO - EDDF
+B-179 - MC-21-400
+Demand: 422 / 379 / 207
+Depart
+
+2,830KM
+#CL-148
+OKBK - VIDP
+B-158 - MC-21-400
+Demand: 1361 / 258 / 171
+Depart
+
+2,838KM
+#CL-151
+EDDF - OLBA
+B-164 - MC-21-400
+Demand: 706 / 424 / 267
+Depart
+
+2,846KM
+#CL-143
+VLVT - VIDP
+B-153 - MC-21-400
+Demand: 702 / 337 / 164
+Depart
+#CL-160
+EDDF - LTCK
+B-171 - MC-21-400
+Onboard: 75 / 49 / 15
+00:01:19
+#CL-162
+LTCR - EDDF
+B-173 - MC-21-400
+Onboard: 119 / 45 / 7
+00:03:12
+#CL-156
+HECA - EDDF
+B-167 - MC-21-400
+Onboard: 78 / 47 / 15
+00:03:31
+=== PAGE BREAK ===
+217 ROUTES
+Previous
+2
+Next
+#CL-0061
+ZBAA - VVPC
+B-061 - MC-21-400
+Onboard: 84 / 32 / 25
+00:07:35
+#CL-0059
+ZBAA - VEBD
+B-059 - MC-21-400
+Onboard: 89 / 35 / 21
+00:07:38
+#CL-166
+OJAI - EDDF
+B-177 - MC-21-400
+Onboard: 1 / 68 / 29
+00:10:12
+#CL-129
+OMDB - LWSK
+B-134 - MC-21-400
+Onboard: 0 / 64 / 34
+00:10:17
+#CL-130
+VIDP - OOMS
+B-135 - MC-21-400
+Onboard: 62 / 30 / 32
+00:10:21
+#CL-155
+EDDF - HLLT
+B-169 - MC-21-400
+Onboard: 97 / 45 / 9
+00:11:01
+#CL-0094
+RKSI - ZGGG
+B-089 - MC-21-400
+Onboard: 88 / 34 / 22
+00:13:02
+#CL-108
+RKSI - VEAT
+B-113 - MC-21-400
+Onboard: 63 / 47 / 20
+00:13:45
+#CL-153
+GMML - EDDF
+B-166 - MC-21-400
+Onboard: 0 / 47 / 43
+00:15:47
+#CL-167
+OJAQ - EDDF
+B-178 - MC-21-400
+Onboard: 66 / 31 / 27
+00:17:06
+#CL-121
+LATI - OMDB
+B-126 - MC-21-400
+Onboard: 1 / 35 / 53
+00:17:29
+#CL-127
+OMDB - VETZ
+B-132 - MC-21-400
+Onboard: 42 / 25 / 43
+00:17:29
+#CL-0076
+VLVT - RKSI
+B-070 - MC-21-400
+Onboard: 1 / 79 / 21
+00:17:32
+#CL-0046
+RJTT - ZBAA
+B-045 - MC-21-400
+Onboard: 101 / 22 / 27
+00:17:51
+#CL-0049
+ZPPP - ZBAA
+B-042 - MC-21-400
+Onboard: 43 / 68 / 13
+00:17:54
+#CL-101
+RKSI - VTBU
+B-106 - MC-21-400
+Onboard: 57 / 68 / 8
+00:17:55
+#CL-0076
+RKSI - VMMC
+B-062 - MC-21-400
+Onboard: 27 / 72 / 18
+00:18:24
+#CL-137
+VIDP - UGTB
+B-147 - MC-21-400
+Onboard: 0 / 96 / 11
+00:21:01
+#CL-0089
+RKSI - VTSP
+B-084 - MC-21-400
+Onboard: 84 / 27 / 29
+00:21:02
+#CL-0076
+VTBS - ZBAA
+B-072 - MC-21-400
+Onboard: 1 / 55 / 38
+00:25:05
+=== PAGE BREAK ===
+217 ROUTES
+Cost index
+Depart 11
+1
+Next
+
+1,945KM
+#CL-119
+UDYZ - OMDB
+B-124 - MC-21-400
+Demand: 726 / 692 / 117
+Depart
+
+4,414KM
+#CL-0026
+ZBAA - WMKK
+B-020-5 - MC-21-400
+Demand: 1045 / 596 / 58
+Depart
+
+2,794KM
+#CL-139
+UBBB - VIDP
+B-144 - MC-21-400
+Demand: 687 / 736 / 120
+Depart
+
+2,799KM
+#CL-105
+RKSI - ZUBD
+B-110 - MC-21-400
+Demand: 709 / 221 / 202
+Depart
+
+3,368KM
+#CL-0090
+VETZ - RKSI
+B-085 - MC-21-400
+Demand: 361 / 328 / 166
+Depart
+
+2,278KM
+#CL-133
+OMAA - VIDP
+B-138 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,278KM
+#CL-138
+VIDP - OMAA
+B-143 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,825KM
+#CL-168
+URMO - EDDF
+B-179 - MC-21-400
+Demand: 422 / 379 / 207
+Depart
+
+2,830KM
+#CL-148
+OKBK - VIDP
+B-158 - MC-21-400
+Demand: 1361 / 258 / 171
+Depart
+
+2,838KM
+#CL-151
+EDDF - OLBA
+B-164 - MC-21-400
+Demand: 706 / 424 / 267
+Depart
+
+2,846KM
+#CL-143
+VLVT - VIDP
+B-153 - MC-21-400
+Demand: 702 / 337 / 164
+Depart
+#CL-160
+EDDF - LTCK
+B-171 - MC-21-400
+Onboard: 75 / 49 / 15
+00:01:13
+#CL-162
+LTCR - EDDF
+B-173 - MC-21-400
+Onboard: 119 / 45 / 7
+00:03:06
+#CL-156
+HECA - EDDF
+B-167 - MC-21-400
+Onboard: 78 / 47 / 15
+00:03:25
+=== PAGE BREAK ===
+217 ROUTES
+Previous
+2
+Next
+#CL-0061
+ZBAA - VVPC
+B-061 - MC-21-400
+Onboard: 84 / 32 / 25
+00:07:28
+#CL-0059
+ZBAA - VEBD
+B-059 - MC-21-400
+Onboard: 89 / 35 / 21
+00:07:31
+#CL-166
+OJAI - EDDF
+B-177 - MC-21-400
+Onboard: 1 / 68 / 29
+00:10:05
+#CL-129
+OMDB - LWSK
+B-134 - MC-21-400
+Onboard: 0 / 64 / 34
+00:10:10
+#CL-130
+VIDP - OOMS
+B-135 - MC-21-400
+Onboard: 62 / 30 / 32
+00:10:14
+#CL-155
+EDDF - HLLT
+B-169 - MC-21-400
+Onboard: 97 / 45 / 9
+00:10:54
+#CL-0094
+RKSI - ZGGG
+B-089 - MC-21-400
+Onboard: 88 / 34 / 22
+00:12:55
+#CL-108
+RKSI - VEAT
+B-113 - MC-21-400
+Onboard: 63 / 47 / 20
+00:13:38
+#CL-153
+GMML - EDDF
+B-166 - MC-21-400
+Onboard: 0 / 47 / 43
+00:15:40
+#CL-167
+OJAQ - EDDF
+B-178 - MC-21-400
+Onboard: 66 / 31 / 27
+00:16:59
+#CL-121
+LATI - OMDB
+B-126 - MC-21-400
+Onboard: 1 / 35 / 53
+00:17:22
+#CL-127
+OMDB - VETZ
+B-132 - MC-21-400
+Onboard: 42 / 25 / 43
+00:17:22
+#CL-0076
+VLVT - RKSI
+B-070 - MC-21-400
+Onboard: 1 / 79 / 21
+00:17:25
+#CL-0046
+RJTT - ZBAA
+B-045 - MC-21-400
+Onboard: 101 / 22 / 27
+00:17:44
+#CL-0049
+ZPPP - ZBAA
+B-042 - MC-21-400
+Onboard: 43 / 68 / 13
+00:17:47
+#CL-101
+RKSI - VTBU
+B-106 - MC-21-400
+Onboard: 57 / 68 / 8
+00:17:48
+#CL-0076
+RKSI - VMMC
+B-062 - MC-21-400
+Onboard: 27 / 72 / 18
+00:18:17
+#CL-137
+VIDP - UGTB
+B-147 - MC-21-400
+Onboard: 0 / 96 / 11
+00:20:54
+#CL-0089
+RKSI - VTSP
+B-084 - MC-21-400
+Onboard: 84 / 27 / 29
+00:20:55
+#CL-0076
+VTBS - ZBAA
+B-072 - MC-21-400
+Onboard: 1 / 55 / 38
+00:24:58
+=== PAGE BREAK ===
+217 ROUTES
+Cost index
+Depart 11
+1
+Next
+
+1,945KM
+#CL-119
+UDYZ - OMDB
+B-124 - MC-21-400
+Demand: 726 / 692 / 117
+Depart
+
+4,414KM
+#CL-0026
+ZBAA - WMKK
+B-020-5 - MC-21-400
+Demand: 1045 / 596 / 58
+Depart
+
+2,794KM
+#CL-139
+UBBB - VIDP
+B-144 - MC-21-400
+Demand: 687 / 736 / 120
+Depart
+
+2,799KM
+#CL-105
+RKSI - ZUBD
+B-110 - MC-21-400
+Demand: 709 / 221 / 202
+Depart
+
+3,368KM
+#CL-0090
+VETZ - RKSI
+B-085 - MC-21-400
+Demand: 361 / 328 / 166
+Depart
+
+2,278KM
+#CL-133
+OMAA - VIDP
+B-138 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,278KM
+#CL-138
+VIDP - OMAA
+B-143 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,825KM
+#CL-168
+URMO - EDDF
+B-179 - MC-21-400
+Demand: 422 / 379 / 207
+Depart
+
+2,830KM
+#CL-148
+OKBK - VIDP
+B-158 - MC-21-400
+Demand: 1361 / 258 / 171
+Depart
+
+2,838KM
+#CL-151
+EDDF - OLBA
+B-164 - MC-21-400
+Demand: 706 / 424 / 267
+Depart
+
+2,846KM
+#CL-143
+VLVT - VIDP
+B-153 - MC-21-400
+Demand: 702 / 337 / 164
+Depart
+#CL-160
+EDDF - LTCK
+B-171 - MC-21-400
+Onboard: 75 / 49 / 15
+00:01:07
+#CL-162
+LTCR - EDDF
+B-173 - MC-21-400
+Onboard: 119 / 45 / 7
+00:03:00
+#CL-156
+HECA - EDDF
+B-167 - MC-21-400
+Onboard: 78 / 47 / 15
+00:03:19
+=== PAGE BREAK ===
+217 ROUTES
+Previous
+2
+Next
+#CL-0061
+ZBAA - VVPC
+B-061 - MC-21-400
+Onboard: 84 / 32 / 25
+00:07:22
+#CL-0059
+ZBAA - VEBD
+B-059 - MC-21-400
+Onboard: 89 / 35 / 21
+00:07:25
+#CL-166
+OJAI - EDDF
+B-177 - MC-21-400
+Onboard: 1 / 68 / 29
+00:09:59
+#CL-129
+OMDB - LWSK
+B-134 - MC-21-400
+Onboard: 0 / 64 / 34
+00:10:04
+#CL-130
+VIDP - OOMS
+B-135 - MC-21-400
+Onboard: 62 / 30 / 32
+00:10:08
+#CL-155
+EDDF - HLLT
+B-169 - MC-21-400
+Onboard: 97 / 45 / 9
+00:10:48
+#CL-0094
+RKSI - ZGGG
+B-089 - MC-21-400
+Onboard: 88 / 34 / 22
+00:12:49
+#CL-108
+RKSI - VEAT
+B-113 - MC-21-400
+Onboard: 63 / 47 / 20
+00:13:32
+#CL-153
+GMML - EDDF
+B-166 - MC-21-400
+Onboard: 0 / 47 / 43
+00:15:34
+#CL-167
+OJAQ - EDDF
+B-178 - MC-21-400
+Onboard: 66 / 31 / 27
+00:16:53
+#CL-121
+LATI - OMDB
+B-126 - MC-21-400
+Onboard: 1 / 35 / 53
+00:17:16
+#CL-127
+OMDB - VETZ
+B-132 - MC-21-400
+Onboard: 42 / 25 / 43
+00:17:16
+#CL-0076
+VLVT - RKSI
+B-070 - MC-21-400
+Onboard: 1 / 79 / 21
+00:17:19
+#CL-0046
+RJTT - ZBAA
+B-045 - MC-21-400
+Onboard: 101 / 22 / 27
+00:17:38
+#CL-0049
+ZPPP - ZBAA
+B-042 - MC-21-400
+Onboard: 43 / 68 / 13
+00:17:41
+#CL-101
+RKSI - VTBU
+B-106 - MC-21-400
+Onboard: 57 / 68 / 8
+00:17:42
+#CL-0076
+RKSI - VMMC
+B-062 - MC-21-400
+Onboard: 27 / 72 / 18
+00:18:11
+#CL-137
+VIDP - UGTB
+B-147 - MC-21-400
+Onboard: 0 / 96 / 11
+00:20:48
+#CL-0089
+RKSI - VTSP
+B-084 - MC-21-400
+Onboard: 84 / 27 / 29
+00:20:49
+#CL-0076
+VTBS - ZBAA
+B-072 - MC-21-400
+Onboard: 1 / 55 / 38
+00:24:52
+=== PAGE BREAK ===
+217 ROUTES
+Cost index
+Depart 11
+1
+Next
+
+1,945KM
+#CL-119
+UDYZ - OMDB
+B-124 - MC-21-400
+Demand: 726 / 692 / 117
+Depart
+
+4,414KM
+#CL-0026
+ZBAA - WMKK
+B-020-5 - MC-21-400
+Demand: 1045 / 596 / 58
+Depart
+
+2,794KM
+#CL-139
+UBBB - VIDP
+B-144 - MC-21-400
+Demand: 687 / 736 / 120
+Depart
+
+2,799KM
+#CL-105
+RKSI - ZUBD
+B-110 - MC-21-400
+Demand: 709 / 221 / 202
+Depart
+
+3,368KM
+#CL-0090
+VETZ - RKSI
+B-085 - MC-21-400
+Demand: 361 / 328 / 166
+Depart
+
+2,278KM
+#CL-133
+OMAA - VIDP
+B-138 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,278KM
+#CL-138
+VIDP - OMAA
+B-143 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,825KM
+#CL-168
+URMO - EDDF
+B-179 - MC-21-400
+Demand: 422 / 379 / 207
+Depart
+
+2,830KM
+#CL-148
+OKBK - VIDP
+B-158 - MC-21-400
+Demand: 1361 / 258 / 171
+Depart
+
+2,838KM
+#CL-151
+EDDF - OLBA
+B-164 - MC-21-400
+Demand: 706 / 424 / 267
+Depart
+
+2,846KM
+#CL-143
+VLVT - VIDP
+B-153 - MC-21-400
+Demand: 702 / 337 / 164
+Depart
+#CL-160
+EDDF - LTCK
+B-171 - MC-21-400
+Onboard: 75 / 49 / 15
+00:01:00
+#CL-162
+LTCR - EDDF
+B-173 - MC-21-400
+Onboard: 119 / 45 / 7
+00:02:53
+#CL-156
+HECA - EDDF
+B-167 - MC-21-400
+Onboard: 78 / 47 / 15
+00:03:12
+=== PAGE BREAK ===
+217 ROUTES
+Previous
+2
+Next
+#CL-0061
+ZBAA - VVPC
+B-061 - MC-21-400
+Onboard: 84 / 32 / 25
+00:07:15
+#CL-0059
+ZBAA - VEBD
+B-059 - MC-21-400
+Onboard: 89 / 35 / 21
+00:07:18
+#CL-166
+OJAI - EDDF
+B-177 - MC-21-400
+Onboard: 1 / 68 / 29
+00:09:52
+#CL-129
+OMDB - LWSK
+B-134 - MC-21-400
+Onboard: 0 / 64 / 34
+00:09:57
+#CL-130
+VIDP - OOMS
+B-135 - MC-21-400
+Onboard: 62 / 30 / 32
+00:10:01
+#CL-155
+EDDF - HLLT
+B-169 - MC-21-400
+Onboard: 97 / 45 / 9
+00:10:41
+#CL-0094
+RKSI - ZGGG
+B-089 - MC-21-400
+Onboard: 88 / 34 / 22
+00:12:42
+#CL-108
+RKSI - VEAT
+B-113 - MC-21-400
+Onboard: 63 / 47 / 20
+00:13:25
+#CL-153
+GMML - EDDF
+B-166 - MC-21-400
+Onboard: 0 / 47 / 43
+00:15:27
+#CL-167
+OJAQ - EDDF
+B-178 - MC-21-400
+Onboard: 66 / 31 / 27
+00:16:46
+#CL-121
+LATI - OMDB
+B-126 - MC-21-400
+Onboard: 1 / 35 / 53
+00:17:09
+#CL-127
+OMDB - VETZ
+B-132 - MC-21-400
+Onboard: 42 / 25 / 43
+00:17:09
+#CL-0076
+VLVT - RKSI
+B-070 - MC-21-400
+Onboard: 1 / 79 / 21
+00:17:12
+#CL-0046
+RJTT - ZBAA
+B-045 - MC-21-400
+Onboard: 101 / 22 / 27
+00:17:31
+#CL-0049
+ZPPP - ZBAA
+B-042 - MC-21-400
+Onboard: 43 / 68 / 13
+00:17:34
+#CL-101
+RKSI - VTBU
+B-106 - MC-21-400
+Onboard: 57 / 68 / 8
+00:17:35
+#CL-0076
+RKSI - VMMC
+B-062 - MC-21-400
+Onboard: 27 / 72 / 18
+00:18:04
+#CL-137
+VIDP - UGTB
+B-147 - MC-21-400
+Onboard: 0 / 96 / 11
+00:20:41
+#CL-0089
+RKSI - VTSP
+B-084 - MC-21-400
+Onboard: 84 / 27 / 29
+00:20:42
+#CL-0076
+VTBS - ZBAA
+B-072 - MC-21-400
+Onboard: 1 / 55 / 38
+00:24:45
+=== PAGE BREAK ===
+217 ROUTES
+Cost index
+Depart 11
+1
+Next
+
+1,945KM
+#CL-119
+UDYZ - OMDB
+B-124 - MC-21-400
+Demand: 726 / 692 / 117
+Depart
+
+4,414KM
+#CL-0026
+ZBAA - WMKK
+B-020-5 - MC-21-400
+Demand: 1045 / 596 / 58
+Depart
+
+2,794KM
+#CL-139
+UBBB - VIDP
+B-144 - MC-21-400
+Demand: 687 / 736 / 120
+Depart
+
+2,799KM
+#CL-105
+RKSI - ZUBD
+B-110 - MC-21-400
+Demand: 709 / 221 / 202
+Depart
+
+3,368KM
+#CL-0090
+VETZ - RKSI
+B-085 - MC-21-400
+Demand: 361 / 328 / 166
+Depart
+
+2,278KM
+#CL-133
+OMAA - VIDP
+B-138 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,278KM
+#CL-138
+VIDP - OMAA
+B-143 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,825KM
+#CL-168
+URMO - EDDF
+B-179 - MC-21-400
+Demand: 422 / 379 / 207
+Depart
+
+2,830KM
+#CL-148
+OKBK - VIDP
+B-158 - MC-21-400
+Demand: 1361 / 258 / 171
+Depart
+
+2,838KM
+#CL-151
+EDDF - OLBA
+B-164 - MC-21-400
+Demand: 706 / 424 / 267
+Depart
+
+2,846KM
+#CL-143
+VLVT - VIDP
+B-153 - MC-21-400
+Demand: 702 / 337 / 164
+Depart
+#CL-160
+EDDF - LTCK
+B-171 - MC-21-400
+Onboard: 75 / 49 / 15
+00:00:53
+#CL-162
+LTCR - EDDF
+B-173 - MC-21-400
+Onboard: 119 / 45 / 7
+00:02:46
+#CL-156
+HECA - EDDF
+B-167 - MC-21-400
+Onboard: 78 / 47 / 15
+00:03:05
+=== PAGE BREAK ===
+217 ROUTES
+Previous
+2
+Next
+#CL-0061
+ZBAA - VVPC
+B-061 - MC-21-400
+Onboard: 84 / 32 / 25
+00:07:08
+#CL-0059
+ZBAA - VEBD
+B-059 - MC-21-400
+Onboard: 89 / 35 / 21
+00:07:11
+#CL-166
+OJAI - EDDF
+B-177 - MC-21-400
+Onboard: 1 / 68 / 29
+00:09:45
+#CL-129
+OMDB - LWSK
+B-134 - MC-21-400
+Onboard: 0 / 64 / 34
+00:09:50
+#CL-130
+VIDP - OOMS
+B-135 - MC-21-400
+Onboard: 62 / 30 / 32
+00:09:54
+#CL-155
+EDDF - HLLT
+B-169 - MC-21-400
+Onboard: 97 / 45 / 9
+00:10:34
+#CL-0094
+RKSI - ZGGG
+B-089 - MC-21-400
+Onboard: 88 / 34 / 22
+00:12:35
+#CL-108
+RKSI - VEAT
+B-113 - MC-21-400
+Onboard: 63 / 47 / 20
+00:13:18
+#CL-153
+GMML - EDDF
+B-166 - MC-21-400
+Onboard: 0 / 47 / 43
+00:15:20
+#CL-167
+OJAQ - EDDF
+B-178 - MC-21-400
+Onboard: 66 / 31 / 27
+00:16:39
+#CL-121
+LATI - OMDB
+B-126 - MC-21-400
+Onboard: 1 / 35 / 53
+00:17:02
+#CL-127
+OMDB - VETZ
+B-132 - MC-21-400
+Onboard: 42 / 25 / 43
+00:17:02
+#CL-0076
+VLVT - RKSI
+B-070 - MC-21-400
+Onboard: 1 / 79 / 21
+00:17:05
+#CL-0046
+RJTT - ZBAA
+B-045 - MC-21-400
+Onboard: 101 / 22 / 27
+00:17:24
+#CL-0049
+ZPPP - ZBAA
+B-042 - MC-21-400
+Onboard: 43 / 68 / 13
+00:17:27
+#CL-101
+RKSI - VTBU
+B-106 - MC-21-400
+Onboard: 57 / 68 / 8
+00:17:28
+#CL-0076
+RKSI - VMMC
+B-062 - MC-21-400
+Onboard: 27 / 72 / 18
+00:17:57
+#CL-137
+VIDP - UGTB
+B-147 - MC-21-400
+Onboard: 0 / 96 / 11
+00:20:34
+#CL-0089
+RKSI - VTSP
+B-084 - MC-21-400
+Onboard: 84 / 27 / 29
+00:20:35
+#CL-0076
+VTBS - ZBAA
+B-072 - MC-21-400
+Onboard: 1 / 55 / 38
+00:24:38
+=== PAGE BREAK ===
+217 ROUTES
+Cost index
+Depart 11
+1
+Next
+
+1,945KM
+#CL-119
+UDYZ - OMDB
+B-124 - MC-21-400
+Demand: 726 / 692 / 117
+Depart
+
+4,414KM
+#CL-0026
+ZBAA - WMKK
+B-020-5 - MC-21-400
+Demand: 1045 / 596 / 58
+Depart
+
+2,794KM
+#CL-139
+UBBB - VIDP
+B-144 - MC-21-400
+Demand: 687 / 736 / 120
+Depart
+
+2,799KM
+#CL-105
+RKSI - ZUBD
+B-110 - MC-21-400
+Demand: 709 / 221 / 202
+Depart
+
+3,368KM
+#CL-0090
+VETZ - RKSI
+B-085 - MC-21-400
+Demand: 361 / 328 / 166
+Depart
+
+2,278KM
+#CL-133
+OMAA - VIDP
+B-138 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,278KM
+#CL-138
+VIDP - OMAA
+B-143 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,825KM
+#CL-168
+URMO - EDDF
+B-179 - MC-21-400
+Demand: 422 / 379 / 207
+Depart
+
+2,830KM
+#CL-148
+OKBK - VIDP
+B-158 - MC-21-400
+Demand: 1361 / 258 / 171
+Depart
+
+2,838KM
+#CL-151
+EDDF - OLBA
+B-164 - MC-21-400
+Demand: 706 / 424 / 267
+Depart
+
+2,846KM
+#CL-143
+VLVT - VIDP
+B-153 - MC-21-400
+Demand: 702 / 337 / 164
+Depart
+#CL-160
+EDDF - LTCK
+B-171 - MC-21-400
+Onboard: 75 / 49 / 15
+00:00:46
+#CL-162
+LTCR - EDDF
+B-173 - MC-21-400
+Onboard: 119 / 45 / 7
+00:02:39
+#CL-156
+HECA - EDDF
+B-167 - MC-21-400
+Onboard: 78 / 47 / 15
+00:02:58
+=== PAGE BREAK ===
+217 ROUTES
+Previous
+2
+Next
+#CL-0061
+ZBAA - VVPC
+B-061 - MC-21-400
+Onboard: 84 / 32 / 25
+00:07:01
+#CL-0059
+ZBAA - VEBD
+B-059 - MC-21-400
+Onboard: 89 / 35 / 21
+00:07:04
+#CL-166
+OJAI - EDDF
+B-177 - MC-21-400
+Onboard: 1 / 68 / 29
+00:09:38
+#CL-129
+OMDB - LWSK
+B-134 - MC-21-400
+Onboard: 0 / 64 / 34
+00:09:43
+#CL-130
+VIDP - OOMS
+B-135 - MC-21-400
+Onboard: 62 / 30 / 32
+00:09:47
+#CL-155
+EDDF - HLLT
+B-169 - MC-21-400
+Onboard: 97 / 45 / 9
+00:10:27
+#CL-0094
+RKSI - ZGGG
+B-089 - MC-21-400
+Onboard: 88 / 34 / 22
+00:12:28
+#CL-108
+RKSI - VEAT
+B-113 - MC-21-400
+Onboard: 63 / 47 / 20
+00:13:11
+#CL-153
+GMML - EDDF
+B-166 - MC-21-400
+Onboard: 0 / 47 / 43
+00:15:13
+#CL-167
+OJAQ - EDDF
+B-178 - MC-21-400
+Onboard: 66 / 31 / 27
+00:16:32
+#CL-121
+LATI - OMDB
+B-126 - MC-21-400
+Onboard: 1 / 35 / 53
+00:16:55
+#CL-127
+OMDB - VETZ
+B-132 - MC-21-400
+Onboard: 42 / 25 / 43
+00:16:55
+#CL-0076
+VLVT - RKSI
+B-070 - MC-21-400
+Onboard: 1 / 79 / 21
+00:16:58
+#CL-0046
+RJTT - ZBAA
+B-045 - MC-21-400
+Onboard: 101 / 22 / 27
+00:17:17
+#CL-0049
+ZPPP - ZBAA
+B-042 - MC-21-400
+Onboard: 43 / 68 / 13
+00:17:20
+#CL-101
+RKSI - VTBU
+B-106 - MC-21-400
+Onboard: 57 / 68 / 8
+00:17:21
+#CL-0076
+RKSI - VMMC
+B-062 - MC-21-400
+Onboard: 27 / 72 / 18
+00:17:50
+#CL-137
+VIDP - UGTB
+B-147 - MC-21-400
+Onboard: 0 / 96 / 11
+00:20:27
+#CL-0089
+RKSI - VTSP
+B-084 - MC-21-400
+Onboard: 84 / 27 / 29
+00:20:28
+#CL-0076
+VTBS - ZBAA
+B-072 - MC-21-400
+Onboard: 1 / 55 / 38
+00:24:31
+=== PAGE BREAK ===
+217 ROUTES
+Cost index
+Depart 11
+1
+Next
+
+1,945KM
+#CL-119
+UDYZ - OMDB
+B-124 - MC-21-400
+Demand: 726 / 692 / 117
+Depart
+
+4,414KM
+#CL-0026
+ZBAA - WMKK
+B-020-5 - MC-21-400
+Demand: 1045 / 596 / 58
+Depart
+
+2,794KM
+#CL-139
+UBBB - VIDP
+B-144 - MC-21-400
+Demand: 687 / 736 / 120
+Depart
+
+2,799KM
+#CL-105
+RKSI - ZUBD
+B-110 - MC-21-400
+Demand: 709 / 221 / 202
+Depart
+
+3,368KM
+#CL-0090
+VETZ - RKSI
+B-085 - MC-21-400
+Demand: 361 / 328 / 166
+Depart
+
+2,278KM
+#CL-133
+OMAA - VIDP
+B-138 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,278KM
+#CL-138
+VIDP - OMAA
+B-143 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,825KM
+#CL-168
+URMO - EDDF
+B-179 - MC-21-400
+Demand: 422 / 379 / 207
+Depart
+
+2,830KM
+#CL-148
+OKBK - VIDP
+B-158 - MC-21-400
+Demand: 1361 / 258 / 171
+Depart
+
+2,838KM
+#CL-151
+EDDF - OLBA
+B-164 - MC-21-400
+Demand: 706 / 424 / 267
+Depart
+
+2,846KM
+#CL-143
+VLVT - VIDP
+B-153 - MC-21-400
+Demand: 702 / 337 / 164
+Depart
+#CL-160
+EDDF - LTCK
+B-171 - MC-21-400
+Onboard: 75 / 49 / 15
+00:00:39
+#CL-162
+LTCR - EDDF
+B-173 - MC-21-400
+Onboard: 119 / 45 / 7
+00:02:32
+#CL-156
+HECA - EDDF
+B-167 - MC-21-400
+Onboard: 78 / 47 / 15
+00:02:51
+=== PAGE BREAK ===
+217 ROUTES
+Previous
+2
+Next
+#CL-0061
+ZBAA - VVPC
+B-061 - MC-21-400
+Onboard: 84 / 32 / 25
+00:06:55
+#CL-0059
+ZBAA - VEBD
+B-059 - MC-21-400
+Onboard: 89 / 35 / 21
+00:06:58
+#CL-166
+OJAI - EDDF
+B-177 - MC-21-400
+Onboard: 1 / 68 / 29
+00:09:32
+#CL-129
+OMDB - LWSK
+B-134 - MC-21-400
+Onboard: 0 / 64 / 34
+00:09:37
+#CL-130
+VIDP - OOMS
+B-135 - MC-21-400
+Onboard: 62 / 30 / 32
+00:09:41
+#CL-155
+EDDF - HLLT
+B-169 - MC-21-400
+Onboard: 97 / 45 / 9
+00:10:21
+#CL-0094
+RKSI - ZGGG
+B-089 - MC-21-400
+Onboard: 88 / 34 / 22
+00:12:22
+#CL-108
+RKSI - VEAT
+B-113 - MC-21-400
+Onboard: 63 / 47 / 20
+00:13:05
+#CL-153
+GMML - EDDF
+B-166 - MC-21-400
+Onboard: 0 / 47 / 43
+00:15:07
+#CL-167
+OJAQ - EDDF
+B-178 - MC-21-400
+Onboard: 66 / 31 / 27
+00:16:26
+#CL-121
+LATI - OMDB
+B-126 - MC-21-400
+Onboard: 1 / 35 / 53
+00:16:49
+#CL-127
+OMDB - VETZ
+B-132 - MC-21-400
+Onboard: 42 / 25 / 43
+00:16:49
+#CL-0076
+VLVT - RKSI
+B-070 - MC-21-400
+Onboard: 1 / 79 / 21
+00:16:52
+#CL-0046
+RJTT - ZBAA
+B-045 - MC-21-400
+Onboard: 101 / 22 / 27
+00:17:11
+#CL-0049
+ZPPP - ZBAA
+B-042 - MC-21-400
+Onboard: 43 / 68 / 13
+00:17:14
+#CL-101
+RKSI - VTBU
+B-106 - MC-21-400
+Onboard: 57 / 68 / 8
+00:17:15
+#CL-0076
+RKSI - VMMC
+B-062 - MC-21-400
+Onboard: 27 / 72 / 18
+00:17:44
+#CL-137
+VIDP - UGTB
+B-147 - MC-21-400
+Onboard: 0 / 96 / 11
+00:20:21
+#CL-0089
+RKSI - VTSP
+B-084 - MC-21-400
+Onboard: 84 / 27 / 29
+00:20:22
+#CL-0076
+VTBS - ZBAA
+B-072 - MC-21-400
+Onboard: 1 / 55 / 38
+00:24:25
+=== PAGE BREAK ===
+217 ROUTES
+Cost index
+Depart 11
+1
+Next
+
+1,945KM
+#CL-119
+UDYZ - OMDB
+B-124 - MC-21-400
+Demand: 726 / 692 / 117
+Depart
+
+4,414KM
+#CL-0026
+ZBAA - WMKK
+B-020-5 - MC-21-400
+Demand: 1045 / 596 / 58
+Depart
+
+2,794KM
+#CL-139
+UBBB - VIDP
+B-144 - MC-21-400
+Demand: 687 / 736 / 120
+Depart
+
+2,799KM
+#CL-105
+RKSI - ZUBD
+B-110 - MC-21-400
+Demand: 709 / 221 / 202
+Depart
+
+3,368KM
+#CL-0090
+VETZ - RKSI
+B-085 - MC-21-400
+Demand: 361 / 328 / 166
+Depart
+
+2,278KM
+#CL-133
+OMAA - VIDP
+B-138 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,278KM
+#CL-138
+VIDP - OMAA
+B-143 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,825KM
+#CL-168
+URMO - EDDF
+B-179 - MC-21-400
+Demand: 422 / 379 / 207
+Depart
+
+2,830KM
+#CL-148
+OKBK - VIDP
+B-158 - MC-21-400
+Demand: 1361 / 258 / 171
+Depart
+
+2,838KM
+#CL-151
+EDDF - OLBA
+B-164 - MC-21-400
+Demand: 706 / 424 / 267
+Depart
+
+2,846KM
+#CL-143
+VLVT - VIDP
+B-153 - MC-21-400
+Demand: 702 / 337 / 164
+Depart
+#CL-160
+EDDF - LTCK
+B-171 - MC-21-400
+Onboard: 75 / 49 / 15
+00:00:32
+#CL-162
+LTCR - EDDF
+B-173 - MC-21-400
+Onboard: 119 / 45 / 7
+00:02:25
+#CL-156
+HECA - EDDF
+B-167 - MC-21-400
+Onboard: 78 / 47 / 15
+00:02:44
+=== PAGE BREAK ===
+217 ROUTES
+Previous
+2
+Next
+#CL-0061
+ZBAA - VVPC
+B-061 - MC-21-400
+Onboard: 84 / 32 / 25
+00:06:48
+#CL-0059
+ZBAA - VEBD
+B-059 - MC-21-400
+Onboard: 89 / 35 / 21
+00:06:51
+#CL-166
+OJAI - EDDF
+B-177 - MC-21-400
+Onboard: 1 / 68 / 29
+00:09:25
+#CL-129
+OMDB - LWSK
+B-134 - MC-21-400
+Onboard: 0 / 64 / 34
+00:09:30
+#CL-130
+VIDP - OOMS
+B-135 - MC-21-400
+Onboard: 62 / 30 / 32
+00:09:34
+#CL-155
+EDDF - HLLT
+B-169 - MC-21-400
+Onboard: 97 / 45 / 9
+00:10:14
+#CL-0094
+RKSI - ZGGG
+B-089 - MC-21-400
+Onboard: 88 / 34 / 22
+00:12:15
+#CL-108
+RKSI - VEAT
+B-113 - MC-21-400
+Onboard: 63 / 47 / 20
+00:12:58
+#CL-153
+GMML - EDDF
+B-166 - MC-21-400
+Onboard: 0 / 47 / 43
+00:15:00
+#CL-167
+OJAQ - EDDF
+B-178 - MC-21-400
+Onboard: 66 / 31 / 27
+00:16:19
+#CL-121
+LATI - OMDB
+B-126 - MC-21-400
+Onboard: 1 / 35 / 53
+00:16:42
+#CL-127
+OMDB - VETZ
+B-132 - MC-21-400
+Onboard: 42 / 25 / 43
+00:16:42
+#CL-0076
+VLVT - RKSI
+B-070 - MC-21-400
+Onboard: 1 / 79 / 21
+00:16:45
+#CL-0046
+RJTT - ZBAA
+B-045 - MC-21-400
+Onboard: 101 / 22 / 27
+00:17:04
+#CL-0049
+ZPPP - ZBAA
+B-042 - MC-21-400
+Onboard: 43 / 68 / 13
+00:17:07
+#CL-101
+RKSI - VTBU
+B-106 - MC-21-400
+Onboard: 57 / 68 / 8
+00:17:08
+#CL-0076
+RKSI - VMMC
+B-062 - MC-21-400
+Onboard: 27 / 72 / 18
+00:17:37
+#CL-137
+VIDP - UGTB
+B-147 - MC-21-400
+Onboard: 0 / 96 / 11
+00:20:14
+#CL-0089
+RKSI - VTSP
+B-084 - MC-21-400
+Onboard: 84 / 27 / 29
+00:20:15
+#CL-0076
+VTBS - ZBAA
+B-072 - MC-21-400
+Onboard: 1 / 55 / 38
+00:24:18
+=== PAGE BREAK ===
+217 ROUTES
+Cost index
+Depart 11
+1
+Next
+
+1,945KM
+#CL-119
+UDYZ - OMDB
+B-124 - MC-21-400
+Demand: 726 / 692 / 117
+Depart
+
+4,414KM
+#CL-0026
+ZBAA - WMKK
+B-020-5 - MC-21-400
+Demand: 1045 / 596 / 58
+Depart
+
+2,794KM
+#CL-139
+UBBB - VIDP
+B-144 - MC-21-400
+Demand: 687 / 736 / 120
+Depart
+
+2,799KM
+#CL-105
+RKSI - ZUBD
+B-110 - MC-21-400
+Demand: 709 / 221 / 202
+Depart
+
+3,368KM
+#CL-0090
+VETZ - RKSI
+B-085 - MC-21-400
+Demand: 361 / 328 / 166
+Depart
+
+2,278KM
+#CL-133
+OMAA - VIDP
+B-138 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,278KM
+#CL-138
+VIDP - OMAA
+B-143 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,825KM
+#CL-168
+URMO - EDDF
+B-179 - MC-21-400
+Demand: 422 / 379 / 207
+Depart
+
+2,830KM
+#CL-148
+OKBK - VIDP
+B-158 - MC-21-400
+Demand: 1361 / 258 / 171
+Depart
+
+2,838KM
+#CL-151
+EDDF - OLBA
+B-164 - MC-21-400
+Demand: 706 / 424 / 267
+Depart
+
+2,846KM
+#CL-143
+VLVT - VIDP
+B-153 - MC-21-400
+Demand: 702 / 337 / 164
+Depart
+#CL-160
+EDDF - LTCK
+B-171 - MC-21-400
+Onboard: 75 / 49 / 15
+00:00:25
+#CL-162
+LTCR - EDDF
+B-173 - MC-21-400
+Onboard: 119 / 45 / 7
+00:02:18
+#CL-156
+HECA - EDDF
+B-167 - MC-21-400
+Onboard: 78 / 47 / 15
+00:02:37
+=== PAGE BREAK ===
+217 ROUTES
+Previous
+2
+Next
+#CL-0061
+ZBAA - VVPC
+B-061 - MC-21-400
+Onboard: 84 / 32 / 25
+00:06:41
+#CL-0059
+ZBAA - VEBD
+B-059 - MC-21-400
+Onboard: 89 / 35 / 21
+00:06:44
+#CL-166
+OJAI - EDDF
+B-177 - MC-21-400
+Onboard: 1 / 68 / 29
+00:09:18
+#CL-129
+OMDB - LWSK
+B-134 - MC-21-400
+Onboard: 0 / 64 / 34
+00:09:23
+#CL-130
+VIDP - OOMS
+B-135 - MC-21-400
+Onboard: 62 / 30 / 32
+00:09:27
+#CL-155
+EDDF - HLLT
+B-169 - MC-21-400
+Onboard: 97 / 45 / 9
+00:10:07
+#CL-0094
+RKSI - ZGGG
+B-089 - MC-21-400
+Onboard: 88 / 34 / 22
+00:12:08
+#CL-108
+RKSI - VEAT
+B-113 - MC-21-400
+Onboard: 63 / 47 / 20
+00:12:51
+#CL-153
+GMML - EDDF
+B-166 - MC-21-400
+Onboard: 0 / 47 / 43
+00:14:53
+#CL-167
+OJAQ - EDDF
+B-178 - MC-21-400
+Onboard: 66 / 31 / 27
+00:16:12
+#CL-121
+LATI - OMDB
+B-126 - MC-21-400
+Onboard: 1 / 35 / 53
+00:16:35
+#CL-127
+OMDB - VETZ
+B-132 - MC-21-400
+Onboard: 42 / 25 / 43
+00:16:35
+#CL-0076
+VLVT - RKSI
+B-070 - MC-21-400
+Onboard: 1 / 79 / 21
+00:16:38
+#CL-0046
+RJTT - ZBAA
+B-045 - MC-21-400
+Onboard: 101 / 22 / 27
+00:16:57
+#CL-0049
+ZPPP - ZBAA
+B-042 - MC-21-400
+Onboard: 43 / 68 / 13
+00:17:00
+#CL-101
+RKSI - VTBU
+B-106 - MC-21-400
+Onboard: 57 / 68 / 8
+00:17:01
+#CL-0076
+RKSI - VMMC
+B-062 - MC-21-400
+Onboard: 27 / 72 / 18
+00:17:30
+#CL-137
+VIDP - UGTB
+B-147 - MC-21-400
+Onboard: 0 / 96 / 11
+00:20:07
+#CL-0089
+RKSI - VTSP
+B-084 - MC-21-400
+Onboard: 84 / 27 / 29
+00:20:08
+#CL-0076
+VTBS - ZBAA
+B-072 - MC-21-400
+Onboard: 1 / 55 / 38
+00:24:11
+=== PAGE BREAK ===
+218 ROUTES
+Cost index
+Depart 11
+1
+Next
+
+1,945KM
+#CL-119
+UDYZ - OMDB
+B-124 - MC-21-400
+Demand: 726 / 692 / 117
+Depart
+
+2,063KM
+#CL-118
+OJAQ - OMDB
+B-123 - MC-21-400
+Demand: 958 / 587 / 91
+Depart
+
+4,414KM
+#CL-0026
+ZBAA - WMKK
+B-020-5 - MC-21-400
+Demand: 1045 / 596 / 58
+Depart
+
+2,794KM
+#CL-139
+UBBB - VIDP
+B-144 - MC-21-400
+Demand: 687 / 736 / 120
+Depart
+
+2,799KM
+#CL-105
+RKSI - ZUBD
+B-110 - MC-21-400
+Demand: 709 / 221 / 202
+Depart
+
+3,368KM
+#CL-0090
+VETZ - RKSI
+B-085 - MC-21-400
+Demand: 361 / 328 / 166
+Depart
+
+2,278KM
+#CL-133
+OMAA - VIDP
+B-138 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,278KM
+#CL-138
+VIDP - OMAA
+B-143 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,825KM
+#CL-168
+URMO - EDDF
+B-179 - MC-21-400
+Demand: 422 / 379 / 207
+Depart
+
+2,830KM
+#CL-148
+OKBK - VIDP
+B-158 - MC-21-400
+Demand: 1361 / 258 / 171
+Depart
+
+2,838KM
+#CL-151
+EDDF - OLBA
+B-164 - MC-21-400
+Demand: 706 / 424 / 267
+Depart
+
+2,846KM
+#CL-143
+VLVT - VIDP
+B-153 - MC-21-400
+Demand: 702 / 337 / 164
+Depart
+#CL-160
+EDDF - LTCK
+B-171 - MC-21-400
+Onboard: 75 / 49 / 15
+00:00:19
+#CL-162
+LTCR - EDDF
+B-173 - MC-21-400
+Onboard: 119 / 45 / 7
+00:02:12
+#CL-156
+HECA - EDDF
+B-167 - MC-21-400
+Onboard: 78 / 47 / 15
+00:02:31
+=== PAGE BREAK ===
+218 ROUTES
+Previous
+2
+Next
+#CL-0061
+ZBAA - VVPC
+B-061 - MC-21-400
+Onboard: 84 / 32 / 25
+00:06:35
+#CL-0059
+ZBAA - VEBD
+B-059 - MC-21-400
+Onboard: 89 / 35 / 21
+00:06:38
+#CL-166
+OJAI - EDDF
+B-177 - MC-21-400
+Onboard: 1 / 68 / 29
+00:09:12
+#CL-129
+OMDB - LWSK
+B-134 - MC-21-400
+Onboard: 0 / 64 / 34
+00:09:17
+#CL-130
+VIDP - OOMS
+B-135 - MC-21-400
+Onboard: 62 / 30 / 32
+00:09:21
+#CL-155
+EDDF - HLLT
+B-169 - MC-21-400
+Onboard: 97 / 45 / 9
+00:10:01
+#CL-0094
+RKSI - ZGGG
+B-089 - MC-21-400
+Onboard: 88 / 34 / 22
+00:12:02
+#CL-108
+RKSI - VEAT
+B-113 - MC-21-400
+Onboard: 63 / 47 / 20
+00:12:45
+#CL-153
+GMML - EDDF
+B-166 - MC-21-400
+Onboard: 0 / 47 / 43
+00:14:47
+#CL-167
+OJAQ - EDDF
+B-178 - MC-21-400
+Onboard: 66 / 31 / 27
+00:16:06
+#CL-121
+LATI - OMDB
+B-126 - MC-21-400
+Onboard: 1 / 35 / 53
+00:16:29
+#CL-127
+OMDB - VETZ
+B-132 - MC-21-400
+Onboard: 42 / 25 / 43
+00:16:29
+#CL-0076
+VLVT - RKSI
+B-070 - MC-21-400
+Onboard: 1 / 79 / 21
+00:16:32
+#CL-0046
+RJTT - ZBAA
+B-045 - MC-21-400
+Onboard: 101 / 22 / 27
+00:16:51
+#CL-0049
+ZPPP - ZBAA
+B-042 - MC-21-400
+Onboard: 43 / 68 / 13
+00:16:54
+#CL-101
+RKSI - VTBU
+B-106 - MC-21-400
+Onboard: 57 / 68 / 8
+00:16:55
+#CL-0076
+RKSI - VMMC
+B-062 - MC-21-400
+Onboard: 27 / 72 / 18
+00:17:24
+#CL-137
+VIDP - UGTB
+B-147 - MC-21-400
+Onboard: 0 / 96 / 11
+00:20:01
+#CL-0089
+RKSI - VTSP
+B-084 - MC-21-400
+Onboard: 84 / 27 / 29
+00:20:02
+#CL-0076
+VTBS - ZBAA
+B-072 - MC-21-400
+Onboard: 1 / 55 / 38
+00:24:05
+=== PAGE BREAK ===
+218 ROUTES
+Cost index
+Depart 11
+1
+Next
+
+1,945KM
+#CL-119
+UDYZ - OMDB
+B-124 - MC-21-400
+Demand: 726 / 692 / 117
+Depart
+
+2,063KM
+#CL-118
+OJAQ - OMDB
+B-123 - MC-21-400
+Demand: 958 / 587 / 91
+Depart
+
+4,414KM
+#CL-0026
+ZBAA - WMKK
+B-020-5 - MC-21-400
+Demand: 1045 / 596 / 58
+Depart
+
+2,794KM
+#CL-139
+UBBB - VIDP
+B-144 - MC-21-400
+Demand: 687 / 736 / 120
+Depart
+
+2,799KM
+#CL-105
+RKSI - ZUBD
+B-110 - MC-21-400
+Demand: 709 / 221 / 202
+Depart
+
+3,368KM
+#CL-0090
+VETZ - RKSI
+B-085 - MC-21-400
+Demand: 361 / 328 / 166
+Depart
+
+2,278KM
+#CL-133
+OMAA - VIDP
+B-138 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,278KM
+#CL-138
+VIDP - OMAA
+B-143 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,825KM
+#CL-168
+URMO - EDDF
+B-179 - MC-21-400
+Demand: 422 / 379 / 207
+Depart
+
+2,830KM
+#CL-148
+OKBK - VIDP
+B-158 - MC-21-400
+Demand: 1361 / 258 / 171
+Depart
+
+2,838KM
+#CL-151
+EDDF - OLBA
+B-164 - MC-21-400
+Demand: 706 / 424 / 267
+Depart
+
+2,846KM
+#CL-143
+VLVT - VIDP
+B-153 - MC-21-400
+Demand: 702 / 337 / 164
+Depart
+#CL-160
+EDDF - LTCK
+B-171 - MC-21-400
+Onboard: 75 / 49 / 15
+00:00:13
+#CL-162
+LTCR - EDDF
+B-173 - MC-21-400
+Onboard: 119 / 45 / 7
+00:02:06
+#CL-156
+HECA - EDDF
+B-167 - MC-21-400
+Onboard: 78 / 47 / 15
+00:02:25
+=== PAGE BREAK ===
+218 ROUTES
+Previous
+2
+Next
+#CL-0061
+ZBAA - VVPC
+B-061 - MC-21-400
+Onboard: 84 / 32 / 25
+00:06:28
+#CL-0059
+ZBAA - VEBD
+B-059 - MC-21-400
+Onboard: 89 / 35 / 21
+00:06:32
+#CL-166
+OJAI - EDDF
+B-177 - MC-21-400
+Onboard: 1 / 68 / 29
+00:09:06
+#CL-129
+OMDB - LWSK
+B-134 - MC-21-400
+Onboard: 0 / 64 / 34
+00:09:11
+#CL-130
+VIDP - OOMS
+B-135 - MC-21-400
+Onboard: 62 / 30 / 32
+00:09:15
+#CL-155
+EDDF - HLLT
+B-169 - MC-21-400
+Onboard: 97 / 45 / 9
+00:09:55
+#CL-0094
+RKSI - ZGGG
+B-089 - MC-21-400
+Onboard: 88 / 34 / 22
+00:11:56
+#CL-108
+RKSI - VEAT
+B-113 - MC-21-400
+Onboard: 63 / 47 / 20
+00:12:39
+#CL-153
+GMML - EDDF
+B-166 - MC-21-400
+Onboard: 0 / 47 / 43
+00:14:41
+#CL-167
+OJAQ - EDDF
+B-178 - MC-21-400
+Onboard: 66 / 31 / 27
+00:16:00
+#CL-121
+LATI - OMDB
+B-126 - MC-21-400
+Onboard: 1 / 35 / 53
+00:16:23
+#CL-127
+OMDB - VETZ
+B-132 - MC-21-400
+Onboard: 42 / 25 / 43
+00:16:23
+#CL-0076
+VLVT - RKSI
+B-070 - MC-21-400
+Onboard: 1 / 79 / 21
+00:16:26
+#CL-0046
+RJTT - ZBAA
+B-045 - MC-21-400
+Onboard: 101 / 22 / 27
+00:16:45
+#CL-0049
+ZPPP - ZBAA
+B-042 - MC-21-400
+Onboard: 43 / 68 / 13
+00:16:48
+#CL-101
+RKSI - VTBU
+B-106 - MC-21-400
+Onboard: 57 / 68 / 8
+00:16:49
+#CL-0076
+RKSI - VMMC
+B-062 - MC-21-400
+Onboard: 27 / 72 / 18
+00:17:18
+#CL-137
+VIDP - UGTB
+B-147 - MC-21-400
+Onboard: 0 / 96 / 11
+00:19:55
+#CL-0089
+RKSI - VTSP
+B-084 - MC-21-400
+Onboard: 84 / 27 / 29
+00:19:56
+#CL-0076
+VTBS - ZBAA
+B-072 - MC-21-400
+Onboard: 1 / 55 / 38
+00:23:59
+=== PAGE BREAK ===
+218 ROUTES
+Cost index
+Depart 11
+1
+Next
+
+1,945KM
+#CL-119
+UDYZ - OMDB
+B-124 - MC-21-400
+Demand: 726 / 692 / 117
+Depart
+
+2,063KM
+#CL-118
+OJAQ - OMDB
+B-123 - MC-21-400
+Demand: 958 / 587 / 91
+Depart
+
+4,414KM
+#CL-0026
+ZBAA - WMKK
+B-020-5 - MC-21-400
+Demand: 1045 / 596 / 58
+Depart
+
+2,794KM
+#CL-139
+UBBB - VIDP
+B-144 - MC-21-400
+Demand: 687 / 736 / 120
+Depart
+
+2,799KM
+#CL-105
+RKSI - ZUBD
+B-110 - MC-21-400
+Demand: 709 / 221 / 202
+Depart
+
+3,368KM
+#CL-0090
+VETZ - RKSI
+B-085 - MC-21-400
+Demand: 361 / 328 / 166
+Depart
+
+2,278KM
+#CL-133
+OMAA - VIDP
+B-138 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,278KM
+#CL-138
+VIDP - OMAA
+B-143 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,825KM
+#CL-168
+URMO - EDDF
+B-179 - MC-21-400
+Demand: 422 / 379 / 207
+Depart
+
+2,830KM
+#CL-148
+OKBK - VIDP
+B-158 - MC-21-400
+Demand: 1361 / 258 / 171
+Depart
+
+2,838KM
+#CL-151
+EDDF - OLBA
+B-164 - MC-21-400
+Demand: 706 / 424 / 267
+Depart
+
+2,846KM
+#CL-143
+VLVT - VIDP
+B-153 - MC-21-400
+Demand: 702 / 337 / 164
+Depart
+#CL-160
+EDDF - LTCK
+B-171 - MC-21-400
+Onboard: 75 / 49 / 15
+00:00:06
+#CL-162
+LTCR - EDDF
+B-173 - MC-21-400
+Onboard: 119 / 45 / 7
+00:01:59
+#CL-156
+HECA - EDDF
+B-167 - MC-21-400
+Onboard: 78 / 47 / 15
+00:02:18
+=== PAGE BREAK ===
+218 ROUTES
+Previous
+2
+Next
+#CL-0061
+ZBAA - VVPC
+B-061 - MC-21-400
+Onboard: 84 / 32 / 25
+00:06:21
+#CL-0059
+ZBAA - VEBD
+B-059 - MC-21-400
+Onboard: 89 / 35 / 21
+00:06:24
+#CL-166
+OJAI - EDDF
+B-177 - MC-21-400
+Onboard: 1 / 68 / 29
+00:08:58
+#CL-129
+OMDB - LWSK
+B-134 - MC-21-400
+Onboard: 0 / 64 / 34
+00:09:03
+#CL-130
+VIDP - OOMS
+B-135 - MC-21-400
+Onboard: 62 / 30 / 32
+00:09:07
+#CL-155
+EDDF - HLLT
+B-169 - MC-21-400
+Onboard: 97 / 45 / 9
+00:09:47
+#CL-0094
+RKSI - ZGGG
+B-089 - MC-21-400
+Onboard: 88 / 34 / 22
+00:11:48
+#CL-108
+RKSI - VEAT
+B-113 - MC-21-400
+Onboard: 63 / 47 / 20
+00:12:31
+#CL-153
+GMML - EDDF
+B-166 - MC-21-400
+Onboard: 0 / 47 / 43
+00:14:33
+#CL-167
+OJAQ - EDDF
+B-178 - MC-21-400
+Onboard: 66 / 31 / 27
+00:15:52
+#CL-121
+LATI - OMDB
+B-126 - MC-21-400
+Onboard: 1 / 35 / 53
+00:16:15
+#CL-127
+OMDB - VETZ
+B-132 - MC-21-400
+Onboard: 42 / 25 / 43
+00:16:15
+#CL-0076
+VLVT - RKSI
+B-070 - MC-21-400
+Onboard: 1 / 79 / 21
+00:16:18
+#CL-0046
+RJTT - ZBAA
+B-045 - MC-21-400
+Onboard: 101 / 22 / 27
+00:16:37
+#CL-0049
+ZPPP - ZBAA
+B-042 - MC-21-400
+Onboard: 43 / 68 / 13
+00:16:40
+#CL-101
+RKSI - VTBU
+B-106 - MC-21-400
+Onboard: 57 / 68 / 8
+00:16:41
+#CL-0076
+RKSI - VMMC
+B-062 - MC-21-400
+Onboard: 27 / 72 / 18
+00:17:10
+#CL-137
+VIDP - UGTB
+B-147 - MC-21-400
+Onboard: 0 / 96 / 11
+00:19:47
+#CL-0089
+RKSI - VTSP
+B-084 - MC-21-400
+Onboard: 84 / 27 / 29
+00:19:48
+#CL-0076
+VTBS - ZBAA
+B-072 - MC-21-400
+Onboard: 1 / 55 / 38
+00:23:51
+=== PAGE BREAK ===
+218 ROUTES
+Cost index
+Depart 11
+1
+Next
+
+1,945KM
+#CL-119
+UDYZ - OMDB
+B-124 - MC-21-400
+Demand: 726 / 692 / 117
+Depart
+
+2,063KM
+#CL-118
+OJAQ - OMDB
+B-123 - MC-21-400
+Demand: 958 / 587 / 91
+Depart
+
+4,414KM
+#CL-0026
+ZBAA - WMKK
+B-020-5 - MC-21-400
+Demand: 1045 / 596 / 58
+Depart
+
+2,794KM
+#CL-139
+UBBB - VIDP
+B-144 - MC-21-400
+Demand: 687 / 736 / 120
+Depart
+
+2,799KM
+#CL-105
+RKSI - ZUBD
+B-110 - MC-21-400
+Demand: 709 / 221 / 202
+Depart
+
+3,368KM
+#CL-0090
+VETZ - RKSI
+B-085 - MC-21-400
+Demand: 361 / 328 / 166
+Depart
+
+2,278KM
+#CL-133
+OMAA - VIDP
+B-138 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,278KM
+#CL-138
+VIDP - OMAA
+B-143 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,825KM
+#CL-168
+URMO - EDDF
+B-179 - MC-21-400
+Demand: 422 / 379 / 207
+Depart
+
+2,830KM
+#CL-148
+OKBK - VIDP
+B-158 - MC-21-400
+Demand: 1361 / 258 / 171
+Depart
+
+2,838KM
+#CL-151
+EDDF - OLBA
+B-164 - MC-21-400
+Demand: 706 / 424 / 267
+Depart
+
+2,846KM
+#CL-143
+VLVT - VIDP
+B-153 - MC-21-400
+Demand: 702 / 337 / 164
+Depart
+#CL-160
+EDDF - LTCK
+B-171 - MC-21-400
+Onboard: 75 / 49 / 15
+00:00:00
+#CL-162
+LTCR - EDDF
+B-173 - MC-21-400
+Onboard: 119 / 45 / 7
+00:01:52
+#CL-156
+HECA - EDDF
+B-167 - MC-21-400
+Onboard: 78 / 47 / 15
+00:02:11
+=== PAGE BREAK ===
+218 ROUTES
+Previous
+2
+Next
+#CL-0061
+ZBAA - VVPC
+B-061 - MC-21-400
+Onboard: 84 / 32 / 25
+00:06:14
+#CL-0059
+ZBAA - VEBD
+B-059 - MC-21-400
+Onboard: 89 / 35 / 21
+00:06:17
+#CL-166
+OJAI - EDDF
+B-177 - MC-21-400
+Onboard: 1 / 68 / 29
+00:08:51
+#CL-129
+OMDB - LWSK
+B-134 - MC-21-400
+Onboard: 0 / 64 / 34
+00:08:56
+#CL-130
+VIDP - OOMS
+B-135 - MC-21-400
+Onboard: 62 / 30 / 32
+00:09:00
+#CL-155
+EDDF - HLLT
+B-169 - MC-21-400
+Onboard: 97 / 45 / 9
+00:09:40
+#CL-0094
+RKSI - ZGGG
+B-089 - MC-21-400
+Onboard: 88 / 34 / 22
+00:11:41
+#CL-108
+RKSI - VEAT
+B-113 - MC-21-400
+Onboard: 63 / 47 / 20
+00:12:24
+#CL-153
+GMML - EDDF
+B-166 - MC-21-400
+Onboard: 0 / 47 / 43
+00:14:26
+#CL-167
+OJAQ - EDDF
+B-178 - MC-21-400
+Onboard: 66 / 31 / 27
+00:15:45
+#CL-121
+LATI - OMDB
+B-126 - MC-21-400
+Onboard: 1 / 35 / 53
+00:16:08
+#CL-127
+OMDB - VETZ
+B-132 - MC-21-400
+Onboard: 42 / 25 / 43
+00:16:08
+#CL-0076
+VLVT - RKSI
+B-070 - MC-21-400
+Onboard: 1 / 79 / 21
+00:16:11
+#CL-0046
+RJTT - ZBAA
+B-045 - MC-21-400
+Onboard: 101 / 22 / 27
+00:16:30
+#CL-0049
+ZPPP - ZBAA
+B-042 - MC-21-400
+Onboard: 43 / 68 / 13
+00:16:33
+#CL-101
+RKSI - VTBU
+B-106 - MC-21-400
+Onboard: 57 / 68 / 8
+00:16:34
+#CL-0076
+RKSI - VMMC
+B-062 - MC-21-400
+Onboard: 27 / 72 / 18
+00:17:03
+#CL-137
+VIDP - UGTB
+B-147 - MC-21-400
+Onboard: 0 / 96 / 11
+00:19:40
+#CL-0089
+RKSI - VTSP
+B-084 - MC-21-400
+Onboard: 84 / 27 / 29
+00:19:41
+#CL-0076
+VTBS - ZBAA
+B-072 - MC-21-400
+Onboard: 1 / 55 / 38
+00:23:44
+=== PAGE BREAK ===
+218 ROUTES
+Cost index
+Depart 12
+1
+Next
+
+1,945KM
+#CL-119
+UDYZ - OMDB
+B-124 - MC-21-400
+Demand: 726 / 692 / 117
+Depart
+
+2,063KM
+#CL-118
+OJAQ - OMDB
+B-123 - MC-21-400
+Demand: 958 / 587 / 91
+Depart
+
+4,414KM
+#CL-0026
+ZBAA - WMKK
+B-020-5 - MC-21-400
+Demand: 1045 / 596 / 58
+Depart
+
+2,794KM
+#CL-139
+UBBB - VIDP
+B-144 - MC-21-400
+Demand: 687 / 736 / 120
+Depart
+
+2,799KM
+#CL-105
+RKSI - ZUBD
+B-110 - MC-21-400
+Demand: 709 / 221 / 202
+Depart
+
+3,368KM
+#CL-0090
+VETZ - RKSI
+B-085 - MC-21-400
+Demand: 361 / 328 / 166
+Depart
+
+2,278KM
+#CL-133
+OMAA - VIDP
+B-138 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,278KM
+#CL-138
+VIDP - OMAA
+B-143 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,825KM
+#CL-168
+URMO - EDDF
+B-179 - MC-21-400
+Demand: 422 / 379 / 207
+Depart
+
+2,830KM
+#CL-148
+OKBK - VIDP
+B-158 - MC-21-400
+Demand: 1361 / 258 / 171
+Depart
+
+2,838KM
+#CL-151
+EDDF - OLBA
+B-164 - MC-21-400
+Demand: 706 / 424 / 267
+Depart
+
+2,846KM
+#CL-143
+VLVT - VIDP
+B-153 - MC-21-400
+Demand: 702 / 337 / 164
+Depart
+
+2,883KM
+#CL-160
+EDDF - LTCK
+B-171 - MC-21-400
+Demand: 701 / 426 / 130
+Depart
+#CL-162
+LTCR - EDDF
+B-173 - MC-21-400
+Onboard: 119 / 45 / 7
+00:01:46
+#CL-156
+HECA - EDDF
+B-167 - MC-21-400
+Onboard: 78 / 47 / 15
+00:02:05
+=== PAGE BREAK ===
+218 ROUTES
+Previous
+2
+Next
+#CL-0061
+ZBAA - VVPC
+B-061 - MC-21-400
+Onboard: 84 / 32 / 25
+00:06:07
+#CL-0059
+ZBAA - VEBD
+B-059 - MC-21-400
+Onboard: 89 / 35 / 21
+00:06:10
+#CL-166
+OJAI - EDDF
+B-177 - MC-21-400
+Onboard: 1 / 68 / 29
+00:08:44
+#CL-129
+OMDB - LWSK
+B-134 - MC-21-400
+Onboard: 0 / 64 / 34
+00:08:49
+#CL-130
+VIDP - OOMS
+B-135 - MC-21-400
+Onboard: 62 / 30 / 32
+00:08:53
+#CL-155
+EDDF - HLLT
+B-169 - MC-21-400
+Onboard: 97 / 45 / 9
+00:09:33
+#CL-0094
+RKSI - ZGGG
+B-089 - MC-21-400
+Onboard: 88 / 34 / 22
+00:11:34
+#CL-108
+RKSI - VEAT
+B-113 - MC-21-400
+Onboard: 63 / 47 / 20
+00:12:17
+#CL-153
+GMML - EDDF
+B-166 - MC-21-400
+Onboard: 0 / 47 / 43
+00:14:19
+#CL-167
+OJAQ - EDDF
+B-178 - MC-21-400
+Onboard: 66 / 31 / 27
+00:15:38
+#CL-121
+LATI - OMDB
+B-126 - MC-21-400
+Onboard: 1 / 35 / 53
+00:16:01
+#CL-127
+OMDB - VETZ
+B-132 - MC-21-400
+Onboard: 42 / 25 / 43
+00:16:01
+#CL-0076
+VLVT - RKSI
+B-070 - MC-21-400
+Onboard: 1 / 79 / 21
+00:16:04
+#CL-0046
+RJTT - ZBAA
+B-045 - MC-21-400
+Onboard: 101 / 22 / 27
+00:16:23
+#CL-0049
+ZPPP - ZBAA
+B-042 - MC-21-400
+Onboard: 43 / 68 / 13
+00:16:26
+#CL-101
+RKSI - VTBU
+B-106 - MC-21-400
+Onboard: 57 / 68 / 8
+00:16:27
+#CL-0076
+RKSI - VMMC
+B-062 - MC-21-400
+Onboard: 27 / 72 / 18
+00:16:56
+#CL-137
+VIDP - UGTB
+B-147 - MC-21-400
+Onboard: 0 / 96 / 11
+00:19:33
+#CL-0089
+RKSI - VTSP
+B-084 - MC-21-400
+Onboard: 84 / 27 / 29
+00:19:34
+#CL-0076
+VTBS - ZBAA
+B-072 - MC-21-400
+Onboard: 1 / 55 / 38
+00:23:37
+=== PAGE BREAK ===
+218 ROUTES
+Cost index
+Depart 12
+1
+Next
+
+1,945KM
+#CL-119
+UDYZ - OMDB
+B-124 - MC-21-400
+Demand: 726 / 692 / 117
+Depart
+
+2,063KM
+#CL-118
+OJAQ - OMDB
+B-123 - MC-21-400
+Demand: 958 / 587 / 91
+Depart
+
+4,414KM
+#CL-0026
+ZBAA - WMKK
+B-020-5 - MC-21-400
+Demand: 1045 / 596 / 58
+Depart
+
+2,794KM
+#CL-139
+UBBB - VIDP
+B-144 - MC-21-400
+Demand: 687 / 736 / 120
+Depart
+
+2,799KM
+#CL-105
+RKSI - ZUBD
+B-110 - MC-21-400
+Demand: 709 / 221 / 202
+Depart
+
+3,368KM
+#CL-0090
+VETZ - RKSI
+B-085 - MC-21-400
+Demand: 361 / 328 / 166
+Depart
+
+2,278KM
+#CL-133
+OMAA - VIDP
+B-138 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,278KM
+#CL-138
+VIDP - OMAA
+B-143 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,825KM
+#CL-168
+URMO - EDDF
+B-179 - MC-21-400
+Demand: 422 / 379 / 207
+Depart
+
+2,830KM
+#CL-148
+OKBK - VIDP
+B-158 - MC-21-400
+Demand: 1361 / 258 / 171
+Depart
+
+2,838KM
+#CL-151
+EDDF - OLBA
+B-164 - MC-21-400
+Demand: 706 / 424 / 267
+Depart
+
+2,846KM
+#CL-143
+VLVT - VIDP
+B-153 - MC-21-400
+Demand: 702 / 337 / 164
+Depart
+
+2,883KM
+#CL-160
+EDDF - LTCK
+B-171 - MC-21-400
+Demand: 701 / 426 / 130
+Depart
+#CL-162
+LTCR - EDDF
+B-173 - MC-21-400
+Onboard: 119 / 45 / 7
+00:01:38
+#CL-156
+HECA - EDDF
+B-167 - MC-21-400
+Onboard: 78 / 47 / 15
+00:01:57
+=== PAGE BREAK ===
+218 ROUTES
+Previous
+2
+Next
+#CL-0061
+ZBAA - VVPC
+B-061 - MC-21-400
+Onboard: 84 / 32 / 25
+00:06:00
+#CL-0059
+ZBAA - VEBD
+B-059 - MC-21-400
+Onboard: 89 / 35 / 21
+00:06:03
+#CL-166
+OJAI - EDDF
+B-177 - MC-21-400
+Onboard: 1 / 68 / 29
+00:08:37
+#CL-129
+OMDB - LWSK
+B-134 - MC-21-400
+Onboard: 0 / 64 / 34
+00:08:42
+#CL-130
+VIDP - OOMS
+B-135 - MC-21-400
+Onboard: 62 / 30 / 32
+00:08:46
+#CL-155
+EDDF - HLLT
+B-169 - MC-21-400
+Onboard: 97 / 45 / 9
+00:09:26
+#CL-0094
+RKSI - ZGGG
+B-089 - MC-21-400
+Onboard: 88 / 34 / 22
+00:11:27
+#CL-108
+RKSI - VEAT
+B-113 - MC-21-400
+Onboard: 63 / 47 / 20
+00:12:10
+#CL-153
+GMML - EDDF
+B-166 - MC-21-400
+Onboard: 0 / 47 / 43
+00:14:12
+#CL-167
+OJAQ - EDDF
+B-178 - MC-21-400
+Onboard: 66 / 31 / 27
+00:15:31
+#CL-121
+LATI - OMDB
+B-126 - MC-21-400
+Onboard: 1 / 35 / 53
+00:15:54
+#CL-127
+OMDB - VETZ
+B-132 - MC-21-400
+Onboard: 42 / 25 / 43
+00:15:54
+#CL-0076
+VLVT - RKSI
+B-070 - MC-21-400
+Onboard: 1 / 79 / 21
+00:15:57
+#CL-0046
+RJTT - ZBAA
+B-045 - MC-21-400
+Onboard: 101 / 22 / 27
+00:16:16
+#CL-0049
+ZPPP - ZBAA
+B-042 - MC-21-400
+Onboard: 43 / 68 / 13
+00:16:19
+#CL-101
+RKSI - VTBU
+B-106 - MC-21-400
+Onboard: 57 / 68 / 8
+00:16:20
+#CL-0076
+RKSI - VMMC
+B-062 - MC-21-400
+Onboard: 27 / 72 / 18
+00:16:49
+#CL-137
+VIDP - UGTB
+B-147 - MC-21-400
+Onboard: 0 / 96 / 11
+00:19:26
+#CL-0089
+RKSI - VTSP
+B-084 - MC-21-400
+Onboard: 84 / 27 / 29
+00:19:27
+#CL-0076
+VTBS - ZBAA
+B-072 - MC-21-400
+Onboard: 1 / 55 / 38
+00:23:30
+=== PAGE BREAK ===
+218 ROUTES
+Cost index
+Depart 12
+1
+Next
+
+1,945KM
+#CL-119
+UDYZ - OMDB
+B-124 - MC-21-400
+Demand: 726 / 692 / 117
+Depart
+
+2,063KM
+#CL-118
+OJAQ - OMDB
+B-123 - MC-21-400
+Demand: 958 / 587 / 91
+Depart
+
+4,414KM
+#CL-0026
+ZBAA - WMKK
+B-020-5 - MC-21-400
+Demand: 1045 / 596 / 58
+Depart
+
+2,794KM
+#CL-139
+UBBB - VIDP
+B-144 - MC-21-400
+Demand: 687 / 736 / 120
+Depart
+
+2,799KM
+#CL-105
+RKSI - ZUBD
+B-110 - MC-21-400
+Demand: 709 / 221 / 202
+Depart
+
+3,368KM
+#CL-0090
+VETZ - RKSI
+B-085 - MC-21-400
+Demand: 361 / 328 / 166
+Depart
+
+2,278KM
+#CL-133
+OMAA - VIDP
+B-138 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,278KM
+#CL-138
+VIDP - OMAA
+B-143 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,825KM
+#CL-168
+URMO - EDDF
+B-179 - MC-21-400
+Demand: 422 / 379 / 207
+Depart
+
+2,830KM
+#CL-148
+OKBK - VIDP
+B-158 - MC-21-400
+Demand: 1361 / 258 / 171
+Depart
+
+2,838KM
+#CL-151
+EDDF - OLBA
+B-164 - MC-21-400
+Demand: 706 / 424 / 267
+Depart
+
+2,846KM
+#CL-143
+VLVT - VIDP
+B-153 - MC-21-400
+Demand: 702 / 337 / 164
+Depart
+
+2,883KM
+#CL-160
+EDDF - LTCK
+B-171 - MC-21-400
+Demand: 701 / 426 / 130
+Depart
+#CL-162
+LTCR - EDDF
+B-173 - MC-21-400
+Onboard: 119 / 45 / 7
+00:01:31
+#CL-156
+HECA - EDDF
+B-167 - MC-21-400
+Onboard: 78 / 47 / 15
+00:01:50
+=== PAGE BREAK ===
+218 ROUTES
+Previous
+2
+Next
+#CL-0061
+ZBAA - VVPC
+B-061 - MC-21-400
+Onboard: 84 / 32 / 25
+00:05:54
+#CL-0059
+ZBAA - VEBD
+B-059 - MC-21-400
+Onboard: 89 / 35 / 21
+00:05:57
+#CL-166
+OJAI - EDDF
+B-177 - MC-21-400
+Onboard: 1 / 68 / 29
+00:08:31
+#CL-129
+OMDB - LWSK
+B-134 - MC-21-400
+Onboard: 0 / 64 / 34
+00:08:36
+#CL-130
+VIDP - OOMS
+B-135 - MC-21-400
+Onboard: 62 / 30 / 32
+00:08:40
+#CL-155
+EDDF - HLLT
+B-169 - MC-21-400
+Onboard: 97 / 45 / 9
+00:09:20
+#CL-0094
+RKSI - ZGGG
+B-089 - MC-21-400
+Onboard: 88 / 34 / 22
+00:11:21
+#CL-108
+RKSI - VEAT
+B-113 - MC-21-400
+Onboard: 63 / 47 / 20
+00:12:04
+#CL-153
+GMML - EDDF
+B-166 - MC-21-400
+Onboard: 0 / 47 / 43
+00:14:06
+#CL-167
+OJAQ - EDDF
+B-178 - MC-21-400
+Onboard: 66 / 31 / 27
+00:15:25
+#CL-121
+LATI - OMDB
+B-126 - MC-21-400
+Onboard: 1 / 35 / 53
+00:15:48
+#CL-127
+OMDB - VETZ
+B-132 - MC-21-400
+Onboard: 42 / 25 / 43
+00:15:48
+#CL-0076
+VLVT - RKSI
+B-070 - MC-21-400
+Onboard: 1 / 79 / 21
+00:15:51
+#CL-0046
+RJTT - ZBAA
+B-045 - MC-21-400
+Onboard: 101 / 22 / 27
+00:16:10
+#CL-0049
+ZPPP - ZBAA
+B-042 - MC-21-400
+Onboard: 43 / 68 / 13
+00:16:13
+#CL-101
+RKSI - VTBU
+B-106 - MC-21-400
+Onboard: 57 / 68 / 8
+00:16:14
+#CL-0076
+RKSI - VMMC
+B-062 - MC-21-400
+Onboard: 27 / 72 / 18
+00:16:43
+#CL-137
+VIDP - UGTB
+B-147 - MC-21-400
+Onboard: 0 / 96 / 11
+00:19:20
+#CL-0089
+RKSI - VTSP
+B-084 - MC-21-400
+Onboard: 84 / 27 / 29
+00:19:21
+#CL-0076
+VTBS - ZBAA
+B-072 - MC-21-400
+Onboard: 1 / 55 / 38
+00:23:24
+=== PAGE BREAK ===
+218 ROUTES
+Cost index
+Depart 12
+1
+Next
+
+1,945KM
+#CL-119
+UDYZ - OMDB
+B-124 - MC-21-400
+Demand: 726 / 692 / 117
+Depart
+
+2,063KM
+#CL-118
+OJAQ - OMDB
+B-123 - MC-21-400
+Demand: 958 / 587 / 91
+Depart
+
+4,414KM
+#CL-0026
+ZBAA - WMKK
+B-020-5 - MC-21-400
+Demand: 1045 / 596 / 58
+Depart
+
+2,794KM
+#CL-139
+UBBB - VIDP
+B-144 - MC-21-400
+Demand: 687 / 736 / 120
+Depart
+
+2,799KM
+#CL-105
+RKSI - ZUBD
+B-110 - MC-21-400
+Demand: 709 / 221 / 202
+Depart
+
+3,368KM
+#CL-0090
+VETZ - RKSI
+B-085 - MC-21-400
+Demand: 361 / 328 / 166
+Depart
+
+2,278KM
+#CL-133
+OMAA - VIDP
+B-138 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,278KM
+#CL-138
+VIDP - OMAA
+B-143 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,825KM
+#CL-168
+URMO - EDDF
+B-179 - MC-21-400
+Demand: 422 / 379 / 207
+Depart
+
+2,830KM
+#CL-148
+OKBK - VIDP
+B-158 - MC-21-400
+Demand: 1361 / 258 / 171
+Depart
+
+2,838KM
+#CL-151
+EDDF - OLBA
+B-164 - MC-21-400
+Demand: 706 / 424 / 267
+Depart
+
+2,846KM
+#CL-143
+VLVT - VIDP
+B-153 - MC-21-400
+Demand: 702 / 337 / 164
+Depart
+
+2,883KM
+#CL-160
+EDDF - LTCK
+B-171 - MC-21-400
+Demand: 701 / 426 / 130
+Depart
+#CL-162
+LTCR - EDDF
+B-173 - MC-21-400
+Onboard: 119 / 45 / 7
+00:01:24
+#CL-156
+HECA - EDDF
+B-167 - MC-21-400
+Onboard: 78 / 47 / 15
+00:01:43
+=== PAGE BREAK ===
+218 ROUTES
+Previous
+2
+Next
+#CL-0061
+ZBAA - VVPC
+B-061 - MC-21-400
+Onboard: 84 / 32 / 25
+00:05:48
+#CL-0059
+ZBAA - VEBD
+B-059 - MC-21-400
+Onboard: 89 / 35 / 21
+00:05:51
+#CL-166
+OJAI - EDDF
+B-177 - MC-21-400
+Onboard: 1 / 68 / 29
+00:08:25
+#CL-129
+OMDB - LWSK
+B-134 - MC-21-400
+Onboard: 0 / 64 / 34
+00:08:30
+#CL-130
+VIDP - OOMS
+B-135 - MC-21-400
+Onboard: 62 / 30 / 32
+00:08:34
+#CL-155
+EDDF - HLLT
+B-169 - MC-21-400
+Onboard: 97 / 45 / 9
+00:09:14
+#CL-0094
+RKSI - ZGGG
+B-089 - MC-21-400
+Onboard: 88 / 34 / 22
+00:11:15
+#CL-108
+RKSI - VEAT
+B-113 - MC-21-400
+Onboard: 63 / 47 / 20
+00:11:58
+#CL-153
+GMML - EDDF
+B-166 - MC-21-400
+Onboard: 0 / 47 / 43
+00:14:00
+#CL-167
+OJAQ - EDDF
+B-178 - MC-21-400
+Onboard: 66 / 31 / 27
+00:15:19
+#CL-121
+LATI - OMDB
+B-126 - MC-21-400
+Onboard: 1 / 35 / 53
+00:15:42
+#CL-127
+OMDB - VETZ
+B-132 - MC-21-400
+Onboard: 42 / 25 / 43
+00:15:42
+#CL-0076
+VLVT - RKSI
+B-070 - MC-21-400
+Onboard: 1 / 79 / 21
+00:15:45
+#CL-0046
+RJTT - ZBAA
+B-045 - MC-21-400
+Onboard: 101 / 22 / 27
+00:16:04
+#CL-0049
+ZPPP - ZBAA
+B-042 - MC-21-400
+Onboard: 43 / 68 / 13
+00:16:07
+#CL-101
+RKSI - VTBU
+B-106 - MC-21-400
+Onboard: 57 / 68 / 8
+00:16:08
+#CL-0076
+RKSI - VMMC
+B-062 - MC-21-400
+Onboard: 27 / 72 / 18
+00:16:37
+#CL-137
+VIDP - UGTB
+B-147 - MC-21-400
+Onboard: 0 / 96 / 11
+00:19:14
+#CL-0089
+RKSI - VTSP
+B-084 - MC-21-400
+Onboard: 84 / 27 / 29
+00:19:15
+#CL-0076
+VTBS - ZBAA
+B-072 - MC-21-400
+Onboard: 1 / 55 / 38
+00:23:18
+=== PAGE BREAK ===
+218 ROUTES
+Cost index
+Depart 12
+1
+Next
+
+1,945KM
+#CL-119
+UDYZ - OMDB
+B-124 - MC-21-400
+Demand: 726 / 692 / 117
+Depart
+
+2,063KM
+#CL-118
+OJAQ - OMDB
+B-123 - MC-21-400
+Demand: 958 / 587 / 91
+Depart
+
+4,414KM
+#CL-0026
+ZBAA - WMKK
+B-020-5 - MC-21-400
+Demand: 1045 / 596 / 58
+Depart
+
+2,794KM
+#CL-139
+UBBB - VIDP
+B-144 - MC-21-400
+Demand: 687 / 736 / 120
+Depart
+
+2,799KM
+#CL-105
+RKSI - ZUBD
+B-110 - MC-21-400
+Demand: 709 / 221 / 202
+Depart
+
+3,368KM
+#CL-0090
+VETZ - RKSI
+B-085 - MC-21-400
+Demand: 361 / 328 / 166
+Depart
+
+2,278KM
+#CL-133
+OMAA - VIDP
+B-138 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,278KM
+#CL-138
+VIDP - OMAA
+B-143 - MC-21-400
+Demand: 176 / 490 / 139
+Depart
+
+2,825KM
+#CL-168
+URMO - EDDF
+B-179 - MC-21-400
+Demand: 422 / 379 / 207
+Depart
+
+2,830KM
+#CL-148
+OKBK - VIDP
+B-158 - MC-21-400
+Demand: 1361 / 258 / 171
+Depart
+
+2,838KM
+#CL-151
+EDDF - OLBA
+B-164 - MC-21-400
+Demand: 706 / 424 / 267
+Depart
+
+2,846KM
+#CL-143
+VLVT - VIDP
+B-153 - MC-21-400
+Demand: 702 / 337 / 164
+Depart
+
+2,883KM
+#CL-160
+EDDF - LTCK
+B-171 - MC-21-400
+Demand: 701 / 426 / 130
+Depart
+#CL-162
+LTCR - EDDF
+B-173 - MC-21-400
+Onboard: 119 / 45 / 7
+00:01:18
+#CL-156
+HECA - EDDF
+B-167 - MC-21-400
+Onboard: 78 / 47 / 15
+00:01:37
+=== PAGE BREAK ===
+218 ROUTES
+Previous
+2
+Next
+#CL-0061
+ZBAA - VVPC
+B-061 - MC-21-400
+Onboard: 84 / 32 / 25
+00:05:41
+#CL-0059
+ZBAA - VEBD
+B-059 - MC-21-400
+Onboard: 89 / 35 / 21
+00:05:44
+#CL-166
+OJAI - EDDF
+B-177 - MC-21-400
+Onboard: 1 / 68 / 29
+00:08:18
+#CL-129
+OMDB - LWSK
+B-134 - MC-21-400
+Onboard: 0 / 64 / 34
+00:08:23
+#CL-130
+VIDP - OOMS
+B-135 - MC-21-400
+Onboard: 62 / 30 / 32
+00:08:27
+#CL-155
+EDDF - HLLT
+B-169 - MC-21-400
+Onboard: 97 / 45 / 9
+00:09:07
+#CL-0094
+RKSI - ZGGG
+B-089 - MC-21-400
+Onboard: 88 / 34 / 22
+00:11:08
+#CL-108
+RKSI - VEAT
+B-113 - MC-21-400
+Onboard: 63 / 47 / 20
+00:11:51
+#CL-153
+GMML - EDDF
+B-166 - MC-21-400
+Onboard: 0 / 47 / 43
+00:13:53
+#CL-167
+OJAQ - EDDF
+B-178 - MC-21-400
+Onboard: 66 / 31 / 27
+00:15:12
+#CL-121
+LATI - OMDB
+B-126 - MC-21-400
+Onboard: 1 / 35 / 53
+00:15:35
+#CL-127
+OMDB - VETZ
+B-132 - MC-21-400
+Onboard: 42 / 25 / 43
+00:15:35
+#CL-0076
+VLVT - RKSI
+B-070 - MC-21-400
+Onboard: 1 / 79 / 21
+00:15:38
+#CL-0046
+RJTT - ZBAA
+B-045 - MC-21-400
+Onboard: 101 / 22 / 27
+00:15:57
+#CL-0049
+ZPPP - ZBAA
+B-042 - MC-21-400
+Onboard: 43 / 68 / 13
+00:16:00
+#CL-101
+RKSI - VTBU
+B-106 - MC-21-400
+Onboard: 57 / 68 / 8
+00:16:01
+#CL-0076
+RKSI - VMMC
+B-062 - MC-21-400
+Onboard: 27 / 72 / 18
+00:16:30
+#CL-137
+VIDP - UGTB
+B-147 - MC-21-400
+Onboard: 0 / 96 / 11
+00:19:07
+#CL-0089
+RKSI - VTSP
+B-084 - MC-21-400
+Onboard: 84 / 27 / 29
+00:19:08
+#CL-0076
+VTBS - ZBAA
+B-072 - MC-21-400
+Onboard: 1 / 55 / 38
+00:23:11

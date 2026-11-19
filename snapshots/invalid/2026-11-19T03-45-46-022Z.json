@@ -1,0 +1,19 @@
+{
+  "takenAt": "2026-11-19T03:45:46.022Z",
+  "reasons": [
+    "closure: parsed 33 route rows, header says 217",
+    "closure: parsed 16 pending rows, header says 17",
+    "closure: routes+pending+parked != fleet total 234"
+  ],
+  "header": {
+    "routes": 217,
+    "fleet": 234,
+    "parked": 0,
+    "pending": 17
+  },
+  "parsedCounts": {
+    "routes": 33,
+    "pending": 16,
+    "parked": 0
+  }
+}
