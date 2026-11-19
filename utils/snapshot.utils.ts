@@ -151,10 +151,17 @@ function scanRoutes(panelText: string): RouteScan {
             distanceKm: isOnboard ? 0 : distanceKm,
             onboard: isOnboard,
         };
-        // Pages are collected in order and should not overlap; dedupe
-        // by routeNo guards against a repeated page anyway.
-        if (!seen.has(row.routeNo)) {
-            seen.add(row.routeNo);
+        // Dedupe by REGISTRATION, never by routeNo. The #CL- number
+        // is NOT unique per route: live evidence (run 44461007086's
+        // committed raw text) shows #CL-0076 on ten different routes
+        // and #CL-0094 on three, while registrations are unique in
+        // every capture (217 rows = 217 distinct regs; a later run's
+        // five passes = 213 distinct regs = the header count). The
+        // old routeNo dedupe silently discarded ~30 real routes per
+        // run and the closure check then rejected complete captures
+        // - the true cause of the 2026-11-18 collector failures.
+        if (!seen.has(row.reg)) {
+            seen.add(row.reg);
             rows.push(row);
         }
     }
