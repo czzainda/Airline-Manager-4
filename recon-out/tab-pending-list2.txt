@@ -1,0 +1,69 @@
+17 AIRCRAFT
+A380-800, B-237
+276 Seats
+Astana, Kazakhstan
+Pending maintenance: 05:38:54
+A380-800, B-236
+363 Seats
+Karachi, Pakistan
+Pending maintenance: 05:11:26
+A380-800, B-220
+266 Seats
+Dubai, United Arab Emirates
+Pending maintenance: 23:31:38
+A380-800, B-219
+329 Seats
+Dubai, United Arab Emirates
+Pending maintenance: 16:09:30
+A380-800, B-185
+303 Seats
+Beijing Capital, China
+Pending maintenance: 23:13:27
+A380-800, B-184
+326 Seats
+Beijing Capital, China
+Pending maintenance: 1d 05:16:30
+MC-21-400, B-156
+99 Seats
+Sana'a, Yemen
+Pending maintenance: 02:27:24
+MC-21-400, B-150
+96 Seats
+New Delhi, India
+Pending maintenance: 03:00:47
+MC-21-400, B-123
+156 Seats
+Dubai, United Arab Emirates
+Pending maintenance: 00:59:31
+MC-21-400, B-124
+148 Seats
+Dubai, United Arab Emirates
+Pending maintenance: 00:53:39
+MC-21-400, B-0105
+150 Seats
+Seoul Incheon, South Korea
+Pending maintenance: 00:08:15
+A330-900neo, B-0103
+224 Seats
+Kiev Boryspil, Ukraine
+Pending maintenance: 00:28:51
+MC-21-400, B-083
+120 Seats
+Sibu, Malaysia
+Pending maintenance: 00:26:21
+MC-21-400, B-082
+133 Seats
+Varanasi, India
+Pending maintenance: 01:02:37
+B747SP, B-047
+121 Seats
+Beijing Capital, China
+Pending maintenance: 04:06:22
+MC-21-400, B-017-2
+128 Seats
+Lahore, Pakistan
+Pending maintenance: 02:09:20
+MC-21-400, B-017
+95 Seats
+Islamabad, Pakistan
+Pending maintenance: 02:11:35

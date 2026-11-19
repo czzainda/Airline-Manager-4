@@ -1,4 +1,5 @@
 {
+  "runStartedAt": "2026-11-19T02:47:11.087Z",
   "arrived": true,
   "arrivalSeconds": 10,
   "finalUrl": "https://www.airlinemanager.com/?gameType=web",
@@ -445,8 +446,96 @@
     }
   ],
   "openedBy": "A: moveAndClick #mapRoutes img",
-  "tab_Routes": 70,
-  "tab_Pending": 70,
-  "tab_Fleet": 70,
-  "tab_Parked": 70
+  "header": {
+    "btns": [
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "btn btn-xs-real btn-primary w-100 listBtns",
+        "text": "Routes(217)"
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "btn btn-xs-real btn-secondary w-100 listBtns",
+        "text": "Fleet(234)"
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "btn btn-xs-real btn-secondary w-100 listBtns",
+        "text": "Parked(0)"
+      },
+      {
+        "tag": "BUTTON",
+        "id": "tPending",
+        "cls": "btn btn-xs-real btn-secondary w-100 listBtns",
+        "text": "Pending (17)"
+      }
+    ],
+    "spans": {
+      "hPending": "17",
+      "hParked": "0"
+    }
+  },
+  "tab_Routes": {
+    "container": {
+      "how": "#routesContainer",
+      "tag": "DIV",
+      "id": "routesContainer",
+      "cls": "",
+      "len": 983,
+      "scrollHeight": 923,
+      "clientHeight": 923
+    },
+    "listLen": 983,
+    "list2Len": 983,
+    "demandCount": 3,
+    "regCount": 13
+  },
+  "tab_Pending": {
+    "container": {
+      "how": "#routesContainer",
+      "tag": "DIV",
+      "id": "routesContainer",
+      "cls": "",
+      "len": 1344,
+      "scrollHeight": 1621,
+      "clientHeight": 1621
+    },
+    "listLen": 1344,
+    "list2Len": 1344,
+    "demandCount": 0,
+    "regCount": 17
+  },
+  "tab_Fleet": {
+    "container": {
+      "how": "#routesContainer",
+      "tag": "DIV",
+      "id": "routesContainer",
+      "cls": "",
+      "len": 211,
+      "scrollHeight": 570,
+      "clientHeight": 570
+    },
+    "listLen": 211,
+    "list2Len": 211,
+    "demandCount": 0,
+    "regCount": 0
+  },
+  "tab_Parked": {
+    "container": {
+      "how": "#routesContainer",
+      "tag": "DIV",
+      "id": "routesContainer",
+      "cls": "",
+      "len": 39,
+      "scrollHeight": 80,
+      "clientHeight": 80
+    },
+    "listLen": 39,
+    "list2Len": 39,
+    "demandCount": 0,
+    "regCount": 0
+  }
 }

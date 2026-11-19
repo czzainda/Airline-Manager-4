@@ -1,0 +1,24 @@
+<div id="routesContainer" data-recon-target="1">	<div class="row bg-white" id="fleetList">
+			<div class="col-sm-6 p-2 text-center border opa fleetConcatList" data-pax="140" data-cargo="0" data-charter="0" onclick="playSound('neutral_click'); $('#fleetList').hide();Ajax('fleet.php?type=344','fleetDetailList');">
+			<b>MC-21-400</b><br><span class="s-text text-secondary">Irkut</span><br><span class="s-text text-secondary">Number of aircraft: <b>140</b></span><br><img src="assets/img/aircraft/png/mc21300.png" style="max-width:100%;">
+		</div>
+				<div class="col-sm-6 p-2 text-center border opa fleetConcatList" data-pax="10" data-cargo="0" data-charter="0" onclick="playSound('neutral_click'); $('#fleetList').hide();Ajax('fleet.php?type=335','fleetDetailList');">
+			<b>B747SP</b><br><span class="s-text text-secondary">Boeing</span><br><span class="s-text text-secondary">Number of aircraft: <b>10</b></span><br><img src="assets/img/aircraft/png/747sp.png" style="max-width:100%;">
+		</div>
+				<div class="col-sm-6 p-2 text-center border opa fleetConcatList" data-pax="13" data-cargo="0" data-charter="0" onclick="playSound('neutral_click'); $('#fleetList').hide();Ajax('fleet.php?type=308','fleetDetailList');">
+			<b>A330-900neo</b><br><span class="s-text text-secondary">Airbus</span><br><span class="s-text text-secondary">Number of aircraft: <b>13</b></span><br><img src="assets/img/aircraft/png/a330-neo.png" style="max-width:100%;">
+		</div>
+				<div class="col-sm-6 p-2 text-center border opa fleetConcatList" data-pax="50" data-cargo="0" data-charter="0" onclick="playSound('neutral_click'); $('#fleetList').hide();Ajax('fleet.php?type=2','fleetDetailList');">
+			<b>A380-800</b><br><span class="s-text text-secondary">Airbus</span><br><span class="s-text text-secondary">Number of aircraft: <b>50</b></span><br><img src="assets/img/aircraft/png/a380.png" style="max-width:100%;">
+		</div>
+				<div class="col-sm-6 p-2 text-center border opa fleetConcatList" data-pax="0" data-cargo="21" data-charter="0" onclick="playSound('neutral_click'); $('#fleetList').hide();Ajax('fleet.php?type=377','fleetDetailList');">
+			<b>Boeing 777-300ERSF</b><br><span class="s-text text-secondary">Boeing</span><br><span class="s-text text-secondary">Number of aircraft: <b>21</b></span><br><img src="assets/img/aircraft/png/Boeing-777-300ER.png" style="max-width:100%;">
+		</div>
+			</div>
+
+	<div id="fleetDetailList"></div>
+
+    <script>
+        changeRouteViewByToggle();
+    </script>
+</div>
