@@ -48,6 +48,31 @@
 // the final self-check - a tab that will not heal fails the run
 // exactly as before.
 //
+// Batch fetch + union (added 2026-11-18 night, after live run
+// 44461007086 - the self-healing run - failed closure at 187/217):
+// that run's committed raw text held 217 route-row instances but
+// only 187 distinct route numbers: 30 rows were captured twice and
+// 30 routes were never on any captured page. The list moves while
+// it is being paged (rows re-sort / change state between page
+// reads), so a minutes-long click-through can never be coherent,
+// and re-capturing the same slow way reproduced the same hole
+// three times in a row (186, 186, 186). The parser was innocent
+// throughout (unparsed == 0; local replay of the raw text parses
+// perfectly). Consequences, both implemented below:
+//   - Routes is captured FIRST-HAND inside the page: one evaluate
+//     fetches every routes.php?start=N page concurrently (the whole
+//     list in ~seconds, before it can move), each response is
+//     rendered in a hidden element and read as innerText, exactly
+//     like the live container. A sample of the raw response ships
+//     with the run's raw dump, so a format surprise is diagnosable
+//     from that same run.
+//   - If the batch does not close against the header, the fallback
+//     is the UI click-through, but UNIONED across passes: passes
+//     are fast now (300ms polls), each pass slides differently, and
+//     parseRoutes dedupes by routeNo, so the union of passes
+//     converges on the full list. The closure self-check remains
+//     the only judge - it is not relaxed by any of this.
+//
 // Outputs (committed back by the workflow):
 //   snapshots/latest.json          last VALID snapshot
 //   snapshots/history/<ts>.json    every valid snapshot
@@ -101,7 +126,7 @@ function log(msg: string) {
 }
 
 test('Fleet snapshot (read-only)', async ({ page }) => {
-    test.setTimeout(600000);
+    test.setTimeout(780000);
 
     const state: SnapState =
         readJson<SnapState>(path.join(SNAP_DIR, 'state.json')) ?? {
@@ -238,12 +263,14 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
 
     const waitSettled = async (): Promise<string> => {
         // Accept the page only once its row shape is stable across 3
-        // consecutive 1s polls (text length plateaus mid-render).
+        // consecutive polls (text length plateaus mid-render). Polls
+        // are 300ms: at 1s polls a full Routes pass took minutes and
+        // the list moved underneath it (run 44461007086).
         let lastShape = '';
         let stable = 0;
         let text = '';
-        for (let s = 0; s < 20 && stable < 3; s++) {
-            await page.waitForTimeout(1000);
+        for (let s = 0; s < 40 && stable < 3; s++) {
+            await page.waitForTimeout(300);
             text = await containerText();
             const shape = rowShape(text);
             if (shape === lastShape)
@@ -262,8 +289,8 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
             log(`Tab ${tab} button click failed: ${String(e).slice(0, 120)}`)
         );
         // Wait for the Ajax swap to show a different row shape.
-        for (let s = 0; s < 10; s++) {
-            await page.waitForTimeout(1000);
+        for (let s = 0; s < 30; s++) {
+            await page.waitForTimeout(300);
             if (rowShape(await containerText()) !== shapeBefore)
                 break;
         }
@@ -316,8 +343,8 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
                 break;
             const prevShape = rowShape(text);
             let changed = false;
-            for (let s = 0; s < 10; s++) {
-                await page.waitForTimeout(1000);
+            for (let s = 0; s < 30; s++) {
+                await page.waitForTimeout(300);
                 if (rowShape(await containerText()) !== prevShape) {
                     changed = true;
                     break;
@@ -382,10 +409,106 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
         return result!;
     };
 
-    // Fast, drift-prone tabs first; the slow Routes capture last.
+    // --- Routes batch fetch (primary path). One evaluate pulls
+    // every routes.php page concurrently (the same URL the list's
+    // own pagination links call); each response is rendered in a
+    // hidden element and read back as innerText - the same text the
+    // live container would give, but the whole list lands within
+    // seconds, before it can move. A sample of the raw response is
+    // kept for the raw dump so a format surprise is diagnosable
+    // from this same run.
+    let fetchSample = '';
+    let fetchText: string | null = null;
+    const fetchRoutesBatch = async (expected: number): Promise<string | null> => {
+        const starts: number[] = [];
+        for (let s = 0; s < expected; s += 20)
+            starts.push(s);
+        try {
+            const out = await page.evaluate(async (startsArg: number[]) => {
+                const holder = document.createElement('div');
+                holder.style.cssText =
+                    'position:absolute;left:-99999px;top:0;visibility:hidden;';
+                document.body.appendChild(holder);
+                const htmls = await Promise.all(
+                    startsArg.map(async (st) => {
+                        const r = await fetch('routes.php?start=' + st + '&sort=', {
+                            credentials: 'same-origin',
+                            headers: { 'X-Requested-With': 'XMLHttpRequest' },
+                        });
+                        return await r.text();
+                    })
+                );
+                const texts: string[] = [];
+                let sample = '';
+                for (const html of htmls) {
+                    if (!sample)
+                        sample = html.slice(0, 2000);
+                    holder.innerHTML = html;
+                    texts.push(holder.innerText);
+                }
+                holder.remove();
+                return { texts, sample };
+            }, starts);
+            fetchSample = out.sample || fetchSample;
+            const joined = out.texts.join('\n=== PAGE BREAK ===\n');
+            log(`Routes batch fetch: ${out.texts.length} page(s), ${joined.length} chars of text.`);
+            return joined;
+        } catch (e) {
+            log(`Routes batch fetch failed: ${String(e).slice(0, 160)}`);
+            return null;
+        }
+    };
+
+    const captureRoutesVerified = async (maxUiPasses: number): Promise<TabResult> => {
+        const hdr = (await readHeader()) ?? firstHeader!;
+        const expected = hdr.routes;
+        // Primary: batch fetch.
+        const fetched = await fetchRoutesBatch(expected);
+        let unionText = '';
+        if (fetched !== null) {
+            fetchText = fetched;
+            const { count, unparsed } = tabCount('Routes', fetched);
+            const ok = count === expected && unparsed === 0;
+            log(`Routes batch: parsed ${count}/${expected}, unparsed ${unparsed} -> ${ok ? 'OK' : 'MISMATCH, falling back to UI passes'}`);
+            heal.push({ tab: 'Routes', kind: 'batch-fetch', expected, count, unparsed, ok });
+            if (ok)
+                return { pages: [fetched], text: fetched, header: hdr, count, unparsed, ok };
+            // A clean-parsing but short batch still seeds the union;
+            // a batch with unparsed lines is discarded for union
+            // purposes (it is still dumped raw for diagnosis).
+            if (unparsed === 0)
+                unionText = fetched;
+        }
+        // Fallback: fast UI passes, unioned. parseRoutes dedupes by
+        // routeNo, so counting the concatenated text counts the
+        // union; each pass slides differently over the moving list.
+        // Local simulation (300 trials, each pass missing a random
+        // 30 of 217 like run 44461007086): 3 passes complete the
+        // union in only ~54% of trials, 5 passes in ~99% - hence 5.
+        let last: TabResult | null = null;
+        for (let pass = 1; pass <= maxUiPasses; pass++) {
+            const pages = await collectTab('Routes', expected);
+            const passText = pages.join('\n=== PAGE BREAK ===\n');
+            unionText = unionText
+                ? unionText + '\n=== PAGE BREAK ===\n' + passText
+                : passText;
+            const { count, unparsed } = tabCount('Routes', unionText);
+            const ok = count === expected && unparsed === 0;
+            last = { pages: [unionText], text: unionText, header: hdr, count, unparsed, ok };
+            log(`Routes UI union pass ${pass}: union parsed ${count}/${expected}, unparsed ${unparsed} -> ${ok ? 'OK' : 'INCOMPLETE'}`);
+            heal.push({ tab: 'Routes', kind: 'union-pass', attempt: pass, expected, count, unparsed });
+            if (ok)
+                return last;
+        }
+        return last!;
+    };
+
+    // Fast, drift-prone tabs first; Routes last (batch fetch, with
+    // unioned UI passes as fallback).
     const results: Record<string, TabResult> = {};
-    for (const tab of ['Pending', 'Parked', 'Fleet', 'Routes'])
+    for (const tab of ['Pending', 'Parked', 'Fleet'])
         results[tab] = await captureVerified(tab, 3);
+    results['Routes'] = await captureRoutesVerified(5);
 
     // Drift sweep: one more header read; any tab whose count moved
     // since its verified capture is re-captured once more.
@@ -397,7 +520,10 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
             if (now !== was) {
                 log(`Drift sweep: ${tab} header moved ${was} -> ${now} during the run; re-capturing.`);
                 heal.push({ tab, kind: 'drift-sweep', was, now });
-                results[tab] = await captureVerified(tab, 2);
+                results[tab] =
+                    tab === 'Routes'
+                        ? await captureRoutesVerified(2)
+                        : await captureVerified(tab, 2);
             }
         }
     }
@@ -422,6 +548,10 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
     fs.writeFileSync(path.join(rawDir, 'pending.txt'), pendingText);
     fs.writeFileSync(path.join(rawDir, 'fleet.txt'), fleetText);
     fs.writeFileSync(path.join(rawDir, 'parked.txt'), parkedText);
+    if (fetchText !== null)
+        fs.writeFileSync(path.join(rawDir, 'routes-fetch.txt'), fetchText);
+    if (fetchSample)
+        fs.writeFileSync(path.join(rawDir, 'routes-fetch-sample.txt'), fetchSample);
 
     // Parked rows: no verified text format yet (count was 0 in every
     // capture so far). Try the pending-style "Type, REG" shape; if the
