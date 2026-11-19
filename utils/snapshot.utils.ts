@@ -8,7 +8,9 @@
 //   Route row:   "2,600KM # CL-135 ZUUU - VIDP B-140 - MC-21-400 Demand: 602 / 125 / 119"
 //   Pending row: "A380-800, B-253 238 Seats / New Delhi, India / Pending delivery: 04:49:43"
 //   Fleet tab:   "MC-21-400 Irkut Number of aircraft: 140"
-//   Tab headers: "Routes (222)", "Fleet (234)", "Parked (0)", "Pending (12)"
+//   Tab headers: names with counts (exact rendering unverified - the
+//   parsers accept both "Routes (222)" and "Routes 222"; the first live
+//   run, 44423513135, died waiting for the parenthesised form)
 //
 // Self-check (must ALL pass, otherwise the snapshot is invalid and
 // latest.json is left untouched):
@@ -62,18 +64,21 @@ function collapse(text: string): string {
 
 export function parseHeaderCounts(panelText: string): HeaderCounts | null {
     const t = collapse(panelText);
-    const routes = /Routes \((\d+)\)/.exec(t);
-    const fleet = /Fleet \((\d+)\)/.exec(t);
-    const parked = /Parked \((\d+)\)/.exec(t);
-    const pending = /Pending \((\d+)\)/.exec(t);
-    if (!routes || !fleet || !parked || !pending)
-        return null;
-    return {
-        routes: parseInt(routes[1], 10),
-        fleet: parseInt(fleet[1], 10),
-        parked: parseInt(parked[1], 10),
-        pending: parseInt(pending[1], 10),
+    // The count's exact rendering next to a tab name is unverified, so
+    // accept both "Routes (222)" and "Routes 222".
+    const grab = (name: string): number | null => {
+        const m =
+            new RegExp(name + '\\s*\\(\\s*(\\d+)\\s*\\)').exec(t) ||
+            new RegExp(name + '\\s+(\\d+)').exec(t);
+        return m ? parseInt(m[1], 10) : null;
     };
+    const routes = grab('Routes');
+    const fleet = grab('Fleet');
+    const parked = grab('Parked');
+    const pending = grab('Pending');
+    if (routes === null || fleet === null || parked === null || pending === null)
+        return null;
+    return { routes, fleet, parked, pending };
 }
 
 const ROUTE_RE = new RegExp(
