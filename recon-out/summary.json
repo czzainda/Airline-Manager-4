@@ -1,5 +1,452 @@
 {
-  "arrived": false,
-  "arrivalSeconds": -1,
-  "finalUrl": "https://www.airlinemanager.com/"
+  "arrived": true,
+  "arrivalSeconds": 10,
+  "finalUrl": "https://www.airlinemanager.com/?gameType=web",
+  "idScan": [
+    {
+      "id": "intro_newMapsInfo",
+      "tag": "DIV",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "topMenu",
+      "tag": "NAV",
+      "visible": true,
+      "box": [
+        0,
+        0,
+        1280,
+        48
+      ]
+    },
+    {
+      "id": "map",
+      "tag": "DIV",
+      "visible": true,
+      "box": [
+        0,
+        47,
+        1280,
+        673
+      ]
+    },
+    {
+      "id": "smallMainMenu",
+      "tag": "DIV",
+      "visible": true,
+      "box": [
+        0,
+        720,
+        1280,
+        0
+      ]
+    },
+    {
+      "id": "mapAcList",
+      "tag": "DIV",
+      "visible": true,
+      "box": [
+        1230,
+        317,
+        45,
+        45
+      ]
+    },
+    {
+      "id": "fleetButtonIntro",
+      "tag": "DIV",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "mapRoutes",
+      "tag": "DIV",
+      "visible": true,
+      "box": [
+        1230,
+        364,
+        45,
+        45
+      ]
+    },
+    {
+      "id": "mapMaint",
+      "tag": "DIV",
+      "visible": true,
+      "box": [
+        1230,
+        411,
+        45,
+        45
+      ]
+    },
+    {
+      "id": "mapMaint",
+      "tag": "DIV",
+      "visible": true,
+      "box": [
+        1230,
+        458,
+        45,
+        45
+      ]
+    },
+    {
+      "id": "mapMaint",
+      "tag": "DIV",
+      "visible": true,
+      "box": [
+        1230,
+        505,
+        45,
+        45
+      ]
+    },
+    {
+      "id": "mapMaint",
+      "tag": "DIV",
+      "visible": true,
+      "box": [
+        1230,
+        552,
+        45,
+        45
+      ]
+    },
+    {
+      "id": "mapMaint",
+      "tag": "DIV",
+      "visible": true,
+      "box": [
+        1230,
+        599,
+        45,
+        45
+      ]
+    },
+    {
+      "id": "mapMaint",
+      "tag": "DIV",
+      "visible": true,
+      "box": [
+        1230,
+        646,
+        45,
+        45
+      ]
+    },
+    {
+      "id": "fullMainMenu",
+      "tag": "DIV",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "newRouteInfo",
+      "tag": "DIV",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "menuInfo",
+      "tag": "DIV",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "footerMenu",
+      "tag": "DIV",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "gpaxRoutesCheckbox",
+      "tag": "INPUT",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "paxRoutesOpt",
+      "tag": "DIV",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "paxRoutesCheckbox",
+      "tag": "INPUT",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "landpaxRoutesCheckbox",
+      "tag": "INPUT",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "gcargoRoutesCheckbox",
+      "tag": "INPUT",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "cargoRoutesOpt",
+      "tag": "DIV",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "cargoRoutesCheckbox",
+      "tag": "INPUT",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "landcargoRoutesCheckbox",
+      "tag": "INPUT",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "gcharterRoutesCheckbox",
+      "tag": "INPUT",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "charterRoutesOpt",
+      "tag": "DIV",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "charterRoutesCheckbox",
+      "tag": "INPUT",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "landcharterRoutesCheckbox",
+      "tag": "INPUT",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "colorBlindRoutes",
+      "tag": "INPUT",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "colorRoutesSlider",
+      "tag": "DIV",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "colorPickerRouteMarkers",
+      "tag": "DIV",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "routeRegCheckbox",
+      "tag": "INPUT",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "map-type-basic",
+      "tag": "IMG",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "map-type-street",
+      "tag": "IMG",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "map-type-dark",
+      "tag": "IMG",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "map-type-light",
+      "tag": "IMG",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "map-type-skyblue",
+      "tag": "IMG",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "map-type-seagreen",
+      "tag": "IMG",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "map-type-sat",
+      "tag": "IMG",
+      "visible": false,
+      "box": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "openedBy": "A: moveAndClick #mapRoutes img",
+  "tab_Routes": 70,
+  "tab_Pending": 70,
+  "tab_Fleet": 70,
+  "tab_Parked": 70
 }

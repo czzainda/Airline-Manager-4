@@ -1,0 +1,94 @@
+<div class="row">
+		<div class="col-12 p-1">
+			<div class="btn-group d-flex" role="group">
+			   <button class="btn btn-xs-real btn-primary w-100 listBtns" onclick="playSound('neutral_click');Ajax('routes.php','routeAction',this);">Routes<br>(216)</button>
+               <button class="btn btn-xs-real btn-secondary w-100 listBtns" onclick="playSound('neutral_click');Ajax('fleet.php','routesContainer',this);">Fleet<br>(234)</button>
+			   <button class="btn btn-xs-real btn-secondary w-100 listBtns" onclick="playSound('neutral_click');Ajax('fleet_parked.php','routesContainer',this);">Parked<br>(<span id="hParked">0</span>)</button>
+			   <button class="btn btn-xs-real btn-secondary w-100 listBtns" id="tPending" onclick="playSound('neutral_click');Ajax('fleet_pending.php','routesContainer',this);">Pending<br>
+                   <span style="text-align:center;border-radius:999px;color:#FFFFFF;" id="pendingHeaderBtn" class="bg-danger s-text">
+                    (<span id="hPending">18</span>)
+                   </span>
+               </button>
+			</div>
+		</div>
+                <div class="col-12 p-0">
+            <div class="row p-0 m-text exo">
+                <div class="col text-center">
+                    <span class="glyphicons glyphicons-user"></span> PAX A/C<br>
+                    <label class="t-switch">
+                        <input type="checkbox" id="checkPax" checked="">
+                        <span class="t-slider round"></span>
+                    </label>
+                </div>
+                <div class="col text-center">
+                    <span class="glyphicons glyphicons-cargo"></span> Cargo A/C<br>
+                    <label class="t-switch">
+                        <input type="checkbox" id="checkCargo" checked="">
+                        <span class="t-slider round"></span>
+                    </label>
+                </div>
+                            </div>
+        </div>
+                <script>
+            var showPax = 1;
+            var showCargo = 1;
+            var showCharter = 1;
+
+            $('#checkPax').change(function() {
+				playSound('neutral_click');
+                if($(this).is(':checked')) {
+                    showPax = 1;
+                }else{
+                    showPax = 0;
+                }
+                changeRouteViewByToggle();
+            });
+
+            $('#checkCargo').change(function() {
+				playSound('neutral_click');
+                if($(this).is(':checked')) {
+                    showCargo = 1;
+                }else{
+                    showCargo = 0;
+                }
+                changeRouteViewByToggle();
+            });
+
+            $('#checkCharter').change(function() {
+				playSound('neutral_click');
+                if($(this).is(':checked')) {
+                    showCharter = 1;
+                }else{
+                    showCharter = 0;
+                }
+                changeRouteViewByToggle();
+            });
+
+            function changeRouteViewByToggle() {
+                if(showPax==0) {
+                    $('.classPAX').hide();
+                }else{
+                    $('.classPAX').show();
+                }
+                if(showCargo==0) {
+                    $('.classCARGO').hide();
+                }else{
+                    $('.classCARGO').show();
+                }
+                if(showCharter==0) {
+                    $('.classCHARTER').hide();
+                }else{
+                    $('.classCHARTER').show();
+                }
+
+                $('.fleetConcatList').each(function(i, obj) {
+                    var d = $(this);
+                    var pax = parseInt(d.attr('data-pax'));
+                    var cargo = parseInt(d.attr('data-cargo'));
+                    var charter = parseInt(d.attr('data-charter'));
+
+                    if(showPax==0) {
+                        if(cargo>0 && showCargo==1 || charter>0 && showCharter==1) {
+                            // Do nothing
+                        }else{
+                      
