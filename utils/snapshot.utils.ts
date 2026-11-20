@@ -29,6 +29,14 @@
 //                         (freighter type line is "Boeing 777-300ERSF"
 //                         with vendor line "Boeing")
 //   Parked (count 0):     "0 AIRCRAFT" / "THERE ARE NO PARKED AIRCRAFT"
+//   Parked block:         "A380-800" / "255 Seats" / "B-255" /
+//                         "São Paulo Guarulhos, Brazil" /
+//                         "Y class: 15" / "J class: 135" /
+//                         "F class: 105" / "Route" / "Details"
+//                         (verified 2026-11-19 from run 44656179369's
+//                         committed raw text - the first capture ever
+//                         with a parked aircraft; before that only the
+//                         count-0 empty state above had been seen)
 //
 // Self-check (must ALL pass, otherwise the snapshot is invalid and
 // latest.json is left untouched):
@@ -221,6 +229,40 @@ export function parsePending(panelText: string): PendingRow[] {
 
 export function countUnparsedPendingLines(panelText: string): number {
     return scanPending(panelText).failedBlocks;
+}
+
+// Parked rows, anchored on the seats line (see header comment for the
+// verified block shape): the line directly above the seats line is the
+// aircraft type, the first registration-shaped line below it is the
+// aircraft. A parked freighter may render a capacity line instead of
+// a seats line, so that anchors a block too. The count-0 empty state
+// has neither anchor and parses to []. Before 2026-11-19 the spec
+// guessed a pending-style "Type, REG" regex for this tab; run
+// 44656179369 captured the real format and the closure check rightly
+// rejected that run's snapshot until this parser existed.
+export function parseParked(panelText: string): { reg: string; type: string }[] {
+    const ls = lines(panelText);
+    const rows: { reg: string; type: string }[] = [];
+    const seen = new Set<string>();
+    const regLine = new RegExp('^(' + REG + ')$');
+    for (let i = 0; i < ls.length; i++) {
+        if (!/^\d[\d,]*\s+Seats$/.test(ls[i]) && !/Capacity/i.test(ls[i]))
+            continue;
+        const type = cleanAircraftType(ls[i - 1] || '');
+        if (!type)
+            continue;
+        for (let j = i + 1; j < Math.min(i + 4, ls.length); j++) {
+            const m = regLine.exec(ls[j]);
+            if (m) {
+                if (!seen.has(m[1])) {
+                    seen.add(m[1]);
+                    rows.push({ type, reg: m[1] });
+                }
+                break;
+            }
+        }
+    }
+    return rows;
 }
 
 export function parseFleetByType(panelText: string): Record<string, number> {
