@@ -81,6 +81,7 @@ import {
     parseHeaderCounts,
     parseRoutes,
     parsePending,
+    parseParked,
     parseFleetByType,
     countUnparsedRouteLines,
     countUnparsedPendingLines,
@@ -366,10 +367,7 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
                 count: Object.values(parseFleetByType(text)).reduce((a, b) => a + b, 0),
                 unparsed: 0,
             };
-        const m = text
-            .replace(/\s+/g, ' ')
-            .match(/([A-Za-z0-9][A-Za-z0-9\-]*)\s*,\s*([A-Z]-[0-9][0-9A-Za-z-]*)/g);
-        return { count: m ? m.length : 0, unparsed: 0 };
+        return { count: parseParked(text).length, unparsed: 0 };
     };
 
     const tabExpected = (tab: string, h: HeaderCounts): number =>
@@ -445,18 +443,13 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
     fs.writeFileSync(path.join(rawDir, 'fleet.txt'), fleetText);
     fs.writeFileSync(path.join(rawDir, 'parked.txt'), parkedText);
 
-    // Parked rows: no verified text format yet (count was 0 in every
-    // capture so far). Try the pending-style "Type, REG" shape; if the
-    // count does not close, the self-check rejects the snapshot and we
-    // learn the real format from the committed raw text.
-    const parked: { reg: string; type: string }[] = [];
-    if (header.parked > 0) {
-        const re = /([A-Za-z0-9][A-Za-z0-9\-]*)\s*,\s*([A-Z]-[0-9][0-9A-Za-z-]*)/g;
-        const t = parkedText.replace(/\s+/g, ' ');
-        let m: RegExpExecArray | null;
-        while ((m = re.exec(t)) !== null)
-            parked.push({ type: m[1], reg: m[2] });
-    }
+    // Parked rows: real format verified 2026-11-19 from run
+    // 44656179369's committed raw text (first capture with a parked
+    // aircraft). parseParked in utils handles it; the provisional
+    // pending-style regex that stood here before parsed 0 of 1 and
+    // the closure check rejected that run - the net working as
+    // designed, and the raw text it committed taught the format.
+    const parked = parseParked(parkedText);
 
     const snap: SnapshotData = {
         takenAt,
