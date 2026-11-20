@@ -1,6 +1,6 @@
 {
-  "consecutiveInvalid": 0,
+  "consecutiveInvalid": 1,
   "halted": false,
-  "lastInvalidAt": "2026-11-20T01:48:11.456Z",
+  "lastInvalidAt": "2026-11-20T18:38:26.081Z",
   "lastValidAt": "2026-11-20T10:06:29.857Z"
 }

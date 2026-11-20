@@ -1,0 +1,35 @@
+{
+  "takenAt": "2026-11-20T18:38:26.081Z",
+  "reasons": [
+    "uniqueness: duplicate registration across union"
+  ],
+  "header": {
+    "routes": 212,
+    "pending": 23,
+    "parked": 0,
+    "fleet": 235
+  },
+  "healing": [
+    {
+      "tab": "Routes",
+      "kind": "recapture",
+      "attempt": 1,
+      "expected": 212,
+      "count": 211,
+      "unparsed": 0
+    },
+    {
+      "tab": "Routes",
+      "kind": "recapture",
+      "attempt": 2,
+      "expected": 212,
+      "count": 179,
+      "unparsed": 0
+    }
+  ],
+  "parsedCounts": {
+    "routes": 212,
+    "pending": 23,
+    "parked": 0
+  }
+}
