@@ -42,7 +42,11 @@
 // already-seen page signature is treated as a loop and stops at
 // once. After all four tabs, the header is read once more and any
 // tab whose count moved during the run is re-captured (drift sweep,
-// max 2 attempts). Every correction is recorded in a healing log
+// max 2 attempts). Counts can sit still while an aircraft crosses
+// tabs mid-run, so an identity sweep follows: a registration found
+// in two tabs at once re-captures the earlier-captured tab (max 2
+// sweeps; added 2026-11-20, run 44794576556). Every correction is
+// recorded in a healing log
 // that ships with the snapshot (or the invalid record). Healing may
 // ONLY re-collect data: it never edits a number and never relaxes
 // the final self-check - a tab that will not heal fails the run
@@ -419,6 +423,51 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
                 heal.push({ tab, kind: 'drift-sweep', was, now });
                 results[tab] = await captureVerified(tab, 2);
             }
+        }
+    }
+
+    // Identity sweep: counts can sit still while an aircraft crosses
+    // tabs mid-run. Run 44794576556 (2026-11-20) captured B-020 in
+    // Pending with 37 seconds of maintenance left, then in Routes
+    // already departed - both captures true, the stitched snapshot
+    // impossible, and the uniqueness check rightly rejected it. The
+    // count-based drift sweep above cannot see identity moving under
+    // stable counts. So: a registration found in two tabs at once
+    // re-captures the earlier-captured tab (the later capture holds
+    // the fresher truth), then the overlap is checked again. Two
+    // sweeps at most; a still-overlapping snapshot falls through to
+    // the self-check and is rejected - the sweep re-reads the game,
+    // it never edits a row.
+    const tabRegs = (tab: string): Set<string> => {
+        const text = results[tab].text;
+        const rows =
+            tab === 'Routes'
+                ? parseRoutes(text)
+                : tab === 'Pending'
+                  ? parsePending(text)
+                  : parseParked(text);
+        return new Set(rows.map((r) => r.reg));
+    };
+    for (let sweep = 1; sweep <= 2; sweep++) {
+        const byTab: Record<string, Set<string>> = {
+            Pending: tabRegs('Pending'),
+            Parked: tabRegs('Parked'),
+            Routes: tabRegs('Routes'),
+        };
+        const stale = new Set<string>();
+        const pairs: [string, string][] = [
+            ['Pending', 'Routes'],
+            ['Parked', 'Routes'],
+            ['Pending', 'Parked'],
+        ];
+        for (const [earlier, later] of pairs)
+            for (const reg of byTab[earlier])
+                if (byTab[later].has(reg)) stale.add(earlier);
+        if (stale.size === 0) break;
+        for (const tab of stale) {
+            log(`Identity sweep ${sweep}: a registration appears in ${tab} and in a later tab; re-capturing ${tab}.`);
+            heal.push({ tab, kind: 'identity-sweep', sweep });
+            results[tab] = await captureVerified(tab, 2);
         }
     }
 
