@@ -1,0 +1,97 @@
+24 AIRCRAFT
+A380-800, B-246
+331 Seats
+Ouagadougou, Burkina Faso
+Pending maintenance: 00:14:22
+A380-800, B-245
+384 Seats
+El Paso, United States
+Pending maintenance: 03:00:20
+A380-800, B-239
+366 Seats
+Manama, Bahrain
+Pending maintenance: 02:08:22
+A380-800, B-232
+346 Seats
+New York JFK, United States
+Pending maintenance: 02:10:31
+A380-800, B-222
+303 Seats
+Seoul Incheon, South Korea
+Pending maintenance: 1d 09:40:14
+A380-800, B-221
+332 Seats
+Frankfurt intl, Germany
+Pending maintenance: 1d 13:00:27
+A380-800, B-215
+301 Seats
+Ouagadougou, Burkina Faso
+Pending maintenance: 00:24:59
+Boeing 777-300ERSF, B-202
+225,970 Lbs
+Dubai, United Arab Emirates
+Pending maintenance: 06:10:56
+Boeing 777-300ERSF, B-197
+243,670 Lbs
+Dubai, United Arab Emirates
+Pending maintenance: 12:07:23
+Boeing 777-300ERSF, B-196
+233,050 Lbs
+Beijing Capital, China
+Pending maintenance: 06:25:24
+Boeing 777-300ERSF, B-195
+230,395 Lbs
+New Delhi, India
+Pending maintenance: 09:26:41
+Boeing 777-300ERSF, B-194
+242,785 Lbs
+New Delhi, India
+Pending maintenance: 03:58:26
+Boeing 777-300ERSF, B-192
+222,430 Lbs
+Frankfurt intl, Germany
+Pending maintenance: 05:29:02
+A380-800, B-186
+295 Seats
+Beijing Capital, China
+Pending maintenance: 03:11:32
+MC-21-400, B-157
+113 Seats
+New Delhi, India
+Pending maintenance: 02:10:21
+MC-21-400, B-154
+107 Seats
+New Delhi, India
+Pending maintenance: 01:35:32
+MC-21-400, B-150
+96 Seats
+New Delhi, India
+Pending maintenance: 01:35:45
+MC-21-400, B-125
+161 Seats
+Djibouti City, Djibouti
+Pending maintenance: 00:03:30
+MC-21-400, B-0105
+150 Seats
+Seoul Incheon, South Korea
+Pending maintenance: 00:19:41
+MC-21-400, B-112
+91 Seats
+Bengkulu-Sumatra Island, Indonesia
+Pending maintenance: 00:15:45
+A330-900neo, B-0101
+314 Seats
+Dubai, United Arab Emirates
+Pending maintenance: 04:06:22
+MC-21-400, B-079
+109 Seats
+Beijing Capital, China
+Pending maintenance: 01:12:24
+MC-21-400, B-057
+133 Seats
+Beijing Capital, China
+Pending maintenance: 00:03:08
+MC-21-400, B-030-8
+117 Seats
+Beijing Capital, China
+Pending maintenance: 00:16:37

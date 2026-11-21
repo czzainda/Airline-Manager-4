@@ -1,0 +1,19 @@
+MC-21-400
+Irkut
+Number of aircraft: 138
+
+B747SP
+Boeing
+Number of aircraft: 10
+
+A330-900neo
+Airbus
+Number of aircraft: 13
+
+A380-800
+Airbus
+Number of aircraft: 53
+
+Boeing 777-300ERSF
+Boeing
+Number of aircraft: 21
