@@ -1,69 +1,65 @@
-17 AIRCRAFT
-A380-800, B-237
-276 Seats
-Astana, Kazakhstan
-Pending maintenance: 05:38:54
-A380-800, B-236
-363 Seats
-Karachi, Pakistan
-Pending maintenance: 05:11:26
-A380-800, B-220
-266 Seats
-Dubai, United Arab Emirates
-Pending maintenance: 23:31:38
-A380-800, B-219
-329 Seats
-Dubai, United Arab Emirates
-Pending maintenance: 16:09:30
-A380-800, B-185
-303 Seats
-Beijing Capital, China
-Pending maintenance: 23:13:27
-A380-800, B-184
-326 Seats
-Beijing Capital, China
-Pending maintenance: 1d 05:16:30
-MC-21-400, B-156
-99 Seats
-Sana'a, Yemen
-Pending maintenance: 02:27:24
-MC-21-400, B-150
-96 Seats
+16 AIRCRAFT
+A380-800, B-227
+287 Seats
+Antananarivo, Madagascar
+Pending maintenance: 00:04:00
+A380-800, B-226
+272 Seats
+London Heathrow intl, United Kingdom
+Pending maintenance: 18:44:49
+A380-800, B-225
+282 Seats
+Seoul Incheon, South Korea
+Pending maintenance: 1d 03:47:08
+A380-800, B-224
+272 Seats
+Seoul Incheon, South Korea
+Pending maintenance: 12:15:29
+A380-800, B-223
+317 Seats
+Frankfurt intl, Germany
+Pending maintenance: 00:07:10
+Boeing 777-300ERSF, B-205
+244,555 Lbs
 New Delhi, India
-Pending maintenance: 03:00:47
-MC-21-400, B-123
-156 Seats
+Pending maintenance: 00:34:41
+Boeing 777-300ERSF, B-203
+231,280 Lbs
+Frankfurt intl, Germany
+Pending maintenance: 15:54:37
+Boeing 777-300ERSF, B-201
+238,360 Lbs
 Dubai, United Arab Emirates
-Pending maintenance: 00:59:31
-MC-21-400, B-124
-148 Seats
-Dubai, United Arab Emirates
-Pending maintenance: 00:53:39
-MC-21-400, B-0105
+Pending maintenance: 16:55:59
+MC-21-400, B-175
+162 Seats
+Frankfurt intl, Germany
+Pending maintenance: 01:25:24
+MC-21-400, B-176
+134 Seats
+Frankfurt intl, Germany
+Pending maintenance: 01:18:51
+MC-21-400, B-138
+149 Seats
+New Delhi, India
+Pending maintenance: 00:16:09
+MC-21-400, B-140
+123 Seats
+Chengdu, China
+Pending maintenance: 00:34:23
+MC-21-400, B-116
+122 Seats
+Asmara, Eritrea
+Pending maintenance: 01:34:21
+MC-21-400, B-108
+108 Seats
+Seoul Incheon, South Korea
+Pending maintenance: 01:44:52
+MC-21-400, B-110
 150 Seats
 Seoul Incheon, South Korea
-Pending maintenance: 00:08:15
-A330-900neo, B-0103
-224 Seats
-Kiev Boryspil, Ukraine
-Pending maintenance: 00:28:51
-MC-21-400, B-083
-120 Seats
-Sibu, Malaysia
-Pending maintenance: 00:26:21
-MC-21-400, B-082
-133 Seats
-Varanasi, India
-Pending maintenance: 01:02:37
-B747SP, B-047
-121 Seats
-Beijing Capital, China
-Pending maintenance: 04:06:22
-MC-21-400, B-017-2
-128 Seats
-Lahore, Pakistan
-Pending maintenance: 02:09:20
-MC-21-400, B-017
-95 Seats
-Islamabad, Pakistan
-Pending maintenance: 02:11:35
+Pending maintenance: 01:22:51
+MC-21-400, B-044
+147 Seats
+Guangzhou, China
+Pending maintenance: 01:25:30

@@ -1,5 +1,5 @@
 {
-  "runStartedAt": "2026-11-19T02:47:11.087Z",
+  "runStartedAt": "2026-11-22T15:42:12.127Z",
   "arrived": true,
   "arrivalSeconds": 10,
   "finalUrl": "https://www.airlinemanager.com/?gameType=web",
@@ -452,13 +452,13 @@
         "tag": "BUTTON",
         "id": "",
         "cls": "btn btn-xs-real btn-primary w-100 listBtns",
-        "text": "Routes(217)"
+        "text": "Routes(221)"
       },
       {
         "tag": "BUTTON",
         "id": "",
         "cls": "btn btn-xs-real btn-secondary w-100 listBtns",
-        "text": "Fleet(234)"
+        "text": "Fleet(237)"
       },
       {
         "tag": "BUTTON",
@@ -470,11 +470,11 @@
         "tag": "BUTTON",
         "id": "tPending",
         "cls": "btn btn-xs-real btn-secondary w-100 listBtns",
-        "text": "Pending (17)"
+        "text": "Pending (16)"
       }
     ],
     "spans": {
-      "hPending": "17",
+      "hPending": "16",
       "hParked": "0"
     }
   },
@@ -484,14 +484,14 @@
       "tag": "DIV",
       "id": "routesContainer",
       "cls": "",
-      "len": 983,
-      "scrollHeight": 923,
-      "clientHeight": 923
+      "len": 700,
+      "scrollHeight": 704,
+      "clientHeight": 704
     },
-    "listLen": 983,
-    "list2Len": 983,
-    "demandCount": 3,
-    "regCount": 13
+    "listLen": 700,
+    "list2Len": 700,
+    "demandCount": 2,
+    "regCount": 9
   },
   "tab_Pending": {
     "container": {
@@ -499,14 +499,14 @@
       "tag": "DIV",
       "id": "routesContainer",
       "cls": "",
-      "len": 1344,
-      "scrollHeight": 1621,
-      "clientHeight": 1621
+      "len": 1330,
+      "scrollHeight": 1528,
+      "clientHeight": 1528
     },
-    "listLen": 1344,
-    "list2Len": 1344,
+    "listLen": 1330,
+    "list2Len": 1330,
     "demandCount": 0,
-    "regCount": 17
+    "regCount": 16
   },
   "tab_Fleet": {
     "container": {

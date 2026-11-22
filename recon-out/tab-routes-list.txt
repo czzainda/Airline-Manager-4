@@ -1,76 +1,54 @@
-217 ROUTES
+221 ROUTES
 Cost index
-Depart 3
+Depart 2
 1
 Next
-
-5,333KM
-#CL-0013
-WAJJ - ZBAA
-B-06-9 - MC-21-400
-Demand: 858 / 223 / 161
-Depart
 
 2,746KM
 #CL-0077
 ZBAA - VTCT
 B-073 - MC-21-400
-Demand: 646 / 226 / 208
+Demand: 354 / 124 / 85
 Depart
 
-7,902KM
-#CL-0050
-BIKF - ZBAA
-B-050 - B747SP
-Demand: 1203 / 399 / 172
+3,318KM
+#CL-0076
+VTBS - ZBAA
+B-072 - MC-21-400
+Demand: 696 / 554 / 8
 Depart
-#CL-0038
-ZBAA - VOMM
-B-030-4 - MC-21-400
-Onboard: 10 / 3 / 10
-00:07:09
-#CL-124
-OPIS - OMDB
-B-129 - MC-21-400
-Onboard: 119 / 35 / 10
-00:07:34
-#CL-161
-EDDF - LBSF
-B-172 - MC-21-400
-Onboard: 121 / 21 / 21
-00:08:24
-#CL-0015
-ZBAA - WIHH
-B-06-7 - MC-21-400
-Onboard: 0 / 70 / 27
-00:10:32
+#CL-107
+RKSI - WIPL
+B-112 - MC-21-400
+Onboard: 0 / 39 / 48
+00:13:32
 #CL-139
-VIDP - UACC
+UACC - VIDP
 B-149 - MC-21-400
-Onboard: 95 / 51 / 8
-00:11:10
-#CL-0086
-RKSI - VTSB
-B-090 - MC-21-400
-Onboard: 37 / 53 / 29
-00:11:18
+Onboard: 92 / 55 / 8
+00:16:05
 #CL-189
 LTAC - VIDP
 B-200 - Boeing 777-300ERSF
-Onboard: 130,000 / 8,000 Lbs
-00:11:38
-#CL-132
-ZPPP - VIDP
-B-137 - MC-21-400
-Onboard: 37 / 36 / 34
-00:13:38
-#CL-135
-VIDP - ZUUU
-B-140 - MC-21-400
-Onboard: 51 / 36 / 32
-00:14:21
-#CL-116
-OMDB - HSSS
-B-121 - MC-21-400
-Onboard: 28 / 88 / 7
-00:14:34
+Onboard: 114,000 / 45,000 Lbs
+00:16:31
+#CL-138
+OIIE - VIDP
+B-148 - MC-21-400
+Onboard: 102 / 30 / 17
+00:16:48
+#CL-0099
+ZBAA - UAFM
+B-0104 - A330-900neo
+Onboard: 212 / 56 / 14
+00:17:58
+#CL-0098
+OMDB - UKBB
+B-0103 - A330-900neo
+Onboard: 80 / 71 / 69
+00:18:26
+#CL-0076
+RKSI - VGZR
+B-071 - MC-21-400
+Onboard: 0 / 77 / 22
+00:22:13
