@@ -1,0 +1,58 @@
+14 AIRCRAFT
+A380-800, B-262
+264 Seats
+Paris Charles de Gaulle, France
+Pending delivery: 01:01:00
+ Deliver now: 9 Points
+A380-800, B-230
+355 Seats
+Brazzaville, Congo (Brazzaville)
+Pending maintenance: 04:43:30
+A380-800, B-228
+254 Seats
+Seoul Incheon, South Korea
+Pending maintenance: 1d 14:08:58
+A380-800, B-227
+287 Seats
+Frankfurt intl, Germany
+Pending maintenance: 17:41:01
+MC-21-400, B-152
+135 Seats
+New Delhi, India
+Pending maintenance: 02:04:40
+MC-21-400, B-116
+122 Seats
+Dubai, United Arab Emirates
+Pending maintenance: 01:36:44
+MC-21-400, B-114
+144 Seats
+Seoul Incheon, South Korea
+Pending maintenance: 00:39:46
+MC-21-400, B-061
+144 Seats
+Beijing Capital, China
+Pending maintenance: 01:19:53
+MC-21-400, B-030-4
+100 Seats
+Beijing Capital, China
+Pending maintenance: 01:51:54
+MC-21-400, B-017
+95 Seats
+Beijing Capital, China
+Pending maintenance: 04:48:20
+MC-21-400, B-020-5
+108 Seats
+Beijing Capital, China
+Pending maintenance: 02:08:52
+MC-21-400, B-020-8
+105 Seats
+Beijing Capital, China
+Pending maintenance: 01:25:20
+MC-21-400, B-020-6
+102 Seats
+Beijing Capital, China
+Pending maintenance: 00:50:14
+MC-21-400, B-06-10
+92 Seats
+Beijing Capital, China
+Pending maintenance: 02:11:52
