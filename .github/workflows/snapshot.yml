@@ -6,14 +6,27 @@ name: Fleet Snapshot
 # workflow: own concurrency group, own Playwright config, additive
 # files only. It never touches the game state; it only reads the
 # ROUTES panel and commits snapshots/*.json back to the repo.
+#
+# Cadence (2026-11-23): self-perpetuating chain, same pattern as the
+# main bot — every run's chain-next job waits until the next :22 UTC
+# and dispatches the next run with the built-in GITHUB_TOKEN, so the
+# hourly cadence no longer depends on GitHub's schedule trigger
+# (which silently stopped firing for 5+ hours on 2026-11-23 and left
+# the reconcile job reusing a stale snapshot). The schedule trigger
+# stays as an independent backup kicker: if it fires while the chain
+# is alive it just adds one extra collection; if the chain ever
+# breaks, its next successful fire restarts the cadence and that run
+# chains onward again.
 
 on:
   schedule:
     - cron: '22 * * * *'
   workflow_dispatch:
 
+# GITHUB_TOKEN needs actions:write so the chain job can dispatch the next run.
 permissions:
   contents: read
+  actions: write
 
 concurrency:
   group: am4-snapshot
@@ -122,3 +135,37 @@ jobs:
         else
           echo "No snapshot changes to commit."
         fi
+
+  # Self-perpetuating hourly chain: no external scheduler needed.
+  # After the snapshot job finishes (even if it fails), wait until the
+  # next :22 UTC and dispatch the next run using the built-in
+  # GITHUB_TOKEN. Mirrors the Playwright Tests workflow's chain-next.
+  chain-next:
+    name: Chain next run (hourly at :22 UTC)
+    needs: snapshot
+    if: always()
+    runs-on: ubuntu-22.04
+    timeout-minutes: 70
+    steps:
+      - name: Wait until next :22 UTC
+        run: |
+          # Sleep until 22 minutes past the hour (UTC), keeping an
+          # hourly cadence without any external scheduler. Pure
+          # arithmetic, no `date -d` relative parsing (which misreads
+          # "+1 hour" as a tz offset).
+          now_min=$(date -u +%M)
+          now_sec=$(date -u +%S)
+          elapsed=$(( 10#$now_min * 60 + 10#$now_sec ))
+          if [ "$elapsed" -lt 1320 ]; then
+            sleep_for=$(( 1320 - elapsed ))
+          else
+            sleep_for=$(( 3600 + 1320 - elapsed ))
+          fi
+          echo "Sleeping ${sleep_for}s until next :22 UTC, then dispatching next run"
+          sleep "$sleep_for"
+      - name: Dispatch next run
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api --method POST "/repos/czzainda/Airline-Manager-4/actions/workflows/snapshot.yml/dispatches" -f ref=main
+          echo "Next hourly snapshot run dispatched"
