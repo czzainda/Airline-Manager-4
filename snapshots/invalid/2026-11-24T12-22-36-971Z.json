@@ -1,0 +1,62 @@
+{
+  "takenAt": "2026-11-24T12:22:36.971Z",
+  "reasons": [
+    "closure: parsed 89 route rows, header says 216",
+    "closure: routes+pending+parked != fleet total 239"
+  ],
+  "header": {
+    "routes": 216,
+    "pending": 23,
+    "parked": 0,
+    "fleet": 239
+  },
+  "healing": [
+    {
+      "tab": "Routes",
+      "kind": "pagination-loop",
+      "signature": "CL-0076|19",
+      "atPage": 6
+    },
+    {
+      "tab": "Routes",
+      "kind": "recapture",
+      "attempt": 1,
+      "expected": 216,
+      "count": 89,
+      "unparsed": 0
+    },
+    {
+      "tab": "Routes",
+      "kind": "pagination-loop",
+      "signature": "CL-0076|19",
+      "atPage": 6
+    },
+    {
+      "tab": "Routes",
+      "kind": "recapture",
+      "attempt": 2,
+      "expected": 216,
+      "count": 89,
+      "unparsed": 0
+    },
+    {
+      "tab": "Routes",
+      "kind": "pagination-loop",
+      "signature": "CL-0076|19",
+      "atPage": 6
+    },
+    {
+      "tab": "Routes",
+      "kind": "recapture",
+      "attempt": 3,
+      "expected": 216,
+      "count": 89,
+      "unparsed": 0
+    }
+  ],
+  "parsedCounts": {
+    "routes": 89,
+    "pending": 23,
+    "parked": 0
+  }
+}

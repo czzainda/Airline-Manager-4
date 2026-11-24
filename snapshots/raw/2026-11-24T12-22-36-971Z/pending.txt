@@ -1,0 +1,94 @@
+23 AIRCRAFT
+A380-800, B-264
+286 Seats
+Paris Charles de Gaulle, France
+Pending delivery: 03:37:43
+ Deliver now: 30 Points
+A380-800, B-237
+276 Seats
+Astana, Kazakhstan
+Pending maintenance: 02:06:11
+A380-800, B-229
+259 Seats
+Frankfurt intl, Germany
+Pending maintenance: 1d 09:19:07
+A380-800, B-228
+254 Seats
+Seoul Incheon, South Korea
+Pending maintenance: 22:04:14
+A380-800, B-227
+287 Seats
+Frankfurt intl, Germany
+Pending maintenance: 01:36:17
+A380-800, B-220
+266 Seats
+Dubai, United Arab Emirates
+Pending maintenance: 02:44:18
+A380-800, B-215
+301 Seats
+Ouagadougou, Burkina Faso
+Pending maintenance: 03:53:59
+Boeing 777-300ERSF, B-207
+234,820 Lbs
+New Delhi, India
+Pending maintenance: 12:11:28
+Boeing 777-300ERSF, B-206
+236,590 Lbs
+Beijing Capital, China
+Pending maintenance: 16:48:29
+Boeing 777-300ERSF, B-205
+244,555 Lbs
+New Delhi, India
+Pending maintenance: 16:49:03
+Boeing 777-300ERSF, B-204
+249,865 Lbs
+Frankfurt intl, Germany
+Pending maintenance: 05:18:31
+Boeing 777-300ERSF, B-190
+223,315 Lbs
+Hagåtña, Guam
+Pending maintenance: 02:51:30
+Boeing 777-300ERSF, B-188
+228,007 Lbs
+Kampala, Uganda
+Pending maintenance: 03:22:44
+MC-21-400, B-176
+134 Seats
+Gaziantep, Turkey
+Pending maintenance: 01:00:40
+MC-21-400, B-177
+101 Seats
+Frankfurt intl, Germany
+Pending maintenance: 00:19:43
+MC-21-400, B-178
+136 Seats
+Frankfurt intl, Germany
+Pending maintenance: 00:26:40
+MC-21-400, B-151
+128 Seats
+Nakhon Si Thammarat, Thailand
+Pending maintenance: 01:00:09
+MC-21-400, B-115
+134 Seats
+Dubai, United Arab Emirates
+Pending maintenance: 00:06:10
+MC-21-400, B-118
+149 Seats
+New Delhi, India
+Pending maintenance: 00:01:12
+MC-21-400, B-109
+146 Seats
+Nakhon Pathom, Thailand
+Pending maintenance: 02:55:12
+MC-21-400, B-113
+139 Seats
+Seoul Incheon, South Korea
+Pending maintenance: 02:53:37
+A330-900neo, B-094
+163 Seats
+Dubai, United Arab Emirates
+Pending maintenance: 03:58:07
+B747SP, B-053
+144 Seats
+Beijing Capital, China
+Pending maintenance: 16:35:46
