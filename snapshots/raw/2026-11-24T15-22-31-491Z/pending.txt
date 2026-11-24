@@ -1,0 +1,70 @@
+17 AIRCRAFT
+A380-800, B-264
+286 Seats
+Paris Charles de Gaulle, France
+Pending delivery: 00:37:51
+ Deliver now: 6 Points
+A380-800, B-229
+259 Seats
+Frankfurt intl, Germany
+Pending maintenance: 1d 06:19:15
+A380-800, B-228
+254 Seats
+Seoul Incheon, South Korea
+Pending maintenance: 19:04:22
+A380-800, B-215
+301 Seats
+Ouagadougou, Burkina Faso
+Pending maintenance: 00:54:07
+A380-800, B-210
+362 Seats
+Freetown, Sierra Leone
+Pending maintenance: 04:37:11
+Boeing 777-300ERSF, B-207
+234,820 Lbs
+New Delhi, India
+Pending maintenance: 09:11:36
+Boeing 777-300ERSF, B-206
+236,590 Lbs
+Beijing Capital, China
+Pending maintenance: 13:48:37
+Boeing 777-300ERSF, B-205
+244,555 Lbs
+New Delhi, India
+Pending maintenance: 13:49:11
+Boeing 777-300ERSF, B-204
+249,865 Lbs
+Frankfurt intl, Germany
+Pending maintenance: 02:18:39
+Boeing 777-300ERSF, B-188
+228,007 Lbs
+Kampala, Uganda
+Pending maintenance: 00:22:52
+MC-21-400, B-139
+134 Seats
+New Delhi, India
+Pending maintenance: 00:39:46
+MC-21-400, B-0105
+150 Seats
+Dunhuang, China
+Pending maintenance: 00:32:39
+A330-900neo, B-094
+163 Seats
+Dubai, United Arab Emirates
+Pending maintenance: 00:58:15
+MC-21-400, B-074
+129 Seats
+Beijing Capital, China
+Pending maintenance: 03:25:47
+MC-21-400, B-062
+120 Seats
+Macau, Macau
+Pending maintenance: 00:57:53
+B747SP, B-053
+144 Seats
+Beijing Capital, China
+Pending maintenance: 13:35:54
+MC-21-400, B-030-10
+159 Seats
+Mashhad, Iran
+Pending maintenance: 02:00:58
