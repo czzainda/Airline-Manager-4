@@ -1,0 +1,34 @@
+{
+  "takenAt": "2026-11-24T01:59:22.422Z",
+  "reasons": [
+    "closure: routes+pending+parked != fleet total 237",
+    "closure: fleet-by-type sum 238 != fleet total 237"
+  ],
+  "header": {
+    "routes": 222,
+    "pending": 16,
+    "parked": 0,
+    "fleet": 237
+  },
+  "healing": [
+    {
+      "tab": "Routes",
+      "kind": "recapture",
+      "attempt": 1,
+      "expected": 223,
+      "count": 222,
+      "unparsed": 0
+    },
+    {
+      "tab": "Pending",
+      "kind": "drift-sweep",
+      "was": 15,
+      "now": 16
+    }
+  ],
+  "parsedCounts": {
+    "routes": 222,
+    "pending": 16,
+    "parked": 0
+  }
+}
