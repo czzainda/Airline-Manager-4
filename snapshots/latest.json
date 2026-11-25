@@ -1,434 +1,29 @@
 {
-  "takenAt": "2026-11-25T19:22:36.606Z",
+  "takenAt": "2026-11-25T20:22:42.554Z",
   "header": {
-    "routes": 222,
-    "pending": 18,
+    "routes": 223,
+    "pending": 17,
     "parked": 0,
     "fleet": 240
   },
   "routes": [
     {
-      "routeNo": "CL-0026",
-      "origin": "WMKK",
-      "dest": "ZBAA",
-      "reg": "B-020-5",
-      "type": "MC-21-400",
-      "distanceKm": 4414,
-      "onboard": false
-    },
-    {
-      "routeNo": "CL-139",
-      "origin": "OTBD",
-      "dest": "VIDP",
-      "reg": "B-146",
-      "type": "MC-21-400",
-      "distanceKm": 2554,
-      "onboard": false
-    },
-    {
-      "routeNo": "CL-0025",
-      "origin": "WSSS",
-      "dest": "ZBAA",
-      "reg": "B-020-4",
-      "type": "MC-21-400",
-      "distanceKm": 4491,
-      "onboard": false
-    },
-    {
-      "routeNo": "CL-116",
-      "origin": "HSSS",
-      "dest": "OMDB",
-      "reg": "B-121",
-      "type": "MC-21-400",
-      "distanceKm": 2604,
-      "onboard": false
-    },
-    {
-      "routeNo": "CL-0076",
-      "origin": "RPLL",
-      "dest": "RKSI",
-      "reg": "B-065",
-      "type": "MC-21-400",
-      "distanceKm": 2609,
-      "onboard": false
-    },
-    {
-      "routeNo": "CL-0076",
+      "routeNo": "CL-0090",
       "origin": "RKSI",
-      "dest": "ZPPP",
-      "reg": "B-064",
+      "dest": "VETZ",
+      "reg": "B-085",
       "type": "MC-21-400",
-      "distanceKm": 2613,
+      "distanceKm": 3368,
       "onboard": false
     },
     {
-      "routeNo": "CL-136",
-      "origin": "OBBI",
-      "dest": "VIDP",
-      "reg": "B-141",
+      "routeNo": "CL-158",
+      "origin": "LCEN",
+      "dest": "EDDF",
+      "reg": "B-163",
       "type": "MC-21-400",
-      "distanceKm": 2620,
+      "distanceKm": 2606,
       "onboard": false
-    },
-    {
-      "routeNo": "CL-150",
-      "origin": "LGAV",
-      "dest": "EDDF",
-      "reg": "B-160",
-      "type": "MC-21-400",
-      "distanceKm": 1816,
-      "onboard": false
-    },
-    {
-      "routeNo": "CL-164",
-      "origin": "EDDF",
-      "dest": "LTBA",
-      "reg": "B-175",
-      "type": "MC-21-400",
-      "distanceKm": 1863,
-      "onboard": false
-    },
-    {
-      "routeNo": "CL-157",
-      "origin": "LPPT",
-      "dest": "EDDF",
-      "reg": "B-165",
-      "type": "MC-21-400",
-      "distanceKm": 1874,
-      "onboard": false
-    },
-    {
-      "routeNo": "CL-170",
-      "origin": "EDDF",
-      "dest": "LTCP",
-      "reg": "B-181",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-0077",
-      "origin": "ZBAA",
-      "dest": "VTCT",
-      "reg": "B-073",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-107",
-      "origin": "WIPL",
-      "dest": "RKSI",
-      "reg": "B-112",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-139",
-      "origin": "UBBB",
-      "dest": "VIDP",
-      "reg": "B-144",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-105",
-      "origin": "RKSI",
-      "dest": "ZUBD",
-      "reg": "B-110",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-216",
-      "origin": "RKSI",
-      "dest": "EDDM",
-      "reg": "B-228",
-      "type": "A380-800",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-0024",
-      "origin": "ZBAA",
-      "dest": "VABB",
-      "reg": "B-020-3",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-210",
-      "origin": "RKSI",
-      "dest": "NSFA",
-      "reg": "B-222",
-      "type": "A380-800",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-0093",
-      "origin": "OMDB",
-      "dest": "VGZR",
-      "reg": "B-098",
-      "type": "A330-900neo",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-0095",
-      "origin": "OMDB",
-      "dest": "HKJK",
-      "reg": "B-0100",
-      "type": "A330-900neo",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-235",
-      "origin": "LTFJ",
-      "dest": "WSSS",
-      "reg": "B-258",
-      "type": "A380-800",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-0011",
-      "origin": "ZBAA",
-      "dest": "WADL",
-      "reg": "B-016",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-0012",
-      "origin": "ZBAA",
-      "dest": "WADD",
-      "reg": "B-06-10",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-239",
-      "origin": "LFPG",
-      "dest": "ZPPP",
-      "reg": "B-264",
-      "type": "A380-800",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-0061",
-      "origin": "ZBAA",
-      "dest": "VVPC",
-      "reg": "B-061",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-0059",
-      "origin": "ZBAA",
-      "dest": "VEBD",
-      "reg": "B-059",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-165",
-      "origin": "EDDF",
-      "dest": "LTAJ",
-      "reg": "B-176",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-166",
-      "origin": "OJAI",
-      "dest": "EDDF",
-      "reg": "B-177",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-0050",
-      "origin": "ZBAA",
-      "dest": "BIKF",
-      "reg": "B-050",
-      "type": "B747SP",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-224",
-      "origin": "OPKC",
-      "dest": "EGLL",
-      "reg": "B-236",
-      "type": "A380-800",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-0076",
-      "origin": "RKSI",
-      "dest": "PGSN",
-      "reg": "B-067",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-153",
-      "origin": "GMML",
-      "dest": "EDDF",
-      "reg": "B-166",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-167",
-      "origin": "OJAQ",
-      "dest": "EDDF",
-      "reg": "B-178",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-0076",
-      "origin": "VLVT",
-      "dest": "RKSI",
-      "reg": "B-070",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-169",
-      "origin": "UWUU",
-      "dest": "EDDF",
-      "reg": "B-180",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-137",
-      "origin": "VIDP",
-      "dest": "UGTB",
-      "reg": "B-147",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-137",
-      "origin": "UDYZ",
-      "dest": "VIDP",
-      "reg": "B-142",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-142",
-      "origin": "VIDP",
-      "dest": "UNKS",
-      "reg": "B-152",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-141",
-      "origin": "VIDP",
-      "dest": "VTSF",
-      "reg": "B-151",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-0082",
-      "origin": "VTBD",
-      "dest": "ZBAA",
-      "reg": "B-079",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-0076",
-      "origin": "VTBS",
-      "dest": "ZBAA",
-      "reg": "B-072",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-161",
-      "origin": "EDDF",
-      "dest": "LBSF",
-      "reg": "B-172",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-139",
-      "origin": "UACC",
-      "dest": "VIDP",
-      "reg": "B-149",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-138",
-      "origin": "OIIE",
-      "dest": "VIDP",
-      "reg": "B-148",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-233",
-      "origin": "WSSS",
-      "dest": "KLMT",
-      "reg": "B-252",
-      "type": "A380-800",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-135",
-      "origin": "VIDP",
-      "dest": "ZUUU",
-      "reg": "B-140",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
-      "routeNo": "CL-152",
-      "origin": "EDDF",
-      "dest": "UKBB",
-      "reg": "B-170",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
     },
     {
       "routeNo": "CL-149",
@@ -436,8 +31,8 @@
       "dest": "EDDF",
       "reg": "B-168",
       "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
+      "distanceKm": 1647,
+      "onboard": false
     },
     {
       "routeNo": "CL-0053",
@@ -445,8 +40,8 @@
       "dest": "EHAM",
       "reg": "B-047",
       "type": "B747SP",
-      "distanceKm": 0,
-      "onboard": true
+      "distanceKm": 7828,
+      "onboard": false
     },
     {
       "routeNo": "CL-0076",
@@ -454,8 +49,8 @@
       "dest": "RKSI",
       "reg": "B-066",
       "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
+      "distanceKm": 2205,
+      "onboard": false
     },
     {
       "routeNo": "CL-100",
@@ -463,8 +58,8 @@
       "dest": "ZLDH",
       "reg": "B-0105",
       "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
+      "distanceKm": 2744,
+      "onboard": false
     },
     {
       "routeNo": "CL-102",
@@ -472,8 +67,8 @@
       "dest": "RKSI",
       "reg": "B-107",
       "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
+      "distanceKm": 3598,
+      "onboard": false
     },
     {
       "routeNo": "CL-112",
@@ -481,8 +76,8 @@
       "dest": "OMDB",
       "reg": "B-117",
       "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
+      "distanceKm": 1687,
+      "onboard": false
     },
     {
       "routeNo": "CL-179",
@@ -490,8 +85,8 @@
       "dest": "PGUM",
       "reg": "B-190",
       "type": "777-300ERSF",
-      "distanceKm": 0,
-      "onboard": true
+      "distanceKm": 3228,
+      "onboard": false
     },
     {
       "routeNo": "CL-145",
@@ -499,8 +94,8 @@
       "dest": "VIDP",
       "reg": "B-155",
       "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
+      "distanceKm": 3650,
+      "onboard": false
     },
     {
       "routeNo": "CL-0028",
@@ -508,8 +103,8 @@
       "dest": "ZBAA",
       "reg": "B-020-7",
       "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
+      "distanceKm": 3653,
+      "onboard": false
     },
     {
       "routeNo": "CL-108",
@@ -517,8 +112,8 @@
       "dest": "RKSI",
       "reg": "B-113",
       "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
+      "distanceKm": 3663,
+      "onboard": false
     },
     {
       "routeNo": "CL-128",
@@ -526,8 +121,8 @@
       "dest": "OMDB",
       "reg": "B-133",
       "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
+      "distanceKm": 3670,
+      "onboard": false
     },
     {
       "routeNo": "CL-146",
@@ -535,8 +130,8 @@
       "dest": "VIDP",
       "reg": "B-156",
       "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
+      "distanceKm": 3673,
+      "onboard": false
     },
     {
       "routeNo": "CL-104",
@@ -544,8 +139,8 @@
       "dest": "VTBK",
       "reg": "B-109",
       "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
+      "distanceKm": 3691,
+      "onboard": false
     },
     {
       "routeNo": "CL-127",
@@ -553,8 +148,8 @@
       "dest": "OMDB",
       "reg": "B-132",
       "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
+      "distanceKm": 3731,
+      "onboard": false
     },
     {
       "routeNo": "CL-147",
@@ -562,8 +157,8 @@
       "dest": "VIDP",
       "reg": "B-157",
       "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
+      "distanceKm": 3732,
+      "onboard": false
     },
     {
       "routeNo": "CL-101",
@@ -571,8 +166,8 @@
       "dest": "RKSI",
       "reg": "B-106",
       "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
+      "distanceKm": 3739,
+      "onboard": false
     },
     {
       "routeNo": "CL-0047",
@@ -580,8 +175,8 @@
       "dest": "ZBAA",
       "reg": "B-044",
       "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
+      "distanceKm": 1882,
+      "onboard": false
     },
     {
       "routeNo": "CL-124",
@@ -944,15 +539,6 @@
       "onboard": true
     },
     {
-      "routeNo": "CL-0046",
-      "origin": "RJTT",
-      "dest": "ZBAA",
-      "reg": "B-045",
-      "type": "MC-21-400",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
       "routeNo": "CL-109",
       "origin": "VVTH",
       "dest": "RKSI",
@@ -1106,6 +692,15 @@
       "onboard": true
     },
     {
+      "routeNo": "CL-150",
+      "origin": "EDDF",
+      "dest": "LGAV",
+      "reg": "B-160",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
       "routeNo": "CL-162",
       "origin": "EDDF",
       "dest": "LTCR",
@@ -1160,6 +755,24 @@
       "onboard": true
     },
     {
+      "routeNo": "CL-164",
+      "origin": "LTBA",
+      "dest": "EDDF",
+      "reg": "B-175",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-157",
+      "origin": "EDDF",
+      "dest": "LPPT",
+      "reg": "B-165",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
       "routeNo": "CL-0039",
       "origin": "ZBAA",
       "dest": "OIMM",
@@ -1173,6 +786,15 @@
       "origin": "ZBAA",
       "dest": "UTAA",
       "reg": "B-040",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-161",
+      "origin": "LBSF",
+      "dest": "EDDF",
+      "reg": "B-172",
       "type": "MC-21-400",
       "distanceKm": 0,
       "onboard": true
@@ -1218,6 +840,15 @@
       "origin": "RKSI",
       "dest": "VTSS",
       "reg": "B-108",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-152",
+      "origin": "UKBB",
+      "dest": "EDDF",
+      "reg": "B-170",
       "type": "MC-21-400",
       "distanceKm": 0,
       "onboard": true
@@ -1304,11 +935,92 @@
       "onboard": true
     },
     {
+      "routeNo": "CL-139",
+      "origin": "VIDP",
+      "dest": "OTBD",
+      "reg": "B-146",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
       "routeNo": "CL-198",
       "origin": "EGLL",
       "dest": "OERK",
       "reg": "B-209",
       "type": "A380-800",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-0076",
+      "origin": "RKSI",
+      "dest": "RPLL",
+      "reg": "B-065",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-0076",
+      "origin": "ZPPP",
+      "dest": "RKSI",
+      "reg": "B-064",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-136",
+      "origin": "VIDP",
+      "dest": "OBBI",
+      "reg": "B-141",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-165",
+      "origin": "LTAJ",
+      "dest": "EDDF",
+      "reg": "B-176",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-170",
+      "origin": "LTCP",
+      "dest": "EDDF",
+      "reg": "B-181",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-0077",
+      "origin": "VTCT",
+      "dest": "ZBAA",
+      "reg": "B-073",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-139",
+      "origin": "VIDP",
+      "dest": "UBBB",
+      "reg": "B-144",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-105",
+      "origin": "ZUBD",
+      "dest": "RKSI",
+      "reg": "B-110",
+      "type": "MC-21-400",
       "distanceKm": 0,
       "onboard": true
     },
@@ -1340,6 +1052,24 @@
       "onboard": true
     },
     {
+      "routeNo": "CL-0061",
+      "origin": "VVPC",
+      "dest": "ZBAA",
+      "reg": "B-061",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-0059",
+      "origin": "VEBD",
+      "dest": "ZBAA",
+      "reg": "B-059",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
       "routeNo": "CL-129",
       "origin": "OMDB",
       "dest": "LWSK",
@@ -1349,10 +1079,37 @@
       "onboard": true
     },
     {
+      "routeNo": "CL-139",
+      "origin": "VIDP",
+      "dest": "UACC",
+      "reg": "B-149",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
       "routeNo": "CL-122",
       "origin": "OMDB",
       "dest": "UKLH",
       "reg": "B-127",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-138",
+      "origin": "VIDP",
+      "dest": "OIIE",
+      "reg": "B-148",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-135",
+      "origin": "ZUUU",
+      "dest": "VIDP",
+      "reg": "B-140",
       "type": "MC-21-400",
       "distanceKm": 0,
       "onboard": true
@@ -1457,6 +1214,87 @@
       "onboard": true
     },
     {
+      "routeNo": "CL-166",
+      "origin": "EDDF",
+      "dest": "OJAI",
+      "reg": "B-177",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-0076",
+      "origin": "PGSN",
+      "dest": "RKSI",
+      "reg": "B-067",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-153",
+      "origin": "EDDF",
+      "dest": "GMML",
+      "reg": "B-166",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-167",
+      "origin": "EDDF",
+      "dest": "OJAQ",
+      "reg": "B-178",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-0076",
+      "origin": "RKSI",
+      "dest": "VLVT",
+      "reg": "B-070",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-169",
+      "origin": "EDDF",
+      "dest": "UWUU",
+      "reg": "B-180",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-163",
+      "origin": "EDDF",
+      "dest": "GCTS",
+      "reg": "B-174",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-137",
+      "origin": "UGTB",
+      "dest": "VIDP",
+      "reg": "B-147",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-137",
+      "origin": "VIDP",
+      "dest": "UDYZ",
+      "reg": "B-142",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
       "routeNo": "CL-209",
       "origin": "EDDF",
       "dest": "ZSNJ",
@@ -1471,6 +1309,42 @@
       "dest": "GMME",
       "reg": "B-220",
       "type": "A380-800",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-142",
+      "origin": "UNKS",
+      "dest": "VIDP",
+      "reg": "B-152",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-141",
+      "origin": "VTSF",
+      "dest": "VIDP",
+      "reg": "B-151",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-0082",
+      "origin": "ZBAA",
+      "dest": "VTBD",
+      "reg": "B-079",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-0076",
+      "origin": "ZBAA",
+      "dest": "VTBS",
+      "reg": "B-072",
+      "type": "MC-21-400",
       "distanceKm": 0,
       "onboard": true
     },
@@ -1538,6 +1412,24 @@
       "onboard": true
     },
     {
+      "routeNo": "CL-0026",
+      "origin": "ZBAA",
+      "dest": "WMKK",
+      "reg": "B-020-5",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-0025",
+      "origin": "ZBAA",
+      "dest": "WSSS",
+      "reg": "B-020-4",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
       "routeNo": "CL-187",
       "origin": "ZBAA",
       "dest": "OMAA",
@@ -1556,6 +1448,24 @@
       "onboard": true
     },
     {
+      "routeNo": "CL-0024",
+      "origin": "VABB",
+      "dest": "ZBAA",
+      "reg": "B-020-3",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-0093",
+      "origin": "VGZR",
+      "dest": "OMDB",
+      "reg": "B-098",
+      "type": "A330-900neo",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
       "routeNo": "CL-230",
       "origin": "KSJC",
       "dest": "EGLL",
@@ -1565,11 +1475,29 @@
       "onboard": true
     },
     {
+      "routeNo": "CL-0095",
+      "origin": "HKJK",
+      "dest": "OMDB",
+      "reg": "B-0100",
+      "type": "A330-900neo",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
       "routeNo": "CL-182",
       "origin": "EDDF",
       "dest": "HUEN",
       "reg": "B-193",
       "type": "777-300ERSF",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-107",
+      "origin": "RKSI",
+      "dest": "WIPL",
+      "reg": "B-112",
+      "type": "MC-21-400",
       "distanceKm": 0,
       "onboard": true
     },
@@ -1597,6 +1525,24 @@
       "dest": "KJFK",
       "reg": "B-243",
       "type": "A380-800",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-0011",
+      "origin": "WADL",
+      "dest": "ZBAA",
+      "reg": "B-016",
+      "type": "MC-21-400",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-0012",
+      "origin": "WADD",
+      "dest": "ZBAA",
+      "reg": "B-06-10",
+      "type": "MC-21-400",
       "distanceKm": 0,
       "onboard": true
     },
@@ -1853,15 +1799,6 @@
       "onboard": true
     },
     {
-      "routeNo": "CL-220",
-      "origin": "KJFK",
-      "dest": "EDDT",
-      "reg": "B-232",
-      "type": "A380-800",
-      "distanceKm": 0,
-      "onboard": true
-    },
-    {
       "routeNo": "CL-214",
       "origin": "KMWH",
       "dest": "RKSI",
@@ -1979,6 +1916,15 @@
       "onboard": true
     },
     {
+      "routeNo": "CL-224",
+      "origin": "EGLL",
+      "dest": "OPKC",
+      "reg": "B-236",
+      "type": "A380-800",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
       "routeNo": "CL-228",
       "origin": "KPSP",
       "dest": "OMDB",
@@ -2004,134 +1950,190 @@
       "type": "A380-800",
       "distanceKm": 0,
       "onboard": true
+    },
+    {
+      "routeNo": "CL-0050",
+      "origin": "BIKF",
+      "dest": "ZBAA",
+      "reg": "B-050",
+      "type": "B747SP",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-216",
+      "origin": "EDDM",
+      "dest": "RKSI",
+      "reg": "B-228",
+      "type": "A380-800",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-210",
+      "origin": "NSFA",
+      "dest": "RKSI",
+      "reg": "B-222",
+      "type": "A380-800",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-235",
+      "origin": "WSSS",
+      "dest": "LTFJ",
+      "reg": "B-258",
+      "type": "A380-800",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-239",
+      "origin": "ZPPP",
+      "dest": "LFPG",
+      "reg": "B-264",
+      "type": "A380-800",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-240",
+      "origin": "VIDP",
+      "dest": "MYNN",
+      "reg": "B-266",
+      "type": "A380-800",
+      "distanceKm": 0,
+      "onboard": true
+    },
+    {
+      "routeNo": "CL-233",
+      "origin": "KLMT",
+      "dest": "WSSS",
+      "reg": "B-252",
+      "type": "A380-800",
+      "distanceKm": 0,
+      "onboard": true
     }
   ],
   "pending": [
     {
       "type": "A380-800",
-      "reg": "B-266",
-      "location": "New Delhi, India",
-      "kind": "delivery",
-      "etaText": "02:52:37"
-    },
-    {
-      "type": "A380-800",
       "reg": "B-248",
       "location": "Frankfurt intl, Germany",
       "kind": "maintenance",
-      "etaText": "06:22:54"
+      "etaText": "05:22:50"
     },
     {
       "type": "A380-800",
       "reg": "B-240",
       "location": "San Salvador (San Luis Talpa), El Salvador",
       "kind": "maintenance",
-      "etaText": "04:26:01"
+      "etaText": "03:25:57"
+    },
+    {
+      "type": "A380-800",
+      "reg": "B-232",
+      "location": "Berlin Tegel, Germany",
+      "kind": "maintenance",
+      "etaText": "05:38:07"
     },
     {
       "type": "A380-800",
       "reg": "B-231",
       "location": "New York JFK, United States",
       "kind": "maintenance",
-      "etaText": "1d 12:27:28"
+      "etaText": "1d 11:27:24"
     },
     {
       "type": "A380-800",
       "reg": "B-230",
       "location": "London Heathrow intl, United Kingdom",
       "kind": "maintenance",
-      "etaText": "15:19:50"
+      "etaText": "14:19:46"
     },
     {
       "type": "A380-800",
       "reg": "B-229",
       "location": "Frankfurt intl, Germany",
       "kind": "maintenance",
-      "etaText": "02:19:07"
+      "etaText": "01:19:03"
     },
     {
       "type": "777-300ERSF",
       "reg": "B-192",
       "location": "Frankfurt intl, Germany",
       "kind": "maintenance",
-      "etaText": "02:31:16"
-    },
-    {
-      "type": "MC-21-400",
-      "reg": "B-174",
-      "location": "Frankfurt intl, Germany",
-      "kind": "maintenance",
-      "etaText": "00:43:08"
-    },
-    {
-      "type": "MC-21-400",
-      "reg": "B-163",
-      "location": "Frankfurt intl, Germany",
-      "kind": "maintenance",
-      "etaText": "00:55:27"
+      "etaText": "01:31:12"
     },
     {
       "type": "MC-21-400",
       "reg": "B-135",
       "location": "New Delhi, India",
       "kind": "maintenance",
-      "etaText": "01:40:41"
+      "etaText": "00:40:37"
+    },
+    {
+      "type": "MC-21-400",
+      "reg": "B-121",
+      "location": "Khartoum, Sudan",
+      "kind": "maintenance",
+      "etaText": "01:54:05"
     },
     {
       "type": "A330-900neo",
       "reg": "B-096",
       "location": "Dubai, United Arab Emirates",
       "kind": "maintenance",
-      "etaText": "03:44:38"
-    },
-    {
-      "type": "MC-21-400",
-      "reg": "B-085",
-      "location": "Tezpur, India",
-      "kind": "maintenance",
-      "etaText": "00:50:06"
+      "etaText": "02:44:34"
     },
     {
       "type": "B747SP",
       "reg": "B-054",
       "location": "Beijing Capital, China",
       "kind": "maintenance",
-      "etaText": "11:06:27"
+      "etaText": "10:06:23"
     },
     {
       "type": "B747SP",
       "reg": "B-051",
       "location": "Beijing Capital, China",
       "kind": "maintenance",
-      "etaText": "11:06:46"
+      "etaText": "10:06:42"
     },
     {
       "type": "B747SP",
       "reg": "B-049",
       "location": "Beijing Capital, China",
       "kind": "maintenance",
-      "etaText": "11:06:49"
+      "etaText": "10:06:45"
     },
     {
       "type": "B747SP",
       "reg": "B-048",
       "location": "Beijing Capital, China",
       "kind": "maintenance",
-      "etaText": "11:06:31"
+      "etaText": "10:06:27"
     },
     {
       "type": "B747SP",
       "reg": "B-046",
       "location": "Beijing Capital, China",
       "kind": "maintenance",
-      "etaText": "11:06:57"
+      "etaText": "10:06:53"
+    },
+    {
+      "type": "MC-21-400",
+      "reg": "B-045",
+      "location": "Beijing Capital, China",
+      "kind": "maintenance",
+      "etaText": "00:57:10"
     },
     {
       "type": "MC-21-400",
       "reg": "B-030-6",
       "location": "Beijing Capital, China",
       "kind": "maintenance",
-      "etaText": "03:42:24"
+      "etaText": "02:42:20"
     }
   ],
   "parked": [],
