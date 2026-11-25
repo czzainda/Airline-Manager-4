@@ -1,0 +1,86 @@
+21 AIRCRAFT
+A380-800, B-265
+273 Seats
+Singapore, Singapore
+Pending delivery: 00:10:12
+ Deliver now: 2 Points
+A380-800, B-231
+345 Seats
+Algiers, Algeria
+Pending maintenance: 00:45:05
+A380-800, B-230
+355 Seats
+London Heathrow intl, United Kingdom
+Pending maintenance: 23:19:46
+A380-800, B-229
+259 Seats
+Frankfurt intl, Germany
+Pending maintenance: 10:19:03
+A380-800, B-218
+345 Seats
+New Delhi, India
+Pending maintenance: 00:25:24
+Boeing 777-300ERSF, B-196
+233,050 Lbs
+Beijing Capital, China
+Pending maintenance: 00:56:13
+Boeing 777-300ERSF, B-191
+242,785 Lbs
+Dakar L.S. Senghor, Senegal
+Pending maintenance: 00:14:50
+Boeing 777-300ERSF, B-187
+206,500 Lbs
+Singapore, Singapore
+Pending maintenance: 00:47:13
+A380-800, B-186
+295 Seats
+Beijing Capital, China
+Pending maintenance: 00:55:08
+MC-21-400, B-175
+162 Seats
+Istanbul Atatürk, Turkey
+Pending maintenance: 00:13:23
+MC-21-400, B-165
+162 Seats
+Frankfurt intl, Germany
+Pending maintenance: 00:14:39
+MC-21-400, B-136
+93 Seats
+New Delhi, India
+Pending maintenance: 03:19:11
+MC-21-400, B-137
+116 Seats
+Kunming, China
+Pending maintenance: 01:24:05
+MC-21-400, B-124
+148 Seats
+Yerevan, Armenia
+Pending maintenance: 01:18:46
+A330-900neo, B-099
+314 Seats
+Dubai, United Arab Emirates
+Pending maintenance: 00:47:20
+B747SP, B-054
+144 Seats
+Beijing Capital, China
+Pending maintenance: 19:06:23
+B747SP, B-055
+130 Seats
+Beijing Capital, China
+Pending maintenance: 05:00:08
+B747SP, B-050
+117 Seats
+Beijing Capital, China
+Pending maintenance: 00:07:05
+B747SP, B-048
+131 Seats
+Beijing Capital, China
+Pending maintenance: 19:06:27
+B747SP, B-046
+127 Seats
+Beijing Capital, China
+Pending maintenance: 19:06:53
+MC-21-400, B-020-7
+88 Seats
+Beijing Capital, China
+Pending maintenance: 00:51:39
