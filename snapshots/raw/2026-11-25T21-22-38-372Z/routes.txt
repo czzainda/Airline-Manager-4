@@ -1,0 +1,1211 @@
+222 ROUTES
+Cost index
+Depart 19
+1
+Next
+
+2,093KM
+#CL-0046
+RJTT - ZBAA
+B-045 - MC-21-400
+Demand: 443 / 66 / 72
+Depart
+
+2,195KM
+#CL-123
+UTTT - OMDB
+B-128 - MC-21-400
+Demand: 516 / 146 / 57
+Depart
+
+4,202KM
+#CL-189
+VIDP - LTAC
+B-200 - Boeing 777-300ERSF
+Demand: 895,000 / 202,000 Lbs
+Depart
+*Demand is currently boosted due to a special event
+
+3,482KM
+#CL-0099
+UAFM - ZBAA
+B-0104 - A330-900neo
+Demand: 665 / 0 / 0
+Depart
+
+2,278KM
+#CL-133
+VIDP - OMAA
+B-138 - MC-21-400
+Demand: 0 / 0 / 0
+Depart
+
+2,278KM
+#CL-138
+VIDP - OMAA
+B-143 - MC-21-400
+Demand: 0 / 0 / 0
+Depart
+
+3,489KM
+#CL-0098
+UKBB - OMDB
+B-0103 - A330-900neo
+Demand: 481 / 90 / 93
+Depart
+
+4,823KM
+#CL-0040
+ZBAA - VOBL
+B-030-2 - MC-21-400
+Demand: 512 / 118 / 0
+Depart
+
+2,338KM
+#CL-134
+VYYY - VIDP
+B-139 - MC-21-400
+Demand: 853 / 108 / 54
+Depart
+
+1,816KM
+#CL-150
+EDDF - LGAV
+B-160 - MC-21-400
+Demand: 130 / 196 / 87
+Depart
+
+2,916KM
+#CL-162
+EDDF - LTCR
+B-173 - MC-21-400
+Demand: 297 / 102 / 15
+Depart
+=== PAGE BREAK ===
+222 ROUTES
+Cost index
+Depart 19
+Previous
+2
+Next
+
+2,365KM
+#CL-117
+LCEN - OMDB
+B-122 - MC-21-400
+Demand: 327 / 160 / 21
+Depart
+
+2,922KM
+#CL-156
+EDDF - HECA
+B-167 - MC-21-400
+Demand: 505 / 115 / 37
+Depart
+
+4,863KM
+#CL-0023
+ZBAA - OPKC
+B-020-2 - MC-21-400
+Demand: 571 / 503 / 50
+Depart
+
+2,396KM
+#CL-138
+VCBI - VIDP
+B-145 - MC-21-400
+Demand: 425 / 98 / 37
+Depart
+
+4,890KM
+#CL-126
+OMDB - EDHI
+B-131 - MC-21-400
+Demand: 459 / 186 / 50
+Depart
+
+1,863KM
+#CL-164
+LTBA - EDDF
+B-175 - MC-21-400
+Demand: 0 / 195 / 35
+Depart
+
+1,874KM
+#CL-157
+EDDF - LPPT
+B-165 - MC-21-400
+Demand: 71 / 168 / 40
+Depart
+
+4,912KM
+#CL-0039
+ZBAA - OIMM
+B-030-10 - MC-21-400
+Demand: 38 / 28 / 22
+Depart
+#CL-0036
+ZBAA - UTAA
+B-040 - MC-21-400
+Onboard: 0 / 23 / 58
+00:01:10
+#CL-161
+LBSF - EDDF
+B-172 - MC-21-400
+Onboard: 3 / 21 / 19
+00:02:38
+#CL-0095
+OAKB - RKSI
+B-091 - MC-21-400
+Onboard: 0 / 54 / 36
+00:08:36
+#CL-0092
+OMDB - UUEE
+B-093 - A330-900neo
+Onboard: 32 / 83 / 73
+00:08:37
+#CL-0076
+RKSI - VGZR
+B-071 - MC-21-400
+Onboard: 0 / 81 / 20
+00:10:41
+#CL-0076
+RKSI - VYYY
+B-068 - MC-21-400
+Onboard: 1 / 62 / 30
+00:10:54
+#CL-103
+RKSI - VTSS
+B-108 - MC-21-400
+Onboard: 30 / 27 / 44
+00:12:04
+#CL-152
+UKBB - EDDF
+B-170 - MC-21-400
+Onboard: 0 / 43 / 12
+00:12:56
+#CL-181
+EDDF - GOOY
+B-191 - Boeing 777-300ERSF
+Onboard: 87,000 / 77,000 Lbs
+00:13:02
+#CL-0064
+HHAS - ZBAA
+B-053 - B747SP
+Onboard: 1 / 79 / 58
+00:19:46
+#CL-0056
+ZBAA - VDPP
+B-056 - MC-21-400
+Onboard: 12 / 90 / 10
+00:21:23
+=== PAGE BREAK ===
+222 ROUTES
+Previous
+3
+Next
+#CL-0033
+ZBAA - VVTS
+B-017-3 - MC-21-400
+Onboard: 135 / 17 / 15
+00:22:30
+#CL-0029
+PGUM - ZBAA
+B-020-8 - MC-21-400
+Onboard: 1 / 79 / 20
+00:27:04
+#CL-186
+VCBI - ZBAA
+B-076 - MC-21-400
+Onboard: 8 / 39 / 0
+00:28:45
+#CL-177
+RKSI - WSSS
+B-187 - Boeing 777-300ERSF
+Onboard: 134,000 / 0 Lbs
+00:31:43
+#CL-0094
+LYBE - OMDB
+B-099 - A330-900neo
+Onboard: 192 / 90 / 16
+00:31:58
+#CL-110
+UTAT - ZBAA
+B-074 - MC-21-400
+Onboard: 49 / 47 / 4
+00:33:20
+#CL-139
+VIDP - OTBD
+B-146 - MC-21-400
+Onboard: 114 / 19 / 24
+00:36:09
+#CL-198
+EGLL - OERK
+B-209 - A380-800
+Onboard: 107 / 133 / 62
+00:38:03
+#CL-0076
+RKSI - RPLL
+B-065 - MC-21-400
+Onboard: 76 / 27 / 31
+00:39:09
+#CL-0076
+ZPPP - RKSI
+B-064 - MC-21-400
+Onboard: 34 / 51 / 29
+00:39:22
+#CL-136
+VIDP - OBBI
+B-141 - MC-21-400
+Onboard: 64 / 40 / 25
+00:39:45
+#CL-165
+LTAJ - EDDF
+B-176 - MC-21-400
+Onboard: 56 / 55 / 19
+00:45:30
+#CL-170
+LTCP - EDDF
+B-181 - MC-21-400
+Onboard: 77 / 28 / 27
+00:45:57
+#CL-149
+EDDF - LMML
+B-168 - MC-21-400
+Onboard: 55 / 27 / 24
+00:46:14
+#CL-0077
+VTCT - ZBAA
+B-073 - MC-21-400
+Onboard: 72 / 27 / 18
+00:46:42
+#CL-112
+OMDB - OAKB
+B-117 - MC-21-400
+Onboard: 117 / 31 / 14
+00:48:26
+#CL-139
+VIDP - UBBB
+B-144 - MC-21-400
+Onboard: 3 / 85 / 15
+00:49:20
+#CL-105
+ZUBD - RKSI
+B-110 - MC-21-400
+Onboard: 96 / 27 / 24
+00:49:36
+#CL-0057
+ZBAA - UAFM
+B-057 - MC-21-400
+Onboard: 47 / 0 / 0
+00:57:20
+=== PAGE BREAK ===
+222 ROUTES
+Previous
+4
+Next
+#CL-197
+GFLL - EDDF
+B-208 - A380-800
+Onboard: 120 / 159 / 27
+00:58:50
+#CL-0045
+ZBAA - UTDD
+B-030-3 - MC-21-400
+Onboard: 1 / 64 / 32
+00:58:52
+#CL-0047
+ZBAA - ZGGG
+B-044 - MC-21-400
+Onboard: 73 / 49 / 15
+00:59:08
+#CL-0061
+VVPC - ZBAA
+B-061 - MC-21-400
+Onboard: 81 / 32 / 27
+01:00:28
+#CL-0059
+VEBD - ZBAA
+B-059 - MC-21-400
+Onboard: 88 / 35 / 19
+01:00:31
+#CL-124
+OPIS - OMDB
+B-129 - MC-21-400
+Onboard: 111 / 38 / 11
+01:01:23
+#CL-114
+OMDB - VABB
+B-119 - MC-21-400
+Onboard: 68 / 59 / 9
+01:01:36
+#CL-129
+OMDB - LWSK
+B-134 - MC-21-400
+Onboard: 0 / 60 / 31
+01:03:53
+#CL-139
+VIDP - UACC
+B-149 - MC-21-400
+Onboard: 94 / 52 / 8
+01:05:15
+#CL-122
+OMDB - UKLH
+B-127 - MC-21-400
+Onboard: 1 / 32 / 0
+01:05:41
+#CL-138
+VIDP - OIIE
+B-148 - MC-21-400
+Onboard: 106 / 31 / 18
+01:05:58
+#CL-135
+ZUUU - VIDP
+B-140 - MC-21-400
+Onboard: 47 / 37 / 32
+01:08:26
+#CL-188
+ZBAA - UBBB
+B-199 - Boeing 777-300ERSF
+Onboard: 106,000 / 57,000 Lbs
+01:10:11
+#CL-144
+VIDP - VMMC
+B-154 - MC-21-400
+Onboard: 21 / 45 / 37
+01:10:30
+#CL-140
+VIDP - ZGSZ
+B-150 - MC-21-400
+Onboard: 0 / 57 / 36
+01:10:43
+#CL-185
+VABB - ZBAA
+B-196 - Boeing 777-300ERSF
+Onboard: 113,000 / 70,000 Lbs
+01:10:58
+#CL-121
+LATI - OMDB
+B-126 - MC-21-400
+Onboard: 1 / 34 / 52
+01:11:03
+#CL-106
+WMKA - RKSI
+B-111 - MC-21-400
+Onboard: 59 / 48 / 23
+01:15:26
+#CL-0076
+RKSI - ZUUU
+B-066 - MC-21-400
+Onboard: 82 / 39 / 19
+01:16:45
+#CL-0097
+OMDB - EDDP
+B-0102 - A330-900neo
+Onboard: 19 / 149 / 37
+01:18:57
+=== PAGE BREAK ===
+222 ROUTES
+Previous
+5
+Next
+#CL-0060
+ZBAA - WBSB
+B-060 - MC-21-400
+Onboard: 0 / 48 / 42
+01:20:41
+#CL-0093
+OMDB - ZPPP
+B-094 - A330-900neo
+Onboard: 1 / 44 / 115
+01:27:09
+#CL-0092
+OMDB - ZUUU
+B-097 - A330-900neo
+Onboard: 1 / 153 / 38
+01:28:04
+#CL-0063
+ZBAA - OMDB
+B-055 - B747SP
+Onboard: 1 / 36 / 90
+01:28:19
+#CL-119
+UDYZ - OMDB
+B-124 - MC-21-400
+Onboard: 72 / 58 / 9
+01:32:39
+#CL-166
+EDDF - OJAI
+B-177 - MC-21-400
+Onboard: 1 / 69 / 29
+01:32:40
+#CL-130
+VIDP - OOMS
+B-135 - MC-21-400
+Onboard: 66 / 30 / 32
+01:33:15
+#CL-0048
+ZBAA - ZGSZ
+B-043 - MC-21-400
+Onboard: 111 / 27 / 17
+01:33:19
+#CL-155
+EDDF - HLLT
+B-169 - MC-21-400
+Onboard: 104 / 44 / 10
+01:33:58
+#CL-115
+HAAB - OMDB
+B-120 - MC-21-400
+Onboard: 40 / 42 / 30
+01:34:04
+#CL-120
+HDAM - OMDB
+B-125 - MC-21-400
+Onboard: 99 / 49 / 9
+01:35:17
+#CL-0094
+ZGGG - RKSI
+B-089 - MC-21-400
+Onboard: 0 / 32 / 21
+01:36:05
+#CL-154
+UUEE - EDDF
+B-162 - MC-21-400
+Onboard: 86 / 56 / 9
+01:37:00
+#CL-0076
+PGSN - RKSI
+B-067 - MC-21-400
+Onboard: 0 / 57 / 32
+01:37:13
+#CL-132
+VIDP - ZPPP
+B-137 - MC-21-400
+Onboard: 36 / 38 / 37
+01:37:47
+#CL-111
+HHAS - OMDB
+B-116 - MC-21-400
+Onboard: 46 / 33 / 33
+01:37:56
+#CL-0076
+ZGSZ - RKSI
+B-063 - MC-21-400
+Onboard: 57 / 34 / 31
+01:38:13
+#CL-158
+EDDF - LCEN
+B-163 - MC-21-400
+Onboard: 70 / 49 / 17
+01:38:40
+=== PAGE BREAK ===
+222 ROUTES
+Previous
+6
+Next
+#CL-118
+OMDB - OJAQ
+B-123 - MC-21-400
+Onboard: 82 / 55 / 8
+01:39:11
+#CL-167
+EDDF - OJAQ
+B-178 - MC-21-400
+Onboard: 72 / 31 / 27
+01:39:33
+#CL-0076
+RKSI - VLVT
+B-070 - MC-21-400
+Onboard: 1 / 73 / 22
+01:39:59
+#CL-169
+EDDF - UWUU
+B-180 - MC-21-400
+Onboard: 55 / 68 / 9
+01:40:49
+#CL-0049
+ZBAA - ZPPP
+B-042 - MC-21-400
+Onboard: 43 / 69 / 13
+01:40:56
+#CL-0076
+VMMC - RKSI
+B-062 - MC-21-400
+Onboard: 28 / 72 / 18
+01:41:22
+#CL-110
+OMDB - LLBG
+B-115 - MC-21-400
+Onboard: 56 / 52 / 20
+01:42:54
+#CL-0085
+VVNB - RKSI
+B-075 - MC-21-400
+Onboard: 48 / 66 / 12
+01:43:07
+#CL-163
+EDDF - GCTS
+B-174 - MC-21-400
+Onboard: 80 / 31 / 26
+01:43:17
+#CL-137
+UGTB - VIDP
+B-147 - MC-21-400
+Onboard: 0 / 93 / 11
+01:43:23
+#CL-137
+VIDP - UDYZ
+B-142 - MC-21-400
+Onboard: 10 / 25 / 51
+01:43:33
+#CL-209
+EDDF - ZSNJ
+B-221 - A380-800
+Onboard: 127 / 128 / 63
+01:43:37
+#CL-208
+OMDB - GMME
+B-220 - A380-800
+Onboard: 2 / 191 / 62
+01:43:39
+#CL-142
+UNKS - VIDP
+B-152 - MC-21-400
+Onboard: 67 / 39 / 26
+01:44:31
+#CL-141
+VTSF - VIDP
+B-151 - MC-21-400
+Onboard: 39 / 64 / 15
+01:44:54
+#CL-159
+GMME - EDDF
+B-161 - MC-21-400
+Onboard: 51 / 50 / 23
+01:45:16
+#CL-113
+OMDB - VIDP
+B-118 - MC-21-400
+Onboard: 89 / 34 / 23
+01:45:52
+#CL-100
+ZLDH - RKSI
+B-0105 - MC-21-400
+Onboard: 71 / 65 / 7
+01:46:13
+#CL-0082
+ZBAA - VTBD
+B-079 - MC-21-400
+Onboard: 11 / 70 / 23
+01:46:44
+#CL-0076
+ZBAA - VTBS
+B-072 - MC-21-400
+Onboard: 1 / 52 / 0
+01:47:40
+=== PAGE BREAK ===
+222 ROUTES
+Previous
+7
+Next
+#CL-199
+GFLL - EGLL
+B-210 - A380-800
+Onboard: 163 / 122 / 51
+01:51:14
+#CL-172
+OMDB - FMMI
+B-183 - A380-800
+Onboard: 250 / 68 / 63
+01:55:20
+#CL-191
+OMDB - HRYR
+B-202 - Boeing 777-300ERSF
+Onboard: 129,000 / 52,000 Lbs
+01:57:40
+#CL-0038
+ZBAA - VOMM
+B-030-4 - MC-21-400
+Onboard: 11 / 46 / 39
+02:01:31
+#CL-195
+ZBAA - OOMS
+B-206 - Boeing 777-300ERSF
+Onboard: 112,000 / 73,000 Lbs
+02:08:22
+#CL-194
+VIDP - HUEN
+B-205 - Boeing 777-300ERSF
+Onboard: 92,000 / 98,000 Lbs
+02:08:56
+#CL-231
+RKSI - MDPP
+B-247 - A380-800
+Onboard: 181 / 170 / 13
+02:10:42
+#CL-125
+LGAV - OMDB
+B-130 - MC-21-400
+Onboard: 46 / 44 / 27
+02:15:12
+#CL-0026
+ZBAA - WMKK
+B-020-5 - MC-21-400
+Onboard: 1 / 84 / 14
+02:17:49
+#CL-0090
+VETZ - RKSI
+B-085 - MC-21-400
+Onboard: 38 / 52 / 26
+02:20:18
+#CL-168
+URMO - EDDF
+B-179 - MC-21-400
+Onboard: 60 / 44 / 25
+02:20:41
+#CL-148
+OKBK - VIDP
+B-158 - MC-21-400
+Onboard: 97 / 29 / 21
+02:20:57
+#CL-151
+EDDF - OLBA
+B-164 - MC-21-400
+Onboard: 23 / 51 / 30
+02:21:23
+#CL-143
+VLVT - VIDP
+B-153 - MC-21-400
+Onboard: 86 / 38 / 18
+02:21:50
+#CL-0025
+ZBAA - WSSS
+B-020-4 - MC-21-400
+Onboard: 1 / 88 / 16
+02:22:02
+#CL-160
+EDDF - LTCK
+B-171 - MC-21-400
+Onboard: 73 / 50 / 16
+02:23:51
+#CL-187
+ZBAA - OMAA
+B-198 - Boeing 777-300ERSF
+Onboard: 117,000 / 66,000 Lbs
+02:24:18
+#CL-131
+VIDP - VTBD
+B-136 - MC-21-400
+Onboard: 1 / 44 / 41
+02:25:56
+#CL-0022
+VCBI - ZBAA
+B-020 - MC-21-400
+Onboard: 0 / 22 / 0
+02:29:16
+=== PAGE BREAK ===
+222 ROUTES
+Previous
+8
+Next
+#CL-102
+RKSI - VDPP
+B-107 - MC-21-400
+Onboard: 18 / 77 / 17
+02:32:53
+#CL-179
+PGUM - RKSI
+B-190 - Boeing 777-300ERSF
+Onboard: 132,000 / 42,000 Lbs
+02:35:10
+#CL-145
+VIDP - ZGGG
+B-155 - MC-21-400
+Onboard: 1 / 50 / 37
+02:35:44
+#CL-0028
+ZBAA - UACC
+B-020-7 - MC-21-400
+Onboard: 0 / 31 / 53
+02:35:53
+#CL-108
+RKSI - VEAT
+B-113 - MC-21-400
+Onboard: 66 / 48 / 19
+02:36:30
+#CL-128
+OMDB - BKPR
+B-133 - MC-21-400
+Onboard: 1 / 70 / 26
+02:36:53
+#CL-146
+VIDP - OYSN
+B-156 - MC-21-400
+Onboard: 1 / 60 / 30
+02:37:03
+#CL-0024
+VABB - ZBAA
+B-020-3 - MC-21-400
+Onboard: 0 / 28 / 52
+02:37:04
+#CL-104
+VTBK - RKSI
+B-109 - MC-21-400
+Onboard: 87 / 20 / 30
+02:38:02
+#CL-127
+OMDB - VETZ
+B-132 - MC-21-400
+Onboard: 40 / 26 / 41
+02:40:14
+#CL-147
+VIDP - UWKD
+B-157 - MC-21-400
+Onboard: 25 / 58 / 29
+02:40:17
+#CL-101
+RKSI - VTBU
+B-106 - MC-21-400
+Onboard: 58 / 72 / 8
+02:40:40
+#CL-0093
+VGZR - OMDB
+B-098 - A330-900neo
+Onboard: 0 / 116 / 60
+02:41:09
+#CL-109
+RKSI - VVTH
+B-114 - MC-21-400
+Onboard: 18 / 39 / 21
+02:41:30
+#CL-230
+KSJC - EGLL
+B-244 - A380-800
+Onboard: 53 / 122 / 75
+02:42:37
+#CL-0095
+HKJK - OMDB
+B-0100 - A330-900neo
+Onboard: 1 / 156 / 37
+02:42:52
+#CL-0031
+ZBAA - VIDP
+B-020-10 - MC-21-400
+Onboard: 1 / 68 / 4
+02:44:34
+#CL-0032
+OPLA - ZBAA
+B-017-2 - MC-21-400
+Onboard: 43 / 57 / 20
+02:48:33
+#CL-0034
+OPIS - ZBAA
+B-017 - MC-21-400
+Onboard: 0 / 51 / 39
+02:50:48
+#CL-0027
+ZBAA - UTTT
+B-020-6 - MC-21-400
+Onboard: 1 / 70 / 25
+02:51:51
+=== PAGE BREAK ===
+222 ROUTES
+Previous
+9
+Next
+#CL-0030
+PGSN - ZBAA
+B-020-9 - MC-21-400
+Onboard: 0 / 24 / 57
+02:52:45
+#CL-182
+EDDF - HUEN
+B-193 - Boeing 777-300ERSF
+Onboard: 128,000 / 56,000 Lbs
+02:56:27
+#CL-0058
+ZBAA - WMKA
+B-058 - MC-21-400
+Onboard: 0 / 73 / 24
+03:00:31
+#CL-107
+RKSI - WIPL
+B-112 - MC-21-400
+Onboard: 0 / 42 / 48
+03:02:23
+#CL-237
+SGAS - OMDB
+B-261 - A380-800
+Onboard: 136 / 78 / 85
+03:06:27
+#CL-235
+SBGR - HRYR
+B-255 - A380-800
+Onboard: 15 / 120 / 96
+03:08:32
+#CL-229
+EKCH - KJFK
+B-243 - A380-800
+Onboard: 47 / 169 / 52
+03:11:02
+#CL-149
+VIDP - VHHH
+B-159 - MC-21-400
+Onboard: 12 / 84 / 15
+03:11:15
+#CL-0011
+WADL - ZBAA
+B-016 - MC-21-400
+Onboard: 0 / 28 / 10
+03:13:30
+#CL-0012
+WADD - ZBAA
+B-06-10 - MC-21-400
+Onboard: 0 / 46 / 8
+03:13:36
+#CL-196
+VIDP - FZAA
+B-207 - Boeing 777-300ERSF
+Onboard: 100,000 / 62,000 Lbs
+03:15:12
+#CL-236
+KNYL - OMDB
+B-257 - A380-800
+Onboard: 0 / 161 / 83
+03:15:33
+#CL-178
+OMDB - ZGGG
+B-189 - Boeing 777-300ERSF
+Onboard: 155,000 / 0 Lbs
+03:16:02
+#CL-192
+KBYH - EDDF
+B-203 - Boeing 777-300ERSF
+Onboard: 106,000 / 60,000 Lbs
+03:17:32
+#CL-190
+GBYD - OMDB
+B-201 - Boeing 777-300ERSF
+Onboard: 95,000 / 69,000 Lbs
+03:19:06
+#CL-186
+FVHA - OMDB
+B-197 - Boeing 777-300ERSF
+Onboard: 102,000 / 104,000 Lbs
+03:24:25
+#CL-0094
+VRMM - OMDB
+B-095 - A330-900neo
+Onboard: 178 / 73 / 34
+03:33:46
+#CL-0086
+VTSB - RKSI
+B-090 - MC-21-400
+Onboard: 34 / 50 / 29
+03:34:35
+#CL-0088
+WBGS - RKSI
+B-083 - MC-21-400
+Onboard: 30 / 61 / 21
+03:35:05
+#CL-203
+EDDF - FZAA
+B-214 - A380-800
+Onboard: 1 / 139 / 86
+03:35:12
+=== PAGE BREAK ===
+222 ROUTES
+Previous
+10
+Next
+#CL-176
+OMDB - HUEN
+B-188 - Boeing 777-300ERSF
+Onboard: 120,000 / 57,000 Lbs
+03:36:19
+#CL-204
+DFFD - OMDB
+B-215 - A380-800
+Onboard: 100 / 74 / 106
+03:36:43
+#CL-208
+OMDB - DXXX
+B-219 - A380-800
+Onboard: 131 / 87 / 78
+03:37:13
+#CL-207
+FMMI - VIDP
+B-218 - A380-800
+Onboard: 180 / 54 / 87
+03:39:16
+#CL-174
+OBBI - ZBAA
+B-185 - A380-800
+Onboard: 56 / 196 / 47
+03:41:21
+#CL-0087
+RKSI - VIBN
+B-082 - MC-21-400
+Onboard: 49 / 63 / 16
+03:41:34
+#CL-171
+EDDF - UACC
+B-182 - MC-21-400
+Onboard: 0 / 43 / 43
+03:41:55
+#CL-0089
+RKSI - VTSP
+B-084 - MC-21-400
+Onboard: 84 / 27 / 27
+03:42:34
+#CL-206
+VIDP - HBBA
+B-217 - A380-800
+Onboard: 125 / 139 / 50
+03:42:50
+#CL-0091
+OMDB - UACC
+B-092 - A330-900neo
+Onboard: 191 / 55 / 38
+03:43:59
+#CL-173
+ZBAA - OKBK
+B-184 - A380-800
+Onboard: 99 / 157 / 51
+03:44:35
+#CL-0037
+ZBAA - USSS
+B-041 - MC-21-400
+Onboard: 17 / 34 / 44
+03:44:58
+#CL-0076
+RKSI - UAFM
+B-069 - MC-21-400
+Onboard: 0 / 1 / 72
+03:45:57
+#CL-225
+UACC - WSSS
+B-237 - A380-800
+Onboard: 2 / 197 / 44
+03:48:55
+#CL-223
+EDDF - HKJK
+B-235 - A380-800
+Onboard: 86 / 188 / 32
+03:49:25
+#CL-222
+EDDF - CYYZ
+B-234 - A380-800
+Onboard: 155 / 127 / 49
+03:51:06
+#CL-237
+LFPG - HBBA
+B-259 - A380-800
+Onboard: 83 / 175 / 46
+03:52:32
+#CL-0096
+OMDB - RPLC
+B-0101 - A330-900neo
+Onboard: 200 / 88 / 15
+04:02:16
+#CL-175
+OTBD - ZBAA
+B-186 - A380-800
+Onboard: 39 / 187 / 48
+04:10:26
+=== PAGE BREAK ===
+222 ROUTES
+Previous
+11
+Next
+#CL-238
+KIAD - LFPG
+B-262 - A380-800
+Onboard: 0 / 180 / 64
+04:12:20
+#CL-205
+HBBA - EDDF
+B-216 - A380-800
+Onboard: 19 / 175 / 66
+04:15:53
+#CL-221
+KJFK - ESSA
+B-233 - A380-800
+Onboard: 57 / 188 / 41
+04:18:00
+#CL-226
+WSSS - YSSY
+B-238 - A380-800
+Onboard: 97 / 156 / 51
+04:18:07
+#CL-231
+SBGR - DFFD
+B-246 - A380-800
+Onboard: 86 / 207 / 21
+04:18:48
+#CL-227
+OBBI - WSSS
+B-239 - A380-800
+Onboard: 173 / 134 / 41
+04:20:33
+#CL-214
+EGLL - VRMM
+B-226 - A380-800
+Onboard: 0 / 189 / 55
+04:21:48
+#CL-202
+VIDP - FYWH
+B-213 - A380-800
+Onboard: 0 / 162 / 78
+04:22:14
+#CL-228
+VIDP - EHAM
+B-241 - A380-800
+Onboard: 216 / 128 / 26
+04:22:32
+#CL-214
+KMWH - RKSI
+B-225 - A380-800
+Onboard: 28 / 168 / 57
+04:23:10
+#CL-211
+EDDF - VOPB
+B-223 - A380-800
+Onboard: 119 / 85 / 85
+04:25:43
+#CL-230
+KELP - LFPG
+B-245 - A380-800
+Onboard: 228 / 65 / 60
+04:26:20
+#CL-201
+KGEG - RKSI
+B-212 - A380-800
+Onboard: 50 / 169 / 54
+04:27:24
+#CL-235
+HDAM - RKSI
+B-256 - A380-800
+Onboard: 231 / 115 / 34
+04:28:08
+#CL-193
+MYNN - EDDF
+B-204 - Boeing 777-300ERSF
+Onboard: 88,000 / 116,000 Lbs
+04:36:45
+#CL-239
+WSSS - UUEE
+B-265 - A380-800
+Onboard: 9 / 194 / 57
+04:37:05
+#CL-215
+FMMI - EDDF
+B-227 - A380-800
+Onboard: 43 / 142 / 67
+04:38:11
+#CL-232
+MDSD - ZBAA
+B-249 - A380-800
+Onboard: 1 / 10 / 160
+04:45:56
+#CL-234
+KRSW - VIDP
+B-253 - A380-800
+Onboard: 1 / 105 / 112
+04:46:33
+=== PAGE BREAK ===
+222 ROUTES
+Previous
+12
+Next
+#CL-237
+SAEZ - KJFK
+B-260 - A380-800
+Onboard: 60 / 226 / 18
+05:07:47
+#CL-184
+FQMA - VIDP
+B-195 - Boeing 777-300ERSF
+Onboard: 108,000 / 65,000 Lbs
+05:11:36
+#CL-200
+EGLL - KSFO
+B-211 - A380-800
+Onboard: 0 / 202 / 52
+05:12:49
+#CL-228
+KPSP - OMDB
+B-242 - A380-800
+Onboard: 146 / 158 / 28
+05:39:22
+#CL-238
+EGLL - FYWH
+B-263 - A380-800
+Onboard: 0 / 133 / 92
+06:29:44
+#CL-212
+EHAM - RKSI
+B-224 - A380-800
+Onboard: 1 / 193 / 49
+06:38:45
+#CL-0050
+BIKF - ZBAA
+B-050 - B747SP
+Onboard: 0 / 1 / 4
+06:49:32
+#CL-216
+EDDM - RKSI
+B-228 - A380-800
+Onboard: 0 / 145 / 84
+07:05:07
+#CL-210
+NSFA - RKSI
+B-222 - A380-800
+Onboard: 107 / 66 / 97
+07:10:17
+#CL-235
+WSSS - LTFJ
+B-258 - A380-800
+Onboard: 207 / 98 / 41
+07:13:02
+#CL-239
+ZPPP - LFPG
+B-264 - A380-800
+Onboard: 1 / 224 / 24
+07:13:49
+#CL-0065
+EDLV - ZBAA
+B-052 - B747SP
+Onboard: 1 / 28 / 92
+07:13:53
+#CL-183
+VIDP - GMME
+B-194 - Boeing 777-300ERSF
+Onboard: 96,000 / 94,000 Lbs
+07:45:06
+#CL-240
+VIDP - MYNN
+B-266 - A380-800
+Onboard: 0 / 50 / 146
+12:36:23
+#CL-233
+KLMT - WSSS
+B-252 - A380-800
+Onboard: 120 / 105 / 72
+12:37:03
+#CL-232
+OMDB - KPHX
+B-250 - A380-800
+Onboard: 119 / 94 / 77
+13:07:09
+#CL-234
+RKSI - GGOV
+B-254 - A380-800
+Onboard: 0 / 0 / 178
+13:30:46
+#CL-233
+KJFK - VLVT
+B-251 - A380-800
+Onboard: 0 / 74 / 140
+13:45:24
