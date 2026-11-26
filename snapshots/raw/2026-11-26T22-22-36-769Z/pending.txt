@@ -1,0 +1,61 @@
+15 AIRCRAFT
+A380-800, B-262
+264 Seats
+Paris Charles de Gaulle, France
+Pending maintenance: 05:58:10
+A380-800, B-256
+407 Seats
+Djibouti City, Djibouti
+Pending maintenance: 06:59:40
+A380-800, B-246
+331 Seats
+São Paulo Guarulhos, Brazil
+Pending maintenance: 00:34:43
+A380-800, B-233
+307 Seats
+New York JFK, United States
+Pending maintenance: 1d 12:45:29
+A380-800, B-232
+346 Seats
+New York JFK, United States
+Pending maintenance: 23:19:22
+A380-800, B-231
+345 Seats
+New York JFK, United States
+Pending maintenance: 09:27:29
+MC-21-400, B-171
+146 Seats
+Muş, Turkey
+Pending maintenance: 02:10:29
+MC-21-400, B-178
+136 Seats
+Aqaba, Jordan
+Pending maintenance: 00:55:28
+MC-21-400, B-160
+130 Seats
+Frankfurt intl, Germany
+Pending maintenance: 01:11:14
+MC-21-400, B-158
+157 Seats
+New Delhi, India
+Pending maintenance: 04:14:24
+MC-21-400, B-147
+109 Seats
+New Delhi, India
+Pending maintenance: 03:37:12
+MC-21-400, B-119
+146 Seats
+Mumbai, India
+Pending maintenance: 01:17:24
+MC-21-400, B-123
+156 Seats
+Aqaba, Jordan
+Pending maintenance: 01:24:40
+A330-900neo, B-0100
+200 Seats
+Nairobi Int, Kenya
+Pending maintenance: 00:58:43
+MC-21-400, B-043
+165 Seats
+Beijing Capital, China
+Pending maintenance: 01:26:09
