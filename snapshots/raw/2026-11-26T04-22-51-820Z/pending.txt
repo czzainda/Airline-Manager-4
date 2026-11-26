@@ -1,0 +1,102 @@
+25 AIRCRAFT
+A380-800, B-267
+271 Seats
+Dubai, United Arab Emirates
+Pending delivery: 04:05:43
+ Deliver now: 33 Points
+A380-800, B-232
+346 Seats
+New York JFK, United States
+Pending maintenance: 1d 17:19:09
+A380-800, B-231
+345 Seats
+New York JFK, United States
+Pending maintenance: 1d 03:27:16
+A380-800, B-230
+355 Seats
+London Heathrow intl, United Kingdom
+Pending maintenance: 06:19:38
+MC-21-400, B-158
+157 Seats
+New Delhi, India
+Pending maintenance: 01:37:13
+MC-21-400, B-147
+109 Seats
+New Delhi, India
+Pending maintenance: 00:59:41
+MC-21-400, B-146
+159 Seats
+New Delhi, India
+Pending maintenance: 01:21:20
+MC-21-400, B-115
+134 Seats
+Dubai, United Arab Emirates
+Pending maintenance: 00:58:33
+MC-21-400, B-106
+142 Seats
+Rayong, Thailand
+Pending maintenance: 02:56:57
+MC-21-400, B-114
+144 Seats
+Tuy Hoa, Vietnam
+Pending maintenance: 01:57:52
+A330-900neo, B-0103
+224 Seats
+Dubai, United Arab Emirates
+Pending maintenance: 02:22:35
+MC-21-400, B-076
+97 Seats
+Beijing Capital, China
+Pending maintenance: 05:51:57
+MC-21-400, B-062
+120 Seats
+Macau, Macau
+Pending maintenance: 00:57:17
+MC-21-400, B-071
+104 Seats
+Dhaka, Bangladesh
+Pending maintenance: 00:26:29
+B747SP, B-054
+144 Seats
+Beijing Capital, China
+Pending maintenance: 02:06:15
+MC-21-400, B-060
+94 Seats
+Beijing Capital, China
+Pending maintenance: 00:43:16
+B747SP, B-051
+138 Seats
+Beijing Capital, China
+Pending maintenance: 02:06:34
+B747SP, B-049
+133 Seats
+Beijing Capital, China
+Pending maintenance: 02:06:37
+B747SP, B-048
+131 Seats
+Beijing Capital, China
+Pending maintenance: 02:06:19
+B747SP, B-047
+121 Seats
+Beijing Capital, China
+Pending maintenance: 00:30:11
+B747SP, B-046
+127 Seats
+Beijing Capital, China
+Pending maintenance: 02:06:45
+MC-21-400, B-030-2
+95 Seats
+Bangalore, India
+Pending maintenance: 02:26:11
+MC-21-400, B-017-2
+128 Seats
+Lahore, Pakistan
+Pending maintenance: 00:03:47
+MC-21-400, B-020-8
+105 Seats
+Beijing Capital, China
+Pending maintenance: 01:42:06
+MC-21-400, B-020-9
+85 Seats
+Saipan Island, Northern Mariana Islands
+Pending maintenance: 00:07:52
