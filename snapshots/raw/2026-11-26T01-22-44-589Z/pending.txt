@@ -1,0 +1,81 @@
+20 AIRCRAFT
+A380-800, B-248
+308 Seats
+Frankfurt intl, Germany
+Pending maintenance: 00:22:48
+A380-800, B-236
+363 Seats
+Karachi, Pakistan
+Pending maintenance: 01:35:37
+A380-800, B-232
+346 Seats
+Berlin Tegel, Germany
+Pending maintenance: 00:38:05
+A380-800, B-231
+345 Seats
+New York JFK, United States
+Pending maintenance: 1d 06:27:22
+A380-800, B-230
+355 Seats
+London Heathrow intl, United Kingdom
+Pending maintenance: 09:19:44
+MC-21-400, B-150
+96 Seats
+New Delhi, India
+Pending maintenance: 00:55:04
+MC-21-400, B-142
+93 Seats
+New Delhi, India
+Pending maintenance: 00:59:32
+MC-21-400, B-126
+89 Seats
+Tirana, Albania
+Pending maintenance: 00:55:34
+MC-21-400, B-108
+108 Seats
+Seoul Incheon, South Korea
+Pending maintenance: 00:26:56
+MC-21-400, B-091
+96 Seats
+Kabul, Afghanistan
+Pending maintenance: 01:09:46
+MC-21-400, B-079
+109 Seats
+Beijing Capital, China
+Pending maintenance: 01:31:47
+B747SP, B-054
+144 Seats
+Beijing Capital, China
+Pending maintenance: 05:06:21
+MC-21-400, B-060
+94 Seats
+Beijing Capital, China
+Pending maintenance: 03:43:22
+B747SP, B-051
+138 Seats
+Beijing Capital, China
+Pending maintenance: 05:06:40
+B747SP, B-049
+133 Seats
+Beijing Capital, China
+Pending maintenance: 05:06:43
+B747SP, B-048
+131 Seats
+Beijing Capital, China
+Pending maintenance: 05:06:25
+B747SP, B-047
+121 Seats
+Beijing Capital, China
+Pending maintenance: 03:30:17
+B747SP, B-046
+127 Seats
+Beijing Capital, China
+Pending maintenance: 05:06:51
+MC-21-400, B-017-2
+128 Seats
+Lahore, Pakistan
+Pending maintenance: 03:03:53
+MC-21-400, B-020-9
+85 Seats
+Saipan Island, Northern Mariana Islands
+Pending maintenance: 03:07:58
