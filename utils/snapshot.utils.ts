@@ -124,12 +124,23 @@ const REG = '[A-Z]-[0-9][0-9A-Za-z-]*';
 interface RouteScan {
     rows: RouteRow[];
     failedBlocks: number;
+    // Parsed row attempts INCLUDING rows the reg dedupe dropped, and
+    // the registrations that were seen more than once. A capture can
+    // hold the header's full count of rows yet be one aircraft short
+    // when the list shifts across a page boundary mid-paging: the
+    // boundary row is read twice and the row behind it is skipped
+    // (pagination drift - see analyzeRouteDrift below).
+    attempts: number;
+    duplicateRegs: string[];
 }
 
 function scanRoutes(panelText: string): RouteScan {
     const ls = lines(panelText);
     const rows: RouteRow[] = [];
     const seen = new Set<string>();
+    const dupSeen = new Set<string>();
+    const duplicateRegs: string[] = [];
+    let attempts = 0;
     let failedBlocks = 0;
     let distanceKm = 0;
     for (let i = 0; i < ls.length; i++) {
@@ -168,12 +179,50 @@ function scanRoutes(panelText: string): RouteScan {
         // old routeNo dedupe silently discarded ~30 real routes per
         // run and the closure check then rejected complete captures
         // - the true cause of the 2026-11-18 collector failures.
+        attempts++;
         if (!seen.has(row.reg)) {
             seen.add(row.reg);
             rows.push(row);
+        } else if (!dupSeen.has(row.reg)) {
+            dupSeen.add(row.reg);
+            duplicateRegs.push(row.reg);
         }
     }
-    return { rows, failedBlocks };
+    return { rows, failedBlocks, attempts, duplicateRegs };
+}
+
+export interface RouteDriftAnalysis {
+    // Route rows that parsed, duplicates included.
+    rawRows: number;
+    // Distinct registrations after the reg dedupe.
+    distinctRegs: number;
+    // Registrations parsed more than once in the same capture.
+    duplicateRegs: string[];
+    // True when the capture's shape is pagination drift rather
+    // than a genuine shortfall: at least the header's count of
+    // rows was read, a registration repeats, yet the distinct
+    // aircraft count is below the header - one aircraft was
+    // skipped behind the duplicated boundary row.
+    isDrift: boolean;
+}
+
+// Pagination-drift detection (repair-log E entry, 2026-11-26;
+// spec fixed there after the third same-shape failure and first
+// implemented when the fourth hit, 2026-11-27 run invalid at
+// 17:22:48Z: raw 223 rows = header 223, distinct 222, B-143 read
+// on both sides of a page break). Pure analysis of the captured
+// text - it diagnoses, it never edits a row.
+export function analyzeRouteDrift(panelText: string, headerRoutes: number): RouteDriftAnalysis {
+    const scan = scanRoutes(panelText);
+    const rawRows = scan.attempts;
+    const distinctRegs = scan.rows.length;
+    const duplicateRegs = scan.duplicateRegs;
+    const isDrift =
+        headerRoutes > 0 &&
+        rawRows >= headerRoutes &&
+        distinctRegs < headerRoutes &&
+        duplicateRegs.length > 0;
+    return { rawRows, distinctRegs, duplicateRegs, isDrift };
 }
 
 export function parseRoutes(panelText: string): RouteRow[] {
