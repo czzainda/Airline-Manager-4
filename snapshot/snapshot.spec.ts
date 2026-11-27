@@ -42,7 +42,14 @@
 // already-seen page signature is treated as a loop and stops at
 // once. After all four tabs, the header is read once more and any
 // tab whose count moved during the run is re-captured (drift sweep,
-// max 2 attempts). Counts can sit still while an aircraft crosses
+// max 2 attempts). A fourth healing shape sits between the per-tab
+// recapture and the sweeps: pagination drift WITHIN the Routes tab
+// (the list shifts across a page break; a boundary row is read
+// twice, the row behind it skipped - raw rows >= header, distinct
+// registrations < header, a registration duplicated). It is named
+// by analyzeRouteDrift (utils) and recovered by a short wait plus a
+// Routes-only re-capture, max 2 rounds (added 2026-11-27 per the
+// repair-log E entry of 2026-11-26). Counts can sit still while an aircraft crosses
 // tabs mid-run, so an identity sweep follows: a registration found
 // in two tabs at once re-captures the earlier-captured tab (max 2
 // sweeps; added 2026-11-20, run 44794576556). Every correction is
@@ -89,6 +96,7 @@ import {
     parseFleetByType,
     countUnparsedRouteLines,
     countUnparsedPendingLines,
+    analyzeRouteDrift,
     selfCheck,
     SnapshotData,
     HeaderCounts,
@@ -410,6 +418,52 @@ test('Fleet snapshot (read-only)', async ({ page }) => {
     const results: Record<string, TabResult> = {};
     for (const tab of ['Pending', 'Parked', 'Fleet', 'Routes'])
         results[tab] = await captureVerified(tab, 3);
+
+    // Page-drift recovery (2026-11-27; repair-log E entry of
+    // 2026-11-26 - spec fixed there after the third same-shape
+    // failure, implemented when the fourth hit at 09:22 PST the
+    // next morning): while the Routes list is being paged it can
+    // shift by one row, so a boundary row is read on both sides of
+    // a page break and the row behind it is never seen. The raw
+    // capture then holds the header's full count of rows with one
+    // registration duplicated, but one distinct aircraft fewer
+    // than the header (runs 45945373418 and 2026-11-27T17:22:48Z:
+    // 227 raw / 226 distinct with B-063 duplicated, then 223 raw /
+    // 222 distinct with B-143 duplicated). The generic recapture
+    // above re-walks the same paging in the same breath and landed
+    // on the identical shortfall three attempts in a row both
+    // times, so recovery here first NAMES the shape
+    // (analyzeRouteDrift), then waits a short interval to break
+    // the phase, then re-captures ONLY the Routes tab - max 2
+    // rounds. A re-capture that stops being drift-shaped (a row
+    // genuinely left the tab, say) is not chased: it falls through
+    // to the self-check and is rejected exactly as before. This
+    // layer only re-collects; the self-check is never relaxed and
+    // a still-short capture is invalidated, never written valid.
+    if (!results['Routes'].ok) {
+        for (let round = 1; round <= 2 && !results['Routes'].ok; round++) {
+            const expectedRoutes = tabExpected('Routes', results['Routes'].header);
+            const drift = analyzeRouteDrift(results['Routes'].text, expectedRoutes);
+            if (!drift.isDrift)
+                break;
+            log(
+                `Page-drift recovery round ${round}: raw ${drift.rawRows} rows vs header ${expectedRoutes}, ` +
+                    `${drift.distinctRegs} distinct, duplicated: ${drift.duplicateRegs.join(', ')}; ` +
+                    `waiting 30s, then re-capturing Routes only.`
+            );
+            heal.push({
+                tab: 'Routes',
+                kind: 'page-drift',
+                round,
+                rawRows: drift.rawRows,
+                distinctRegs: drift.distinctRegs,
+                duplicateRegs: drift.duplicateRegs,
+                expected: expectedRoutes,
+            });
+            await page.waitForTimeout(30000);
+            results['Routes'] = await captureVerified('Routes', 1);
+        }
+    }
 
     // Drift sweep: one more header read; any tab whose count moved
     // since its verified capture is re-captured once more.
