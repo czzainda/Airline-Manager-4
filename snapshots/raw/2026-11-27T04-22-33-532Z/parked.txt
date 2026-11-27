@@ -1,0 +1,10 @@
+1 AIRCRAFT
+A380-800
+210 Seats
+	B-269
+São Paulo Guarulhos, Brazil
+	Y class: 2
+J class: 27
+F class: 181
+Route
+Details
