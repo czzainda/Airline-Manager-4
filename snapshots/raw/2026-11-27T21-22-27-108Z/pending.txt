@@ -1,0 +1,102 @@
+25 AIRCRAFT
+A380-800, B-271
+255 Seats
+Beijing Capital, China
+Pending delivery: 02:31:24
+ Deliver now: 21 Points
+A380-800, B-255
+255 Seats
+São Paulo Guarulhos, Brazil
+Pending maintenance: 00:23:55
+A380-800, B-254
+200 Seats
+Seoul Incheon, South Korea
+Pending maintenance: 07:45:29
+A380-800, B-251
+227 Seats
+New York JFK, United States
+Pending maintenance: 09:00:28
+A380-800, B-247
+385 Seats
+Puerto Plata, Dominican Republic
+Pending maintenance: 10:26:18
+A380-800, B-235
+331 Seats
+Frankfurt intl, Germany
+Pending maintenance: 05:04:08
+A380-800, B-234
+356 Seats
+Frankfurt intl, Germany
+Pending maintenance: 1d 17:47:17
+A380-800, B-233
+307 Seats
+New York JFK, United States
+Pending maintenance: 13:44:50
+A380-800, B-232
+346 Seats
+New York JFK, United States
+Pending maintenance: 00:18:43
+A380-800, B-222
+303 Seats
+Apia, Samoa
+Pending maintenance: 04:55:18
+A380-800, B-212
+297 Seats
+Spokane Int, United States
+Pending maintenance: 01:59:04
+Boeing 777-300ERSF, B-195
+230,395 Lbs
+New Delhi, India
+Pending maintenance: 05:26:23
+MC-21-400, B-174
+144 Seats
+Tenerife Island South, Spain
+Pending maintenance: 01:58:24
+MC-21-400, B-164
+111 Seats
+Frankfurt intl, Germany
+Pending maintenance: 00:05:49
+MC-21-400, B-155
+95 Seats
+New Delhi, India
+Pending maintenance: 00:51:11
+MC-21-400, B-152
+135 Seats
+New Delhi, India
+Pending maintenance: 04:37:04
+MC-21-400, B-130
+125 Seats
+Athens, Greece
+Pending maintenance: 00:59:50
+MC-21-400, B-116
+122 Seats
+Asmara, Eritrea
+Pending maintenance: 00:22:28
+MC-21-400, B-117
+169 Seats
+Kabul, Afghanistan
+Pending maintenance: 01:02:53
+MC-21-400, B-089
+151 Seats
+Guangzhou, China
+Pending maintenance: 00:21:28
+MC-21-400, B-069
+77 Seats
+Seoul Incheon, South Korea
+Pending maintenance: 03:01:28
+B747SP, B-052
+127 Seats
+Beijing Capital, China
+Pending maintenance: 04:01:24
+MC-21-400, B-045
+153 Seats
+Beijing Capital, China
+Pending maintenance: 03:03:34
+MC-21-400, B-017-3
+180 Seats
+Ho Chi Minh City, Vietnam
+Pending maintenance: 01:36:57
+MC-21-400, B-020-3
+87 Seats
+Beijing Capital, China
+Pending maintenance: 00:22:12
