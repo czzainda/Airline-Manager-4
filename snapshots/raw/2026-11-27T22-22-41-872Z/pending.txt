@@ -1,0 +1,82 @@
+20 AIRCRAFT
+A380-800, B-271
+255 Seats
+Beijing Capital, China
+Pending delivery: 01:31:02
+ Deliver now: 13 Points
+A380-800, B-254
+200 Seats
+Seoul Incheon, South Korea
+Pending maintenance: 06:45:07
+A380-800, B-251
+227 Seats
+New York JFK, United States
+Pending maintenance: 08:00:06
+A380-800, B-247
+385 Seats
+Puerto Plata, Dominican Republic
+Pending maintenance: 09:25:56
+A380-800, B-236
+363 Seats
+London Heathrow intl, United Kingdom
+Pending maintenance: 1d 18:16:49
+A380-800, B-235
+331 Seats
+Frankfurt intl, Germany
+Pending maintenance: 04:03:46
+A380-800, B-234
+356 Seats
+Frankfurt intl, Germany
+Pending maintenance: 1d 16:46:55
+A380-800, B-233
+307 Seats
+New York JFK, United States
+Pending maintenance: 12:44:28
+A380-800, B-222
+303 Seats
+Apia, Samoa
+Pending maintenance: 03:54:56
+A380-800, B-212
+297 Seats
+Spokane Int, United States
+Pending maintenance: 00:58:42
+Boeing 777-300ERSF, B-195
+230,395 Lbs
+New Delhi, India
+Pending maintenance: 04:26:01
+MC-21-400, B-174
+144 Seats
+Tenerife Island South, Spain
+Pending maintenance: 00:58:02
+MC-21-400, B-152
+135 Seats
+New Delhi, India
+Pending maintenance: 03:36:42
+MC-21-400, B-117
+169 Seats
+Kabul, Afghanistan
+Pending maintenance: 00:02:31
+MC-21-400, B-063
+127 Seats
+Seoul Incheon, South Korea
+Pending maintenance: 01:22:48
+MC-21-400, B-069
+77 Seats
+Seoul Incheon, South Korea
+Pending maintenance: 02:01:06
+B747SP, B-052
+127 Seats
+Beijing Capital, China
+Pending maintenance: 03:01:02
+B747SP, B-047
+121 Seats
+Beijing Capital, China
+Pending maintenance: 19:01:40
+MC-21-400, B-045
+153 Seats
+Beijing Capital, China
+Pending maintenance: 02:03:12
+MC-21-400, B-017-3
+180 Seats
+Ho Chi Minh City, Vietnam
+Pending maintenance: 00:36:35
