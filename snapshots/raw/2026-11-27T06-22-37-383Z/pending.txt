@@ -1,0 +1,77 @@
+19 AIRCRAFT
+A380-800, B-252
+328 Seats
+Singapore, Singapore
+Pending maintenance: 07:54:00
+A380-800, B-245
+384 Seats
+Paris Charles de Gaulle, France
+Pending maintenance: 07:58:44
+A380-800, B-233
+307 Seats
+New York JFK, United States
+Pending maintenance: 1d 04:45:30
+A380-800, B-232
+346 Seats
+New York JFK, United States
+Pending maintenance: 15:19:23
+A380-800, B-231
+345 Seats
+New York JFK, United States
+Pending maintenance: 01:27:30
+Boeing 777-300ERSF, B-199
+233,935 Lbs
+Baku, Azerbaijan
+Pending maintenance: 04:12:29
+Boeing 777-300ERSF, B-194
+242,785 Lbs
+Rabat, Morocco
+Pending maintenance: 07:31:49
+MC-21-400, B-173
+171 Seats
+Frankfurt intl, Germany
+Pending maintenance: 00:11:13
+MC-21-400, B-162
+156 Seats
+Frankfurt intl, Germany
+Pending maintenance: 01:23:30
+MC-21-400, B-135
+131 Seats
+Muscat, Oman
+Pending maintenance: 01:19:50
+MC-21-400, B-137
+116 Seats
+New Delhi, India
+Pending maintenance: 01:22:58
+MC-21-400, B-113
+139 Seats
+Seoul Incheon, South Korea
+Pending maintenance: 01:53:02
+MC-21-400, B-083
+120 Seats
+Seoul Incheon, South Korea
+Pending maintenance: 03:21:04
+MC-21-400, B-090
+119 Seats
+Seoul Incheon, South Korea
+Pending maintenance: 03:20:59
+MC-21-400, B-070
+104 Seats
+Seoul Incheon, South Korea
+Pending maintenance: 01:55:59
+B747SP, B-052
+127 Seats
+Beijing Capital, China
+Pending maintenance: 19:02:04
+MC-21-400, B-059
+152 Seats
+Beijing Capital, China
+Pending maintenance: 00:54:43
+MC-21-400, B-061
+144 Seats
+Beijing Capital, China
+Pending maintenance: 00:54:40
+MC-21-400, B-016
+91 Seats
+Beijing Capital, China
+Pending maintenance: 00:31:03
