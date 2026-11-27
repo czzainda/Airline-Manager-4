@@ -1,0 +1,58 @@
+14 AIRCRAFT
+A380-800, B-269
+210 Seats
+São Paulo Guarulhos, Brazil
+Pending delivery: 03:18:47
+ Deliver now: 27 Points
+A380-800, B-262
+264 Seats
+Paris Charles de Gaulle, France
+Pending maintenance: 03:58:01
+A380-800, B-259
+318 Seats
+Bujumbura, Burundi
+Pending maintenance: 05:07:58
+A380-800, B-256
+407 Seats
+Djibouti City, Djibouti
+Pending maintenance: 04:59:31
+A380-800, B-233
+307 Seats
+New York JFK, United States
+Pending maintenance: 1d 10:45:20
+A380-800, B-232
+346 Seats
+New York JFK, United States
+Pending maintenance: 21:19:13
+A380-800, B-231
+345 Seats
+New York JFK, United States
+Pending maintenance: 07:27:20
+MC-21-400, B-171
+146 Seats
+Muş, Turkey
+Pending maintenance: 00:10:20
+MC-21-400, B-158
+157 Seats
+New Delhi, India
+Pending maintenance: 02:14:15
+MC-21-400, B-147
+109 Seats
+New Delhi, India
+Pending maintenance: 01:37:03
+MC-21-400, B-129
+170 Seats
+Islamabad, Pakistan
+Pending maintenance: 01:17:46
+MC-21-400, B-124
+148 Seats
+Yerevan, Armenia
+Pending maintenance: 01:18:28
+MC-21-400, B-066
+150 Seats
+Seoul Incheon, South Korea
+Pending maintenance: 01:02:01
+MC-21-400, B-030-4
+100 Seats
+Chennai, India
+Pending maintenance: 02:16:31
