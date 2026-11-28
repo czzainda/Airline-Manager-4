@@ -1,0 +1,10 @@
+1 AIRCRAFT
+A380-800
+218 Seats
+	B-272
+Seoul Incheon, South Korea
+	Y class: 0
+J class: 57
+F class: 161
+Route
+Details
