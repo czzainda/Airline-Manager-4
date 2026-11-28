@@ -1,0 +1,10 @@
+1 AIRCRAFT
+A380-800
+255 Seats
+	B-271
+Beijing Capital, China
+	Y class: 1
+J class: 166
+F class: 88
+Route
+Details
